@@ -1,0 +1,153 @@
+name: pharma_clients_app
+description: A new Flutter project.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.6 <3.0.0'
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+
+  http: ^0.13.5
+  http_interceptor: ^1.0.0
+
+  shared_preferences: ^2.0.15
+  provider: ^6.0.5
+  intl: ^0.18.0
+
+  firebase_core: ^2.4.1
+  firebase_messaging: ^14.2.2
+  flutter_local_notifications: ^13.0.0
+
+  carousel_slider: ^4.2.1
+  responsive_sizer:
+
+  google_fonts: ^4.0.1
+  cupertino_icons: ^1.0.5
+  package_info_plus: ^3.0.3
+
+  flutter_svg: ^2.0.0+1
+  url_launcher: ^6.1.7
+  whatsapp_unilink: ^2.1.0
+  another_flushbar: ^1.12.29
+  badges: ^3.0.2
+  path_provider: ^2.0.12
+  share_plus: ^6.3.0
+  geolocator: ^9.0.2
+  geocoding: ^2.0.4
+  cached_network_image: ^3.2.3
+  connectivity_plus: ^3.0.4
+  open_filex: ^4.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/images/png/splash.png
+    - assets/images/png/webhopers_logo.png
+    - assets/images/png/webhopers_logo2.png
+    - assets/images/png/no_image.png
+    - assets/images/png/certificate.png
+    - assets/images/png/upcoming-products.png
+    - assets/images/png/enquiry.png
+    - assets/images/png/presentation.png
+    - assets/images/png/view-mrs.png
+    - assets/images/png/payment-scanner.png
+    - assets/images/png/my-order.png
+    - assets/images/png/outer.png
+    - assets/images/png/new-launches.png
+    - assets/images/png/daily-sales.png
+    - assets/images/png/customer-order.png
+    - assets/images/png/customers.png
+    - assets/images/png/add-presentation.png
+    - assets/images/png/addvisits.png
+    - assets/images/png/sales.gif
+    - assets/images/png/share.gif
+    - assets/images/png/add-customer.png
+    - assets/images/png/add-mrs.png
+    - assets/images/png/promtional-items.png
+    - assets/images/png/data-not-found.png
+    - assets/images/png/faq.gif
+    - assets/images/png/share-image.png
+    - assets/images/png/self-analysis.png
+    - assets/images/png/loading.gif
+    - assets/images/png/loading-gif.gif
+    - assets/images/png/calculation.png
+    - assets/images/png/visits.png
+    - assets/images/png/customerss.png
+    - assets/images/png/comingSoon.png
+    - assets/images/png/ic_forgot_password.png
+    - assets/images/png/whatsapp.png
+    - assets/images/png/email.png
+    - assets/images/png/download.png
+
+    - assets/images/svg/ic-division.svg
+    - assets/images/svg/ic-about.svg
+    - assets/images/svg/ic-product.svg
+    - assets/images/svg/ic-visual-aid.svg
+    - assets/images/svg/login.svg
+    - assets/images/svg/ic-my-order.svg
+    - assets/images/svg/download.svg
+    - assets/images/svg/call.svg
+    - assets/images/svg/email.svg
+    - assets/images/svg/calculator.svg
+    - assets/images/svg/calculator2.svg
+    - assets/images/svg/web.svg
+    - assets/images/svg/whatsapp.svg
+    - assets/images/svg/self-analysis.svg
+    - assets/images/svg/logged-in-user.svg
+    - assets/images/svg/viewOrders.svg
+    - assets/images/svg/viewVisits.svg
+    - assets/images/svg/resetPassword.svg
+    - assets/images/svg/changePassword.svg
+    - assets/images/svg/contactDetails.svg
+    - assets/images/svg/favourite.svg
+    - assets/images/svg/bankdetails.svg
+    - assets/images/svg/editProfile.svg
+
+  fonts:
+    - family: SFPro-Rounded
+      fonts:
+        - asset: assets/fonts/SFPro-Rounded-Bold.ttf
+        - asset: assets/fonts/SFPro-Rounded-Heavy.ttf
+        - asset: assets/fonts/SFPro-Rounded-Light.ttf
+        - asset: assets/fonts/SFPro-Rounded-Medium.ttf
+        - asset: assets/fonts/SFPro-Rounded-Regular.ttf
+        - asset: assets/fonts/SFPro-Rounded-Semibold.ttf
+        - asset: assets/fonts/SFPro-Rounded-Ultralight.ttf
+        - asset: assets/fonts/SFPro-Rounded-Black.ttf
