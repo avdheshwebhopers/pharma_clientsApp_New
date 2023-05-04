@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>632209707727-0fkb1hc0oef2fgj43m0utfp4qqe5fh7m.apps.googleusercontent.com</string>
+	<string>813881493956-8ivos9cpkl6l046jkk674q3eek280do1.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.632209707727-0fkb1hc0oef2fgj43m0utfp4qqe5fh7m</string>
+	<string>com.googleusercontent.apps.813881493956-8ivos9cpkl6l046jkk674q3eek280do1</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBEJN3nCIoG2eovA_cRi9kAvhjemeEhO28</string>
+	<string>AIzaSyAF3NiknRcgjnPVAE7ndccOhdckQHQawh8</string>
 	<key>GCM_SENDER_ID</key>
-	<string>632209707727</string>
+	<string>813881493956</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.pharmademo.app</string>
+	<string>com.rezicurePharmaceuticals.app</string>
 	<key>PROJECT_ID</key>
-	<string>pharma-demo-9751f</string>
+	<string>resicure-pharmaceuticals</string>
 	<key>STORAGE_BUCKET</key>
-	<string>pharma-demo-9751f.appspot.com</string>
+	<string>resicure-pharmaceuticals.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:632209707727:ios:9ab11819a4ab9da571ddba</string>
-	<key>DATABASE_URL</key>
-	<string>https://pharma-demo-9751f.firebaseio.com</string>
+	<string>1:813881493956:ios:10634d79099feb879d3c91</string>
 </dict>
 </plist>

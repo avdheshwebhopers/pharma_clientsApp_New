@@ -1,4 +1,4 @@
-package com.pharmademo.app
+package com.rezicurePharmaceuticals.app
 
 import io.flutter.embedding.android.FlutterActivity
 
