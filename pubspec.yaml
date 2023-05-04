@@ -79,17 +79,12 @@ flutter:
 
   assets:
     - assets/images/png/splash.png
-    - assets/images/png/webhopers_logo.png
     - assets/images/png/webhopers_logo2.png
     - assets/images/png/no_image.png
     - assets/images/png/certificate.png
     - assets/images/png/upcoming-products.png
-    - assets/images/png/enquiry.png
     - assets/images/png/presentation.png
     - assets/images/png/view-mrs.png
-    - assets/images/png/payment-scanner.png
-    - assets/images/png/my-order.png
-    - assets/images/png/outer.png
     - assets/images/png/new-launches.png
     - assets/images/png/daily-sales.png
     - assets/images/png/customer-order.png
@@ -97,7 +92,6 @@ flutter:
     - assets/images/png/add-presentation.png
     - assets/images/png/addvisits.png
     - assets/images/png/sales.gif
-    - assets/images/png/share.gif
     - assets/images/png/add-customer.png
     - assets/images/png/add-mrs.png
     - assets/images/png/promtional-items.png

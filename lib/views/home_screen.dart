@@ -487,7 +487,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     badgeAnimation: const badge.BadgeAnimation.slide(),
                                     position: badge.BadgePosition.topEnd(end: -0.4.h),
                                     badgeStyle: badge.BadgeStyle(
-                                      badgeColor: Colors.red.shade600,
+                                      badgeColor: Colors.black,
                                       shape: badge.BadgeShape.square,
                                       borderRadius: BorderRadius.circular(10),
                                       elevation: 0,
@@ -536,7 +536,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   badge.Badge(
                                       position: badge.BadgePosition.topEnd(end: -0.3.h),
                                       badgeStyle: badge.BadgeStyle(
-                                        badgeColor: Colors.red.shade600,
+                                        badgeColor: Colors.black,
                                         shape: badge.BadgeShape.square,
                                         borderRadius: BorderRadius.circular(10),
                                         elevation: 0,
@@ -682,7 +682,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               badgeAnimation: const badge.BadgeAnimation.slide(),
                               position: badge.BadgePosition.topEnd(end: 0.8.h),
                               badgeStyle: badge.BadgeStyle(
-                                badgeColor: AppColors.primaryColor,
+                                badgeColor: Colors.black,
                                 shape: badge.BadgeShape.square,
                                 borderRadius: BorderRadius.circular(10),
                                 elevation: 0,
@@ -713,7 +713,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             badgeAnimation: const badge.BadgeAnimation.slide(),
                             position: badge.BadgePosition.topEnd(end: 0.8.h),
                             badgeStyle: badge.BadgeStyle(
-                              badgeColor: AppColors.primaryColor,
+                              badgeColor: Colors.black,
                               shape: badge.BadgeShape.square,
                               borderRadius: BorderRadius.circular(10),
                               elevation: 0,
