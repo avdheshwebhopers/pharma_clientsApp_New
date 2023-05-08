@@ -131,7 +131,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                TextWithStyle.customerProductDetails(context, pro),
+                                Expanded(child: TextWithStyle.customerProductDetails(context, pro)),
                                 TextWithStyle.customerDetails(context, packing),
                               ],
                             ),

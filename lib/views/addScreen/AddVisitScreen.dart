@@ -404,8 +404,10 @@ class _AddVisitScreenState extends State<AddVisitScreen> {
                                                         title: Row(
                                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                           children: [
-                                                            Text(product.name!,
-                                                                style: TextStyle(color: Colors.black54, fontSize: 18.sp)),
+                                                            Expanded(
+                                                              child: Text(product.name!,
+                                                                  style: TextStyle(color: Colors.black54, fontSize: 18.sp)),
+                                                            ),
                                                             // TextWithStyle.productPrice(
                                                             //     context,
                                                             //     order.price?.toString() ?? '0'),

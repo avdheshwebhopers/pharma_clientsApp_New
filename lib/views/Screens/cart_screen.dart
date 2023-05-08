@@ -112,11 +112,11 @@ class _CartScreenState extends State<CartScreen> {
                                           SizedBox(height: 0.5.h),
                                           Row(
                                             children: [
-                                              TextWithStyle.productDescription(
-                                                  context, item.packingType),
-                                              SizedBox(width: 1.h),
-                                              TextWithStyle.productDescription(
-                                                  context, '(${item.packing})'),
+                                              Expanded(child: TextWithStyle.productDescription(
+                                                  context, item.packingType)),
+                                              //SizedBox(width: 1.h),
+                                              Expanded(child: TextWithStyle.productDescription(
+                                                  context, '(${item.packing})')),
                                             ],
                                           )
                                         ],

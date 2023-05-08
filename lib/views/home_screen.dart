@@ -221,16 +221,16 @@ class _HomeScreenState extends State<HomeScreen> {
           .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
           ?.createNotificationChannel(channel);
 
-      var notification = event.notification;
-      print(notification!.title);
+      var notification = event.data;
+      print(notification['title']);
       var initializationSettingsAndroid =
       const AndroidInitializationSettings('images/ic_home_active.png');
 
       if (notification != null) {
         flutterLocalNotificationsPlugin.show(
             notification.hashCode,
-            notification.title,
-            notification.body,
+            event.data['title'],
+            event.data['message'],
             NotificationDetails(
               android: AndroidNotificationDetails(
                 channel.id, channel.name, channelDescription: channel.description,
@@ -255,8 +255,8 @@ class _HomeScreenState extends State<HomeScreen> {
               : DateTime.now().toString()));
 
           var notificationData = NotificationData(
-              title: notification.title ?? 'Na',
-              message: notification.body ?? 'Na',
+              title: event.data['title'] ?? 'Na',
+              message: event.data['message'] ?? 'Na',
               dateTime: date
           );
 
