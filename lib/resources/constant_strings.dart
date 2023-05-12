@@ -1,7 +1,7 @@
 
 class ConstantStrings{
 
-  static const String appName =  'REZICURE Pharmaceuticals';
+  static const String appName =  'Swastik LifeSciences';
   static const String home =  'PharmaDemo';
 
   //Register

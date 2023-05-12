@@ -342,8 +342,8 @@ class ProductList extends StatelessWidget {
                                                                           id: product[index].id!,
                                                                           name: product[index].name!,
                                                                           price: product[index].price!,
-                                                                          packing: product[index].packing!,
-                                                                          packingType: product[index].packingType!,
+                                                                          packing: product[index].packing??'NA',
+                                                                          packingType: product[index].packingType??'NA',
                                                                         ),
                                                                       );
                                                                     }

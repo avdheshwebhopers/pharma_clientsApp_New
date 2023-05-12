@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1015093390735-o6u6up8g1ok7t7lk44isb9sa4ei7lhgc.apps.googleusercontent.com</string>
+	<string>1015093390735-n35ubo1k7ovdrl80aosr673tnp68rtbo.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1015093390735-o6u6up8g1ok7t7lk44isb9sa4ei7lhgc</string>
+	<string>com.googleusercontent.apps.1015093390735-n35ubo1k7ovdrl80aosr673tnp68rtbo</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCzPdZ7PJYQ1rmnhfuc1IkEjJauARsycQQ</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.swisschemhealthcare.app</string>
+	<string>com.swastiklifescience.app</string>
 	<key>PROJECT_ID</key>
 	<string>swisschem-fb6c2</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1015093390735:ios:fc8f9c52511474ef95affa</string>
+	<string>1:1015093390735:ios:1800a1b9035e00ee95affa</string>
 </dict>
 </plist>

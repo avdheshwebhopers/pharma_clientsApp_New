@@ -188,7 +188,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   children: [
                                     Expanded(
                                       child: Text(
-                                          '${widget.value1[0].packingType!}   (${widget.value1[0].packing!})',
+                                          '${widget.value1[0].packingType??'NA'}   (${widget.value1[0].packing??'NA'})',
                                           style: TextStyle(
                                               color: Colors.black54,
                                               fontSize: 18.sp)),
