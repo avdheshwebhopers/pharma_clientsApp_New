@@ -45,8 +45,7 @@ class NetworkApiServices extends BaseApiServices {
 
     dynamic responseJson;
     try {
-      final client =
-          InterceptedClient.build(interceptors: [LoggerInterceptor()]);
+      final client = InterceptedClient.build(interceptors: [LoggerInterceptor()]);
 
       final response = await client.get(Uri.parse(url), headers: {
         'Content-Type': 'application/json',
@@ -103,7 +102,6 @@ class NetworkApiServices extends BaseApiServices {
         },
         body: bodyParms.isNotEmpty ? jsonEncode(bodyParms.toJson()) : '',
       );
-
       responseJson = _returnResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet connection');
