@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pharma_clients_app/resources/app_colors.dart';
-import 'package:pharma_clients_app/view_model/services/splash_services.dart';
 import 'package:pharma_clients_app/views/products/product_list_widget.dart';
 import 'package:pharma_clients_app/utils/scroll_state/scroll_state.dart';
 import 'package:pharma_clients_app/utils/slider/slider_provider.dart';
@@ -35,8 +34,10 @@ Future<void> main() async {
     ),
   );
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+   // options: DefaultFirebaseOptions.currentPlatform,
+  );
   await Cart().loadCart();
-  await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
