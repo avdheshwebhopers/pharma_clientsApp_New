@@ -118,11 +118,11 @@ class _LoginScreenState extends State<LoginScreen> {
     final authviewmodel = Provider.of<LoginViewModel>(context, listen: false);
 
     return WillPopScope(
-        onWillPop: () async => false,
+        onWillPop: () async => true,
         child: Scaffold(
           //backgroundColor: Colors.white,
           appBar: AppBar(
-            automaticallyImplyLeading: false,
+            automaticallyImplyLeading: true,
             elevation: 0,
             backgroundColor: AppColors.primaryColor,
           ),

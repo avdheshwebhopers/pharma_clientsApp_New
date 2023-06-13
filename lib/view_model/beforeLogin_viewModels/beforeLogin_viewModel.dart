@@ -17,8 +17,6 @@ import '../../data/repository/Beforelogin/beforeLogin_repository.dart';
 import '../../data/response/api_response.dart';
 
 class GuestProductViewModel with ChangeNotifier{
-
-
   List<Products> product = [];
   List<Products> _filteredProducts = [];
 
@@ -62,7 +60,8 @@ class GuestProductViewModel with ChangeNotifier{
     _filteredProducts = product.where((element) {
       return element.name!.toLowerCase().contains(searchQuery)
           || element.typeName!.toLowerCase().contains(searchQuery)
-        || element.categoryName!.toLowerCase().contains(searchQuery);
+        || element.categoryName!.toLowerCase().contains(searchQuery)
+          || element.description!.toLowerCase().contains(searchQuery);
     }).toList();
 
     notifyListeners();

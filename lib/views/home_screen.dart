@@ -906,17 +906,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         InkWell(
                             onTap: () async {
-                              if (widget.token != null) {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const Calculator()));
-                              } else {
-                                await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const LoginScreen()));
-                              }
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Calculator()));
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -939,20 +932,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           title: ConstantStrings.faqs,
                           image: 'assets/images/png/faq.gif',
                           onPress: () async {
-                            if (widget.token != null) {
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=> const FAQsScreen()));
-                            } else {
-                              await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const LoginScreen()));
-                            }
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => const FAQsScreen()));
                           },
                         ),
                         InkWell(
                             onTap: () async {
                               if (widget.token != null) {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => SelfAnalysisScreen()));
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) => const SelfAnalysisScreen()));
                               } else {
                                 await Navigator.push(
                                     context,

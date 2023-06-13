@@ -24,7 +24,6 @@ import '../../data/model/response_model/profile/profileResponseModel.dart';
 import '../../data/model/response_model/visual_aids_response_model.dart';
 import '../../data/repository/afterLogin/afterLogin_repository.dart';
 import '../../data/response/api_response.dart';
-import '../../views/AddScreen/AddVisitScreen.dart';
 
 class ProductViewModel with ChangeNotifier {
   List<Products> product = [];
@@ -82,7 +81,8 @@ class ProductViewModel with ChangeNotifier {
     _filteredProducts = product.where((element) {
       return element.name!.toLowerCase().contains(searchQuery) ||
           element.typeName!.toLowerCase().contains(searchQuery) ||
-          element.categoryName!.toLowerCase().contains(searchQuery);
+          element.categoryName!.toLowerCase().contains(searchQuery)||
+      element.description!.toLowerCase().contains(searchQuery);
     }).toList();
     notifyListeners();
   }

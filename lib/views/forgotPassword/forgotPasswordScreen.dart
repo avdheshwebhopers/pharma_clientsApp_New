@@ -175,7 +175,6 @@ class _ForgotPasswordState extends State<ForgotPasswordScreen> {
       resizeToAvoidBottomInset: false,
       // resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        brightness: Brightness.light,
         elevation: 0,
         backgroundColor: Colors.white,
         bottomOpacity: 0,
