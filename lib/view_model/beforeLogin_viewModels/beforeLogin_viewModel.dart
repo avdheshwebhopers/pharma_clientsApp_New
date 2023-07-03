@@ -18,7 +18,6 @@ import '../../data/response/api_response.dart';
 
 class GuestProductViewModel with ChangeNotifier{
 
-
   List<Products> product = [];
   List<Products> _filteredProducts = [];
 
