@@ -291,10 +291,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               labelText: 'Address',
                               icon: CupertinoIcons.location_solid,
                               validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your Address';
-                                }
-                                return null;
+                                // if (value!.isEmpty) {
+                                //   return 'Please enter your Address';
+                                // }
+                                // return null;null
                               },
                             ),
                             ChangeNotifierProvider<StatesViewModel>(
@@ -469,10 +469,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         city = val;
                                       },
                                       validator: (val) {
-                                        if (city == null) {
-                                          return 'Please enter your City';
-                                        }
-                                        return null;
+                                        // if (city == null) {
+                                        //   return 'Please enter your City';
+                                        // }
+                                        // return null;
                                       },
                                     );
                                   },
@@ -488,9 +488,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               labelText: 'D.O.B',
                               icon: CupertinoIcons.calendar_today,
                               validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your Date of Birth';
-                                }
+                                // if (value!.isEmpty) {
+                                //   return 'Please enter your Date of Birth';
+                                // }
                                 return null;
                               },
                               suffixIcon: InkWell(
@@ -506,10 +506,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               labelText: 'Operation Area',
                               icon: CupertinoIcons.briefcase_fill,
                               validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your Operation Area';
-                                }
-                                return null;
+                                // if (value!.isEmpty) {
+                                //   return 'Please enter your Operation Area';
+                                // }
+                                // return null;
                               },
                             ),
                             ValueListenableBuilder(
@@ -623,10 +623,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               labelText: 'Gst Number',
                               icon: CupertinoIcons.doc_text_fill,
                               validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your Gst Number';
-                                }
-                                return null;
+                                // if (value!.isEmpty) {
+                                //   return 'Please enter your Gst Number';
+                                // }
+                                // return null;
                               },
                             ),
                             TextInputField(
@@ -636,10 +636,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               labelText: 'DrugLicense',
                               icon: CupertinoIcons.doc_plaintext,
                               validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your DrugLicense';
-                                }
-                                return null;
+                                // if (value!.isEmpty) {
+                                //   return 'Please enter your DrugLicense';
+                                // }
+                                // return null;
                               },
                             ),
                             TextInputField(
@@ -649,10 +649,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               labelText: 'Aadhaar Number',
                               icon: CupertinoIcons.creditcard_fill,
                               validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Aadhaar Number';
-                                }
-                                return null;
+                                // if (value!.isEmpty) {
+                                //   return 'Aadhaar Number';
+                                // }
+                                // return null;
                               },
                             ),
                             TextInputField(
@@ -662,12 +662,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               labelText: 'Firm Email',
                               icon: CupertinoIcons.mail,
                               validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your Firm Email';
-                                } else if (validateEmail(value) != null) {
-                                  return 'Please enter valid Email';
-                                }
-                                return null;
+                                // if (value!.isEmpty) {
+                                //   return 'Please enter your Firm Email';
+                                // } else if (validateEmail(value) != null) {
+                                //   return 'Please enter valid Email';
+                                // }
+                                // return null;
                               },
                             ),
                             TextFormField(
@@ -680,12 +680,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 LengthLimitingTextInputFormatter(10),
                               ],
                               validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your Firm Phone';
-                                } else if (value.length != 10) {
-                                  return 'Please Enter 10 digits';
-                                }
-                                return null;
+                                // if (value!.isEmpty) {
+                                //   return 'Please enter your Firm Phone';
+                                // } else if (value.length != 10) {
+                                //   return 'Please Enter 10 digits';
+                                // }
+                                // return null;
                               },
                               decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
@@ -727,10 +727,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               labelText: 'Firm Address',
                               icon: CupertinoIcons.location_solid,
                               validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your Firm Address';
-                                }
-                                return null;
+                                // if (value!.isEmpty) {
+                                //   return 'Please enter your Firm Address';
+                                // }
+                                // return null;
                               },
                             ),
                             ChangeNotifierProvider<StatesViewModel>(
@@ -903,10 +903,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         firmCity = val;
                                       },
                                       validator: (val) {
-                                        if (firmCity == null) {
-                                          return 'Please enter your City';
-                                        }
-                                        return null;
+                                        // if (firmCity == null) {
+                                        //   return 'Please enter your City';
+                                        // }
+                                        // return null;
                                       },
                                     );
                                   },
@@ -1049,21 +1049,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 entity.name = name.text;
                                 entity.email = email.text;
                                 entity.phone = phone.text;
-                                entity.address = address.text;
-                                entity.city = city.toString();
+                                entity.address = address.text.isEmpty ? 'NA' : address.text ;
+                                entity.city = city.toString().isEmpty ? 'NA' : city.toString();
                                 entity.state = state.name.toString();
-                                entity.opArea = operationArea.text;
-                                entity.dob = dob.text;
+                                entity.opArea = operationArea.text.isEmpty ? 'NA' : operationArea.text;
+                                entity.dob = dob.text.isEmpty ? '' : dob.text;
                                 entity.password = password.text;
                                 entity.firmName = firmName.text;
-                                entity.gstNumber = gstNumber.text;
-                                entity.drugLicense = drugLicense.text;
-                                entity.aadhaarCard = aadhaarNumber.text;
-                                entity.firmPhone = firmPhone.text;
-                                entity.firmEmail = firmEmail.text;
+                                entity.gstNumber = gstNumber.text.isEmpty ? 'NA' : gstNumber.text;
+                                entity.drugLicense = drugLicense.text.isEmpty ? 'NA' : drugLicense.text;
+                                entity.aadhaarCard = aadhaarNumber.text.isEmpty ? 'NA' : aadhaarNumber.text;
+                                entity.firmPhone = firmPhone.text.isEmpty ? 'NA' : firmPhone.text;
+                                entity.firmEmail = firmEmail.text.isEmpty ? 'NA' : firmEmail.text;
                                 entity.firmState = firmState.name.toString();
-                                entity.firmDistrict = firmCity.toString();
-                                entity.firmAddress = firmAddress.text;
+                                entity.firmDistrict = firmCity.toString().isEmpty ? 'NA' : firmCity.toString();
+                                entity.firmAddress = firmAddress.text.isEmpty ? 'NA' : firmAddress.text;
                                 entity.bankName = bankName.text;
                                 entity.bankAccNo = accountNumber.text;
                                 entity.bankIfsc = ifscCode.text;

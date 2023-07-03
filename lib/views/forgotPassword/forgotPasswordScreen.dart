@@ -1,15 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pharma_clients_app/data/model/requested_data_model/forgotPassword/profileSearchEntity.dart';
-import 'package:pharma_clients_app/data/model/response_model/forgotPassword/profileSearchResponseModel.dart';
-import 'package:pharma_clients_app/data/network/base_api_services.dart';
-import 'package:pharma_clients_app/data/network/network_api_services.dart';
-import 'package:pharma_clients_app/resources/app_colors.dart';
 import 'package:pharma_clients_app/utils/TextInputFields/text_field.dart';
 import 'package:pharma_clients_app/utils/button.dart';
 import 'package:pharma_clients_app/utils/text_style.dart';
 import 'package:pharma_clients_app/view_model/beforeLogin_viewModels/beforeLogin_viewModel.dart';
-import 'package:pharma_clients_app/views/forgotPassword/verifyOtpScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 

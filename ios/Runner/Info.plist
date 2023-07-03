@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Pharma Client App</string>
+	<string>Rezicure Pharmaceuticals</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -15,7 +15,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>flutter_firebase_notifications</string>
+	<string>com.rezicurePharmaceuticals.app</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -24,32 +24,58 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>Your message goes here</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Your message goes here</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-</dict>
-</plist>
+	<key>CFBundleURLTypes</key>
+    	<array>
+    		<dict>
+    			<key>CFBundleTypeRole</key>
+    			<string>Editor</string>
+    			<key>CFBundleURLSchemes</key>
+    			<array>
+    				<string>com.googleusercontent.apps.632209707727-0fkb1hc0oef2fgj43m0utfp4qqe5fh7m</string>
+    			</array>
+    		</dict>
+    	</array>
+    	<key>CFBundleVersion</key>
+    	<string>$(CURRENT_PROJECT_VERSION)</string>
+    	<key>LSRequiresIPhoneOS</key>
+    	<true/>
+    	<key>NSAppTransportSecurity</key>
+    	<dict>
+    		<key>NSAllowsLocalNetworking</key>
+    		<true/>
+    	</dict>
+    	<key>NSLocationAlwaysUsageDescription</key>
+    	<string>Location is required to find out where you are.</string>
+    	<key>NSLocationWhenInUseUsageDescription</key>
+    	<string>Turning on location services allow us to show you when you add the visit.</string>
+    	<key>NSPhotoLibraryAddUsageDescription</key>
+    	<string>describe why your app needs access to write photo library</string>
+    	<key>NSPhotoLibraryUsageDescription</key>
+    	<string>This app requires to save your images user gallery</string>
+    	<key>UIBackgroundModes</key>
+    	<array>
+    		<string>fetch</string>
+    		<string>processing</string>
+    		<string>remote-notification</string>
+    	</array>
+    	<key>UILaunchStoryboardName</key>
+    	<string>LaunchScreen</string>
+    	<key>UIMainStoryboardFile</key>
+    	<string>Main</string>
+    	<key>UISupportedInterfaceOrientations</key>
+    	<array>
+    		<string>UIInterfaceOrientationPortrait</string>
+    	</array>
+    	<key>UISupportedInterfaceOrientations~ipad</key>
+    	<array>
+    		<string>UIInterfaceOrientationLandscapeLeft</string>
+    		<string>UIInterfaceOrientationLandscapeRight</string>
+    		<string>UIInterfaceOrientationPortrait</string>
+    		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+    	</array>
+    	<key>UIViewControllerBasedStatusBarAppearance</key>
+    	<false/>
+    	<key>UIApplicationSupportsIndirectInputEvents</key>
+    	<true/>
+    </dict>
+    </plist>
