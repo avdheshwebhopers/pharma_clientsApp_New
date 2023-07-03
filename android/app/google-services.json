@@ -1,41 +1,34 @@
 {
   "project_info": {
-    "project_number": "813881493956",
-    "project_id": "resicure-pharmaceuticals",
-    "storage_bucket": "resicure-pharmaceuticals.appspot.com"
+    "project_number": "1072617507908",
+    "project_id": "cynak-healthcare",
+    "storage_bucket": "cynak-healthcare.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:813881493956:android:130ba55b87cb72989d3c91",
+        "mobilesdk_app_id": "1:1072617507908:android:53e23201180c1acdefc011",
         "android_client_info": {
-          "package_name": "com.rezicurePharmaceuticals.app"
+          "package_name": "com.webhopers.cynakhealthcare"
         }
       },
       "oauth_client": [
         {
-          "client_id": "813881493956-ho25jmvjpd0o0sn2vblctf6jcjisvevj.apps.googleusercontent.com",
+          "client_id": "1072617507908-551bfhv8fbj2vm21i98ndsif043cdf4h.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC0k2junqIC1iz_4ossY2a4C50YqIABW0Q"
+          "current_key": "AIzaSyDm7s5iYz5FK_5H6-SppmBU3rM4ka2BWQg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "813881493956-ho25jmvjpd0o0sn2vblctf6jcjisvevj.apps.googleusercontent.com",
+              "client_id": "1072617507908-551bfhv8fbj2vm21i98ndsif043cdf4h.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "813881493956-8ivos9cpkl6l046jkk674q3eek280do1.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.rezicurePharmaceuticals.app"
-              }
             }
           ]
         }

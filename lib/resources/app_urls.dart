@@ -1,7 +1,7 @@
 
 class AppUrls{
 
-  static var baseURL = "https://clientapps.webhopers.com:3227/api/app/";
+  static var baseURL = "https://clientapps.webhopers.com:3232/api/app/";
 
   // static const String localBaseURL = "http://192.168.0.155:3015/api/app/";
 

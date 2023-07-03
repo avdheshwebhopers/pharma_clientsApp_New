@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.rezicurePharmaceuticals.app</string>
+	<string>com.webhopers.cynakhealthcare</string>
 	<key>PROJECT_ID</key>
 	<string>resicure-pharmaceuticals</string>
 	<key>STORAGE_BUCKET</key>

@@ -1,4 +1,4 @@
-package com.rezicurePharmaceuticals.app
+package com.webhopers.cynakhealthcare
 
 import io.flutter.embedding.android.FlutterActivity
 
