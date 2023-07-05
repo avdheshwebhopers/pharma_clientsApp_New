@@ -272,10 +272,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       CartEntity(
                                         id: widget.value1[0].id!,
                                         name: widget.value1[0].name!,
-                                        price: widget.value1[0].price!,
-                                        packing: widget.value1[0].packing!,
+                                        price: widget.value1[0].packingVarient![0].price!,
+                                        packing: widget.value1[0].packingVarient![0].packing!,
                                         packingType:
-                                            widget.value1[0].packingType!,
+                                            widget.value1[0].packingVarient![0].packingType!.label!,
                                       ),
                                     );
                                   },
@@ -292,10 +292,10 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       CartEntity(
                                         id: widget.value1[0].id!,
                                         name: widget.value1[0].name!,
-                                        price: widget.value1[0].price!,
-                                        packing: widget.value1[0].packing!,
+                                        price: widget.value1[0].packingVarient![0].price!,
+                                        packing: widget.value1[0].packingVarient![0].packing!,
                                         packingType:
-                                            widget.value1[0].packingType!,
+                                        widget.value1[0].packingVarient![0].packingType!.label!,
                                       ),
                                     );
                                   },

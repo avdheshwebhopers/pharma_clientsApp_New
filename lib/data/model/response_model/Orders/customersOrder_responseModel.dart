@@ -79,14 +79,16 @@ class Data {
 
 class Orderlist {
   Product? product;
+  int? price;
   int? quantity;
   String? packingType;
 
-  Orderlist({this.product, this.quantity, this.packingType});
+  Orderlist({this.product, this.quantity, this.packingType,this.price});
 
   Orderlist.fromJson(Map<String, dynamic> json) {
     product =
     json['product'] != null ? Product.fromJson(json['product']) : null;
+    price = json['price'];
     quantity = json['quantity'];
     packingType = json['packing_type'];
   }
@@ -96,6 +98,7 @@ class Orderlist {
     if (product != null) {
       data['product'] = product!.toJson();
     }
+    data['price'] = this.price;
     data['quantity'] = quantity;
     data['packing_type'] = packingType;
     return data;

@@ -160,8 +160,7 @@ class ProductList extends StatelessWidget {
                                                       Expanded(
                                                         child: TextWithStyle.productPrice(
                                                             context,
-                                                            product[index].price
-                                                                ?.toString() ??
+                                                            product[index].packingVarient?[0].price.toString() ??
                                                                 '0'),
                                                       ),
                                                       Consumer<Cart>(
@@ -183,9 +182,9 @@ class ProductList extends StatelessWidget {
                                                                       CartEntity(
                                                                         id: product[index].id!,
                                                                         name: product[index].name!,
-                                                                        price: product[index].price!,
-                                                                        packing: product[index].packing!,
-                                                                        packingType: product[index].packingType!,
+                                                                        price: product[index].packingVarient![0].price!,
+                                                                        packing: product[index].packingVarient![0].packing!,
+                                                                        packingType: product[index].packingVarient![0].packingType!.value!,
                                                                       ),
                                                                     );
                                                                   },
@@ -207,9 +206,9 @@ class ProductList extends StatelessWidget {
                                                                           CartEntity(
                                                                             id: product[index].id!,
                                                                             name: product[index].name!,
-                                                                            price: product[index].price!,
-                                                                            packing: product[index].packing!,
-                                                                            packingType: product[index].packingType!,
+                                                                            price: product[index].packingVarient![0].price!,
+                                                                            packing: product[index].packingVarient![0].packing!,
+                                                                            packingType: product[index].packingVarient![0].packingType!.value!,
                                                                           ),
                                                                           int.tryParse(value) ?? 0,
                                                                         );
@@ -228,9 +227,9 @@ class ProductList extends StatelessWidget {
                                                                       CartEntity(
                                                                         id: product[index].id!,
                                                                         name: product[index].name!,
-                                                                        price: product[index].price!,
-                                                                        packing: product[index].packing!,
-                                                                        packingType: product[index].packingType!,
+                                                                        price: product[index].packingVarient![0].price!,
+                                                                        packing: product[index].packingVarient![0].packing!,
+                                                                        packingType: product[index].packingVarient![0].packingType!.value!,
                                                                       ),
                                                                     );
                                                                   },

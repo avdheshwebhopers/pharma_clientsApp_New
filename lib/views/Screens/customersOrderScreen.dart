@@ -49,7 +49,7 @@ class _CustomersOrderScreenState extends State<CustomersOrderScreen> {
   @override
   Widget build(BuildContext context) {
 
-    calPrice( price, qauntity) {
+    calPrice(price, qauntity) {
       Price = price * qauntity;
     }
 
@@ -86,7 +86,7 @@ class _CustomersOrderScreenState extends State<CustomersOrderScreen> {
                       if(element.product != null){
                         orders.add(OrderWithQuanity(quanity: element.quantity!,
                           name: element.product!.name!,packing: element.packingType));
-                          calPrice(element.product!.price, element.quantity);
+                          calPrice(element.price, element.quantity);
                         price.add(Price);
                       }
                     }

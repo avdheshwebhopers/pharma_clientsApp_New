@@ -35,6 +35,7 @@ import '../utils/text_style.dart';
 import '../view_model/afterLogin_viewModel/afterLogin_viewModels.dart';
 import '../view_model/beforeLogin_viewModels/beforeLogin_viewModel.dart';
 import '../view_model/login_viewmodel.dart';
+import '../view_model/services/splash_services.dart';
 import 'AddScreen/addMr_Screen.dart';
 import 'AddScreen/add_customer.dart';
 import 'Mr/MrsScreen.dart';
@@ -906,17 +907,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         InkWell(
                             onTap: () async {
-                              if (widget.token != null) {
+
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => const Calculator()));
-                              } else {
-                                await Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const LoginScreen()));
-                              }
                             },
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -939,14 +934,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           title: ConstantStrings.faqs,
                           image: 'assets/images/png/faq.gif',
                           onPress: () async {
-                            if (widget.token != null) {
                               Navigator.push(context, MaterialPageRoute(builder: (context)=> const FAQsScreen()));
-                            } else {
-                              await Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const LoginScreen()));
-                            }
                           },
                         ),
                         InkWell(
