@@ -1,4 +1,4 @@
-package com.pharmademo.app
+package com.webhopers.dolvis
 
 import io.flutter.embedding.android.FlutterActivity
 
