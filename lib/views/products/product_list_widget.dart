@@ -199,10 +199,25 @@ class ProductList extends StatelessWidget {
                                                                       //initialValue: count,
                                                                       controller: qty,
                                                                       focusNode: focusNodes[index],
-                                                                      //autofocus: true,
                                                                       textAlign: TextAlign.center,
-                                                                      keyboardType: TextInputType.number,
-                                                                      onChanged: (value) {
+                                                                      //keyboardType: TextInputType.number,
+                                                                      //onChanged: (value) {
+                                                                      //   cartProvider.updateItemQuantity(
+                                                                      //     CartEntity(
+                                                                      //       id: product[index].id!,
+                                                                      //       name: product[index].name!,
+                                                                      //       price: product[index].price!,
+                                                                      //       packing: product[index].packing!,
+                                                                      //       packingType: product[index].packingType!,
+                                                                      //     ),
+                                                                      //     int.tryParse(value) ?? 0,
+                                                                      //   );
+                                                                      //   // if (value.isNotEmpty && int.parse(value) > 0 && index < product.length - 1) {
+                                                                      //   //   FocusScope.of(context).requestFocus(focusNodes[index]);
+                                                                      //   // }
+                                                                      //   //qty.selection = TextSelection.fromPosition(TextPosition(offset: qty.text.length));
+                                                                      // },
+                                                                      onFieldSubmitted: (value){
                                                                         cartProvider.updateItemQuantity(
                                                                           CartEntity(
                                                                             id: product[index].id!,
@@ -213,10 +228,6 @@ class ProductList extends StatelessWidget {
                                                                           ),
                                                                           int.tryParse(value) ?? 0,
                                                                         );
-                                                                        // if (value.isNotEmpty && int.parse(value) > 0 && index < product.length - 1) {
-                                                                        //   FocusScope.of(context).requestFocus(focusNodes[index]);
-                                                                        // }
-                                                                        //qty.selection = TextSelection.fromPosition(TextPosition(offset: qty.text.length));
                                                                       },
                                                                     )),
                                                                 IconButton(
@@ -322,7 +333,8 @@ class ProductList extends StatelessWidget {
                                                                                                 price: value._selectedProducts[0].price ?? 0,
                                                                                                 packing: value._selectedProducts[0].packing ?? '',
                                                                                                 packingType: value._selectedProducts[0].packingType!.label ??'',
-                                                                                              ),);
+                                                                                              ),
+                                                                                            );
                                                                                             Navigator.pop(context);
                                                                                            // selectPacking.selectedProducts.clear();
                                                                                           }

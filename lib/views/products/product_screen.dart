@@ -32,8 +32,8 @@ class ProductScreen extends StatefulWidget {
 
 class _ProductScreenState extends State<ProductScreen> {
 
-   GuestProductViewModel model = GuestProductViewModel();
-   ProductViewModel products = ProductViewModel();
+  GuestProductViewModel model = GuestProductViewModel();
+  ProductViewModel products = ProductViewModel();
   DivisionsViewModel division = DivisionsViewModel();
   TextEditingController controller = TextEditingController();
   FocusNode searchFocusNode = FocusNode();

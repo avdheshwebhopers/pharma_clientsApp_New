@@ -195,7 +195,7 @@ class FranchiseeId {
   String? state;
   String? district;
   List<String>? divisions;
-  Null? logoUrl;
+  String? logoUrl;
   String? bankAccNo;
   String? bankIfsc;
   String? bankName;

@@ -80,9 +80,10 @@ class ProductViewModel with ChangeNotifier {
 
   void filterItems(String searchQuery) {
     _filteredProducts = product.where((element) {
-      return element.name!.toLowerCase().contains(searchQuery) ||
-          element.typeName!.toLowerCase().contains(searchQuery) ||
-          element.categoryName!.toLowerCase().contains(searchQuery);
+      return element.name!.toLowerCase().contains(searchQuery.toLowerCase()) ||
+          element.typeName!.toLowerCase().contains(searchQuery.toLowerCase()) ||
+          element.categoryName!.toLowerCase().contains(searchQuery.toLowerCase()) ||
+      element.description!.toLowerCase().contains(searchQuery.toLowerCase());
     }).toList();
     notifyListeners();
   }
@@ -192,7 +193,9 @@ class VisualAidsViewModel with ChangeNotifier {
 
   void filteredVisuals(String searchQuery) {
     _filteredVisualAids = visualAid.where((element) {
-      return element.name!.toLowerCase().contains(searchQuery);
+      return element.name!.toLowerCase().contains(searchQuery.toLowerCase())||
+      element.category!.toLowerCase().contains(searchQuery.toLowerCase())||
+      element.division!.toLowerCase().contains(searchQuery.toLowerCase());
     }).toList();
     notifyListeners();
   }

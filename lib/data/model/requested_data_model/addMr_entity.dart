@@ -10,7 +10,8 @@ class AddMrEntity {
   String? password;
 
   AddMrEntity(
-      {this.name,
+      {
+        this.name,
         this.email,
         this.phone,
         this.dob,

@@ -141,7 +141,7 @@ class _AddPresentationScreenState extends State<AddPresentationScreen> {
                       child: Icon(CupertinoIcons.search,size: 3.h,),
                     ),
                     border: InputBorder.none,
-                    hintText: "Search by Product Name"),
+                    hintText: "Search by Name,Categories & Division"),
               ),
             ),
             Expanded(

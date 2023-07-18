@@ -18,6 +18,7 @@ import 'package:pharma_clients_app/views/register_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import '../resources/constant_strings.dart';
+import '../view_model/services/splash_services.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -27,6 +28,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+  final SplashServices splashServices = SplashServices();
+
   final ValueNotifier<bool> _obsecurePassword = ValueNotifier<bool>(true);
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
@@ -118,11 +122,13 @@ class _LoginScreenState extends State<LoginScreen> {
     final authviewmodel = Provider.of<LoginViewModel>(context, listen: false);
 
     return WillPopScope(
-        onWillPop: () async => false,
+        onWillPop: () async {
+          splashServices.checkAuthentication(context);
+          return true;
+        },
         child: Scaffold(
-          //backgroundColor: Colors.white,
           appBar: AppBar(
-            automaticallyImplyLeading: false,
+            automaticallyImplyLeading: true,
             elevation: 0,
             backgroundColor: AppColors.primaryColor,
           ),

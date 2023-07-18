@@ -30,18 +30,24 @@ class VisualAidsResponseModel {
 class VisualAids {
   String? name;
   String? url;
+  String? division;
+  String? category;
 
-  VisualAids({this.name, this.url});
+  VisualAids({this.name, this.url, this.division, this.category});
 
   VisualAids.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     url = json['url'];
+    division = json['division'];
+    category = json['category'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['name'] = name;
     data['url'] = url;
+    data['division'] = division;
+    data['category'] = category;
     return data;
   }
 }
