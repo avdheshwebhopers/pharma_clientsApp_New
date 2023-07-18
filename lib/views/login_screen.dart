@@ -183,7 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   suffixIcon: InkWell(
                                       onTap: () {
                                         _obsecurePassword.value =
-                                            !_obsecurePassword.value;
+                                              !_obsecurePassword.value;
                                       },
                                       child: Padding(
                                         padding: const EdgeInsets.all(20),
