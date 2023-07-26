@@ -45,6 +45,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
     namespace 'com.rezicurePharmaceuticals.app'
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
@@ -64,6 +65,7 @@ android {
             storePassword keystoreProperties['storePassword']
         }
     }
+
     buildTypes {
         release {
             signingConfig signingConfigs.release
