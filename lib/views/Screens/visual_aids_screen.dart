@@ -46,6 +46,9 @@ class _VisualAidsScreenState extends State<VisualAidsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
@@ -217,12 +220,12 @@ class ImagePage extends StatelessWidget {
   ImagePage({required this.imageUrl});
 
   int height = 0;
-
   int width = 0;
 
   // @override
   @override
   Widget build(BuildContext context) {
+
     Image myImage = Image.network(imageUrl);
     myImage.image.resolve(ImageConfiguration()).addListener(
       ImageStreamListener((ImageInfo imageInfo, bool synchronousCall) {
@@ -232,9 +235,9 @@ class ImagePage extends StatelessWidget {
         print('Actual width: ${imageInfo.image.width}');
       }),
     );
-    return ///(height == width || height > width) ?
-    _buildPortraitPageView(imageUrl);
-        // : _buildLandscapePageView(imageUrl);
+    return (height == width || height > width) ?
+    _buildPortraitPageView(imageUrl)
+         : _buildLandscapePageView(imageUrl);
   }
 
   Widget _buildPortraitPageView(String imageUrl) {
@@ -253,9 +256,9 @@ class ImagePage extends StatelessWidget {
   }
 
   Widget _buildLandscapePageView(String imageUrl) {
-    // SystemChrome.setPreferredOrientations([
-    //   DeviceOrientation.landscapeRight,
-    // ]);
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+    ]);
     return Container(
       child: Stack(
         alignment: Alignment.topRight,
