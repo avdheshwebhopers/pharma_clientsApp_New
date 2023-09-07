@@ -1,4 +1,4 @@
-package com.webhopers.dolvis
+package com.webhopers.amanhealthcare
 
 import io.flutter.embedding.android.FlutterActivity
 

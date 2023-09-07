@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "608358244986",
-    "firebase_url": "https://dolvis-52cc9.firebaseio.com",
-    "project_id": "dolvis-52cc9",
-    "storage_bucket": "dolvis-52cc9.appspot.com"
+    "project_number": "982634526031",
+    "project_id": "amanhealthcare-84c3f",
+    "storage_bucket": "amanhealthcare-84c3f.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:608358244986:android:f44af31a02cee8d1da91c3",
+        "mobilesdk_app_id": "1:982634526031:android:13206c4d0e2e057f43c13a",
         "android_client_info": {
-          "package_name": "com.webhopers.dolvis"
+          "package_name": "com.webhopers.amanhealthcare"
         }
       },
       "oauth_client": [
         {
-          "client_id": "608358244986-650j0nrkrv8q3c6k8net3rflbbavb021.apps.googleusercontent.com",
+          "client_id": "982634526031-e99cirs0egpdkteomanl2knhi99slsme.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBRZ82H2etcEuzMoTGooUavRu-dGjbLZ40"
+          "current_key": "AIzaSyCe65pdaevGCtYZ6HFQNlhgqkdWUmyUClw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "608358244986-650j0nrkrv8q3c6k8net3rflbbavb021.apps.googleusercontent.com",
+              "client_id": "982634526031-e99cirs0egpdkteomanl2knhi99slsme.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

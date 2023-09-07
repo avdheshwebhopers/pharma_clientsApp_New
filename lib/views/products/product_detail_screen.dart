@@ -1,5 +1,8 @@
+import 'dart:io';
+import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:pharma_clients_app/data/model/response_model/products/product_reponse_model.dart';
 import 'package:pharma_clients_app/resources/app_colors.dart';
 import 'package:pharma_clients_app/resources/constant_strings.dart';
@@ -7,6 +10,7 @@ import 'package:pharma_clients_app/utils/slider/Slider.dart';
 import 'package:pharma_clients_app/utils/text_style.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../data/model/requested_data_model/cartEntity.dart';
 import '../Screens/visual_aids_screen.dart';
 import 'product_list_widget.dart';
@@ -69,7 +73,17 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               centerTitle: false,
               elevation: 0,
               title: TextWithStyle.appBarTitle(
-                  context, ConstantStrings.productDetails)),
+                  context, ConstantStrings.productDetails),
+            actions: [
+              IconButton(onPressed: (){
+                  shareImageTitleAndContent();
+                  // _onShare(context,
+                  //     "NA",
+                  //     widget.value1[0].name!
+                  // );
+              }, icon: Icon(CupertinoIcons.share,size: 3.h,))
+            ],
+          ),
           body: Column(children: [
             Expanded(
               child: SingleChildScrollView(
@@ -89,7 +103,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                             : Image.asset(
                                 'assets/images/png/no_image.png',
                                 height: 50.h,
-                              )),
+                              )
+                    ),
                     Container(
                       width: MediaQuery.of(context).size.width,
                       margin: EdgeInsets.all(2.h),
@@ -220,7 +235,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                   return Card(
                                     child: InkWell(
                                       onTap: (){
-                                        Navigator.push(context, MaterialPageRoute(builder: (context)=> ImagePage(imageUrl: vis[index])));
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                                            ImagePage(imageUrl: vis[index])));
                                       },
                                         child: Image.network('${vis[index]}')),
                                   );
@@ -495,4 +511,42 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           ])),
     );
   }
-}
+
+  void shareImageTitleAndContent() async {
+
+      final response = await http.get(Uri.parse('${widget.value1[0].images?[0].url}'));
+      if (response.statusCode == 200) {
+        // Save the image to temporary directory
+        final tempDir = await getTemporaryDirectory();
+        final filePath = '${tempDir.path}/image.jpg';
+        final imageFile = File(filePath);
+        await imageFile.writeAsBytes(response.bodyBytes);
+
+        // Share the image using the share library
+        Share.shareFiles([filePath], text: 'Check out this image!');
+      } else {
+        // Handle error
+        print('Failed to download image');
+      }
+
+    // // Replace these with your actual image, title, and content data
+    // final String imagePath = '${widget.value1[0].images?[0].url}'; // Local or network image path
+    // const String title = 'Your Title Here';
+    // const String content = 'This is the additional content you want to share.';
+    //
+    // // Construct the message to be shared
+    // final String message = '$title\n$content\n$imagePath';
+    //
+    // // Use the share_plus plugin to share the message
+    // await Share.share(message);
+  }
+
+// _onShare(BuildContext context,text,subject) {
+  //   final box = context.findRenderObject() as RenderBox?;
+  //   return Share.share(
+  //     text,
+  //     subject: subject,
+  //     sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
+  //   );
+  }
+

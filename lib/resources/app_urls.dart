@@ -1,11 +1,11 @@
 
 class AppUrls{
 
-  static var baseURL = "https://clientapps.webhopers.com:3229/api/app/";
-
-  // static const String localBaseURL = "http://192.168.0.155:3015/api/app/";
+  static var baseURL = "https://clientapps.webhopers.com:3234/api/app/";
 
   // ignore: non_constant_identifier_names
+  // static const String localBaseURL = "http://192.168.0.155:3015/api/app/";
+
   static var validate_otp = "${baseURL}rep/verifyotp";
   static var login = "${baseURL}rep/login";
   static var register = "${baseURL}franchisee/register";
@@ -22,7 +22,7 @@ class AppUrls{
 
   static var getDashboardCount = "${baseURL}dashboard/count";
 
-// Products
+  // Products
   static var getProducts = "${baseURL}product/get";
   static var getFavouriteProducts = "${baseURL}product/fav/get";
   static var addToFavouriteProduct = "${baseURL}product/fav/add";
@@ -88,8 +88,3 @@ class AppUrls{
   static var faqs = "${baseURL}faqs";
 
 }
-
-// static var request_otp = "${baseURL}rep/resetaccount";
-// static var city = "$baseURL/location/city";
-// static var getProductTypes = "${baseURL}product/type/get";
-//  static var checkApi = "${baseURL}check";

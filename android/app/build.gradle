@@ -46,10 +46,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    namespace 'com.webhopers.dolvis'
+    namespace 'com.webhopers.amanhealthcare'
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId 'com.webhopers.dolvis'
+        applicationId 'com.webhopers.amanhealthcare'
         minSdkVersion 23
         targetSdkVersion 33
         multiDexEnabled true

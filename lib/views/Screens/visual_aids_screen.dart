@@ -177,29 +177,34 @@ class _VisualAidsScreenState extends State<VisualAidsScreen> {
                       ),
                       itemCount: value.visualaidsList.data?.data?.length,
                       itemBuilder: (context, index){
-                        return Card(
-                          margin: EdgeInsets.only(left: 1.w,right: 1.w,top: 2.w),
-                          elevation: 2.w,
-                          shadowColor: Colors.black54,
-                          color: Colors.white,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(2.h))),
-                          child: CachedNetworkImage(
-                              placeholderFadeInDuration: const Duration(seconds: 2),
-                              placeholder: (context, url) => Container(
-                                height: MediaQuery.of(context).size.height,
-                                width: MediaQuery.of(context).size.width,
-                                color: AppColors.backgroundColor,
-                                child: Center(
-                                  child: Image.asset(
-                                    'assets/images/png/loading.gif',
-                                   // height: 6.h,
+                        return InkWell(
+                          onTap: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=> ImagePage(imageUrl: value.visualaidsList.data!.data![index].url!)));
+                          },
+                          child: Card(
+                            margin: EdgeInsets.only(left: 1.w,right: 1.w,top: 2.w),
+                            elevation: 2.w,
+                            shadowColor: Colors.black54,
+                            color: Colors.white,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(
+                                    Radius.circular(2.h))),
+                            child: CachedNetworkImage(
+                                placeholderFadeInDuration: const Duration(seconds: 2),
+                                placeholder: (context, url) => Container(
+                                  height: MediaQuery.of(context).size.height,
+                                  width: MediaQuery.of(context).size.width,
+                                  color: AppColors.backgroundColor,
+                                  child: Center(
+                                    child: Image.asset(
+                                      'assets/images/png/loading.gif',
+                                     // height: 6.h,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              imageUrl: '${value.visualaidsList.data?.data?[index].url}'
-                          )
+                                imageUrl: '${value.visualaidsList.data?.data?[index].url}'
+                            )
+                          ),
                         );
                       }),
                 );
