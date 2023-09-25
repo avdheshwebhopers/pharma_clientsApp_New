@@ -194,30 +194,37 @@ class ProductList extends StatelessWidget {
                                                                   height: 4.h,
                                                                   child: TextFormField(
                                                                       style: TextStyle(fontSize: 18.sp,),
-                                                                       //key: Key(count),
-                                                                      //initialValue: count,
                                                                       controller: qty,
                                                                       focusNode: focusNodes[index],
-                                                                      //autofocus: true,
                                                                       textAlign: TextAlign.center,
-                                                                      keyboardType: TextInputType.number,
-                                                                      onChanged: (value) {
-                                                                        cartProvider.updateItemQuantity(
-                                                                          CartEntity(
-                                                                            id: product[index].id!,
-                                                                            name: product[index].name!,
-                                                                            price: product[index].packingVarient![0].price!,
-                                                                            packing: product[index].packingVarient![0].packing!,
-                                                                            packingType: product[index].packingVarient![0].packingType!.value!,
-                                                                          ),
-                                                                          int.tryParse(value) ?? 0,
-                                                                        );
+                                                                      // keyboardType: TextInputType.number,
+                                                                      // onChanged: (value) {
+                                                                      //   cartProvider.updateItemQuantity(
+                                                                      //     CartEntity(
+                                                                      //       id: product[index].id!,
+                                                                      //       name: product[index].name!,
+                                                                      //       price: product[index].packingVarient![0].price!,
+                                                                      //       packing: product[index].packingVarient![0].packing!,
+                                                                      //       packingType: product[index].packingVarient![0].packingType!.value!,
+                                                                      //     ),
+                                                                      //     int.tryParse(value) ?? 0,
+                                                                      //   );
                                                                         // if (value.isNotEmpty && int.parse(value) > 0 && index < product.length - 1) {
                                                                         //   FocusScope.of(context).requestFocus(focusNodes[index]);
                                                                         // }
                                                                         //qty.selection = TextSelection.fromPosition(TextPosition(offset: qty.text.length));
-                                                                      },
-                                                                    )),
+                                                                      onFieldSubmitted: (value){
+                                                                        cartProvider.updateItemQuantity(
+                                                                          CartEntity(
+                                                                          id: product[index].id!,
+                                                                          name: product[index].name!,
+                                                                          price: product[index].price!,
+                                                                          packing: product[index].packing!,
+                                                                          packingType: product[index].packingType!,
+                                                                          ),
+                                                                          int.tryParse(value) ?? 0,
+                                                                        );},
+                                                                  )),
                                                                 IconButton(
                                                                   icon: const Icon(CupertinoIcons.add_circled_solid),
                                                                   iconSize: 3.h,
