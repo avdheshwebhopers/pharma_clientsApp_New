@@ -3,6 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
+
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
@@ -17,7 +18,8 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.7+8
+
+version: 1.0.2+2
 
 environment:
   sdk: '>=3.0.1 <4.0.0'
@@ -28,12 +30,13 @@ environment:
 # dependencies can be manually updated by changing the version numbers below to
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
+
 dependencies:
   flutter:
     sdk: flutter
 
-  http: ^0.13.5
-  http_interceptor: ^1.0.0
+  http: ^1.1.0
+  http_interceptor: ^2.0.0-beta.7
 
   shared_preferences: ^2.0.15
   provider: ^6.0.5
@@ -41,12 +44,12 @@ dependencies:
 
   firebase_core: ^2.13.0
   firebase_messaging: ^14.6.1
-  flutter_local_notifications: ^14.1.0
+  flutter_local_notifications: ^15.1.1
 
   carousel_slider: ^4.2.1
   responsive_sizer:
 
-  google_fonts: ^4.0.1
+  google_fonts: ^6.1.0
   cupertino_icons: ^1.0.5
   package_info_plus: ^4.0.1
 
@@ -57,7 +60,7 @@ dependencies:
   badges: ^3.0.2
   path_provider: ^2.0.12
   share_plus: ^7.0.1
-  geolocator: ^9.0.2
+  geolocator: ^10.1.0
   geocoding: ^2.0.4
   cached_network_image: ^3.2.3
   connectivity_plus: ^4.0.1

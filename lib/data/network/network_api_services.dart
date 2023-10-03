@@ -191,4 +191,16 @@ class LoggerInterceptor implements InterceptorContract {
 
     return data;
   }
+
+  @override
+  Future<bool> shouldInterceptRequest() {
+    // TODO: implement shouldInterceptRequest
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool> shouldInterceptResponse() {
+    // TODO: implement shouldInterceptResponse
+    throw UnimplementedError();
+  }
 }
