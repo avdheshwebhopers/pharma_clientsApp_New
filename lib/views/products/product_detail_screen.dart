@@ -32,6 +32,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
   @override
   void initState() {
+
     super.initState();
   }
 
@@ -40,12 +41,15 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     // TODO: implement dispose
     widget.value1.clear();
     img.clear();
+    vis.clear();
     packing.selectedProducts.clear();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+
+    print('run');
 
     final selectPacking = Provider.of<SelectPacking>(context, listen: false);
     final cartProvider = Provider.of<Cart>(context, listen: false);
