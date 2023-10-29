@@ -1,5 +1,8 @@
+import 'dart:io';
+import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:pharma_clients_app/data/model/response_model/products/product_reponse_model.dart';
 import 'package:pharma_clients_app/resources/app_colors.dart';
 import 'package:pharma_clients_app/resources/constant_strings.dart';
@@ -7,6 +10,7 @@ import 'package:pharma_clients_app/utils/slider/Slider.dart';
 import 'package:pharma_clients_app/utils/text_style.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:share_plus/share_plus.dart';
 import '../../data/model/requested_data_model/cartEntity.dart';
 import '../Screens/visual_aids_screen.dart';
 import 'product_list_widget.dart';
@@ -58,6 +62,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       }
     });
 
+    Future<void> shareImageToWhatsApp(String imagePath) async {
+      try {
+        await Share.shareFiles([imagePath], text: 'C  heck out this image!');
+      } catch (e) {
+        print('Error sharing the image: $e');
+      }
+    }
+
     return WillPopScope(
       onWillPop: () async {
         Navigator.pop(context);
@@ -69,8 +81,22 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               centerTitle: false,
               elevation: 0,
               title: TextWithStyle.appBarTitle(
-                  context, ConstantStrings.productDetails)),
-          body: Column(children: [
+                  context, ConstantStrings.productDetails),
+            actions: [
+              IconButton(onPressed: (){
+
+                  // shareImageToWhatsApp(img[0]);
+
+                 shareImageTitleAndContent();
+                // // _onShare(context,
+                // //     "NA",
+                // //     widget.value1[0].name!
+                // // );
+              }, icon: Icon(CupertinoIcons.share,size: 3.h,))
+            ],
+          ),
+          body: Column(
+              children: [
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
@@ -493,6 +519,26 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               ),
             )
           ])),
+
+
     );
   }
-}
+  void shareImageTitleAndContent() async {
+
+    final response = await http.get(Uri.parse('${widget.value1[0].images?[0].url}'));
+    if (response.statusCode == 200) {
+      // Save the image to temporary directory
+      final tempDir = await getTemporaryDirectory();
+      final filePath = '${tempDir.path}/image.jpg';
+      final imageFile = File(filePath);
+      await imageFile.writeAsBytes(response.bodyBytes);
+
+      // Share the image using the share library
+      Share.shareFiles([filePath], subject: '${widget.value1[0].name}',text: '${'Description: '+widget.value1[0].description! +
+                  'Type: ' + widget.value1[0].typeName!}');
+    } else {
+      // Handle error
+      print('Failed to download image');
+    }
+
+  }}
