@@ -128,7 +128,8 @@ class MyApp extends StatelessWidget {
                     primarySwatch: mycolor,
                     scaffoldBackgroundColor: AppColors.backgroundColor,
                     appBarTheme: AppBarTheme(
-                        color: AppColors.backgroundColor.withOpacity(1),
+                        color: Colors.green.shade800,
+                        //AppColors.backgroundColor.withOpacity(1),
                         iconTheme: const IconThemeData(
                             color: Colors.black
                         ))

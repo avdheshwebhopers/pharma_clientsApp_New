@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
 
-version: 1.0.2+2
+version: 1.0.4+4
 
 environment:
   sdk: '>=3.0.1 <4.0.0'
@@ -35,8 +35,9 @@ dependencies:
   flutter:
     sdk: flutter
 
-  http: ^1.1.0
-  http_interceptor: ^2.0.0-beta.7
+  http: ^0.13.5
+  http_interceptor: ^1.0.0
+  firebase_dynamic_links:
 
   shared_preferences: ^2.0.15
   provider: ^6.0.5
@@ -49,7 +50,7 @@ dependencies:
   carousel_slider: ^4.2.1
   responsive_sizer:
 
-  google_fonts: ^6.1.0
+  google_fonts: ^4.0.1
   cupertino_icons: ^1.0.5
   package_info_plus: ^4.0.1
 
@@ -65,6 +66,7 @@ dependencies:
   cached_network_image: ^3.2.3
   connectivity_plus: ^4.0.1
   open_filex: ^4.3.2
+  salomon_bottom_bar: ^3.3.2
 
 dev_dependencies:
   flutter_test:
@@ -91,7 +93,7 @@ flutter:
     - assets/images/png/presentation.png
     - assets/images/png/view-mrs.png
     - assets/images/png/payment-scanner.png
-    - assets/images/png/my-order.png
+    - assets/images/png/customer-order.png
     - assets/images/png/outer.png
     - assets/images/png/new-launches.png
     - assets/images/png/daily-sales.png
@@ -99,7 +101,7 @@ flutter:
     - assets/images/png/customers.png
     - assets/images/png/add-presentation.png
     - assets/images/png/addvisits.png
-    - assets/images/png/sales.gif
+    - assets/images/png/sales.png
     - assets/images/png/share.gif
     - assets/images/png/add-customer.png
     - assets/images/png/add-mrs.png

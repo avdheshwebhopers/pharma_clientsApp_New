@@ -22,7 +22,7 @@ class TextWithStyle{
           fontSize: 20.sp,
           fontWeight: FontWeight.w600,
           letterSpacing: 0.5,
-        color: Colors.black
+        color: Colors.white
       ),
     );
   }

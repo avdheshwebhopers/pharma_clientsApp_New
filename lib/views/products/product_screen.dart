@@ -74,7 +74,7 @@ class _ProductScreenState extends State<ProductScreen> {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
-        backgroundColor: AppColors.backgroundColor,
+       //  backgroundColor: AppColors.backgroundColor,
         title: TextWithStyle.appBarTitle(context, ConstantStrings.productScreen),
         toolbarHeight: 7.h,
         centerTitle: false,
@@ -97,7 +97,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   }
                 },
                 icon: const Icon(CupertinoIcons.suit_heart_fill,),
-                color: AppColors.primaryColor,
+                color: Colors.red,
                 iconSize: 4.h,
               )
           ),

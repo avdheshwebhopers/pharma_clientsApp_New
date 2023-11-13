@@ -1,7 +1,7 @@
 
 class ConstantStrings{
 
-  static const String appName =  'REZICURE Pharmaceuticals';
+  static const String appName =  'Aman HealthCare';
   static const String home =  'PharmaDemo';
 
   //Register
@@ -33,6 +33,7 @@ class ConstantStrings{
   static const String enquiry =  'Enquire Now';
   static const String certificates =  'Certificates';
   static const String promotional =  'Promotional\nData';
+  static const String promotionalheading =  'Promotional\nitems';
 
   static const String login =  'WelCome!!';
   static const String productDetails =  'Product Details';
