@@ -29,7 +29,7 @@ class PngIconsWithFun extends StatelessWidget {
             height: 10.w,
           ),
           SizedBox(
-            height: 0.5.h,
+            height: 0.h,
           ),
           title != null ? TextWithStyle.pngIconTitle(context, title) : Container()
         ],

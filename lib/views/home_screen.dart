@@ -413,7 +413,7 @@ class _HomeScreenState extends State<HomeScreen> {
             builder: (context, scrollState, _) {
               return scrollState.isScrolling
                   ? SizedBox(
-                height: 7.h,
+                      height: 7.h,
                     child: FloatingActionButton.extended(
                         elevation: 10,
                         onPressed: () {
@@ -440,9 +440,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                       EnquiryScreen(value: about)));
                         },
                         backgroundColor: AppColors.primaryColor,
+
                         child: Icon(
                           CupertinoIcons.phone_circle_fill,
                           size: 5.h,
+                          color: Colors.white,
                         ),
                       ),
                     );

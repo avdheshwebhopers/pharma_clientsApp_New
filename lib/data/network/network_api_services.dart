@@ -9,7 +9,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../app_excaptions.dart';
 
 class NetworkApiServices extends BaseApiServices {
-  Client client = Client();
 
   @override
   Future deleteApiResponse(String url) async {
@@ -18,11 +17,7 @@ class NetworkApiServices extends BaseApiServices {
 
     dynamic responseJson;
     try {
-      final client = InterceptedClient.build(
-        interceptors: [
-          LoggerInterceptor(),
-        ],
-      );
+      Client client = InterceptedClient.build(interceptors: [LoggingInterceptor()],);
 
       final response = await client.delete(
         Uri.parse(url),
@@ -45,8 +40,7 @@ class NetworkApiServices extends BaseApiServices {
 
     dynamic responseJson;
     try {
-      final client =
-          InterceptedClient.build(interceptors: [LoggerInterceptor()]);
+      Client client = InterceptedClient.build(interceptors: [LoggingInterceptor()]);
 
       final response = await client.get(Uri.parse(url), headers: {
         'Content-Type': 'application/json',
@@ -64,7 +58,7 @@ class NetworkApiServices extends BaseApiServices {
   Future postApiResponse(String url, data) async {
     dynamic responseJson;
     try {
-      final client = InterceptedClient.build(interceptors: [LoggerInterceptor()]);
+      Client client = InterceptedClient.build(interceptors: [LoggingInterceptor()]);
 
       final sp = await SharedPreferences.getInstance();
       String? token = sp.getString('token');
@@ -92,8 +86,7 @@ class NetworkApiServices extends BaseApiServices {
 
     dynamic responseJson;
     try {
-      final client =
-          InterceptedClient.build(interceptors: [LoggerInterceptor()]);
+      Client client = InterceptedClient.build(interceptors: [LoggingInterceptor()]);
 
       final response = await client.post(
         Uri.parse(url),
@@ -120,7 +113,7 @@ class NetworkApiServices extends BaseApiServices {
     dynamic responseJson;
     try {
       final client =
-          InterceptedClient.build(interceptors: [LoggerInterceptor()]);
+          InterceptedClient.build(interceptors: [LoggingInterceptor()]);
 
       final response = await client.put(
         Uri.parse(url),
@@ -171,36 +164,28 @@ class NetworkApiServices extends BaseApiServices {
   }
 }
 
-class LoggerInterceptor implements InterceptorContract {
+class LoggingInterceptor implements InterceptorContract {
   @override
-  Future<RequestData> interceptRequest({required RequestData data}) async {
+  Future<BaseRequest> interceptRequest({required BaseRequest request}) async {
     if (kDebugMode) {
       print("----- Request -----");
-      log('Url hit: ${data.url}');
-      log('Required: ${data.body}');
+      log('Url hit: ${request.url}');
+    //  log('Required: ${data.body}');
     }
-    return data;
+    return request;
   }
 
   @override
-  Future<ResponseData> interceptResponse({required ResponseData data}) async {
+  Future<BaseResponse> interceptResponse({required BaseResponse response}) async {
     if (kDebugMode) {
       print("------- Response -------");
-      print(data.body.toString());
+      print(response.toString());
     }
-
-    return data;
+    return response;
   }
 
-  @override
-  Future<bool> shouldInterceptRequest() {
-    // TODO: implement shouldInterceptRequest
-    throw UnimplementedError();
-  }
+  Future<bool> shouldInterceptRequest() async => true;
 
-  @override
-  Future<bool> shouldInterceptResponse() {
-    // TODO: implement shouldInterceptResponse
-    throw UnimplementedError();
-  }
+  Future<bool> shouldInterceptResponse() async => true;
+
 }
