@@ -1,7 +1,7 @@
 
 class ConstantStrings{
 
-  static const String appName =  'Aman HealthCare';
+  static const String appName =  'Herbal Delights';
   static const String home =  'PharmaDemo';
 
   //Register

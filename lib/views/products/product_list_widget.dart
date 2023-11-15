@@ -102,7 +102,8 @@ class ProductList extends StatelessWidget {
                                         ],
                                       ),
                                       child: Container(
-                                        margin: EdgeInsets.only(left: 16.5.h,
+                                        margin: EdgeInsets.only(
+                                            left: 16.5.h,
                                               //right: 3.w,
                                             top: 2.h,
                                             bottom: 1.h),
@@ -362,15 +363,13 @@ class ProductList extends StatelessWidget {
                                                                   },
                                                                   style: ElevatedButton
                                                                       .styleFrom(
+                                                                    backgroundColor: AppColors.primaryColor,
                                                                       elevation: 1,
                                                                       minimumSize: Size(MediaQuery.of(context).size.width / 4,
                                                                           MediaQuery.of(context).size.height / 22),
                                                                       shape: const RoundedRectangleBorder(
                                                                           borderRadius: BorderRadius
-                                                                              .all(
-                                                                              Radius
-                                                                                  .circular(
-                                                                                  10))
+                                                                              .all(Radius.circular(10))
                                                                       )
                                                                   ),
                                                                   child: TextWithStyle

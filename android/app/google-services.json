@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "982634526031",
-    "project_id": "amanhealthcare-84c3f",
-    "storage_bucket": "amanhealthcare-84c3f.appspot.com"
+    "project_number": "544707466979",
+    "project_id": "herbal-delights",
+    "storage_bucket": "herbal-delights.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:982634526031:android:13206c4d0e2e057f43c13a",
+        "mobilesdk_app_id": "1:544707466979:android:58920ccb2234df587697d6",
         "android_client_info": {
-          "package_name": "com.webhopers.amanhealthcare"
+          "package_name": "com.webhopers.herbaldelights"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "982634526031-e99cirs0egpdkteomanl2knhi99slsme.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCe65pdaevGCtYZ6HFQNlhgqkdWUmyUClw"
+          "current_key": "AIzaSyBLyUlXzbQRWVD6KBtGEOGaa0TCUa5JNAY"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "982634526031-e99cirs0egpdkteomanl2knhi99slsme.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

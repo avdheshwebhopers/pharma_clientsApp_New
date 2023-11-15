@@ -128,6 +128,7 @@ class _ProductScreenState extends State<ProductScreen> {
                         child: Icon(
                           CupertinoIcons.cart,
                           size: 3.5.h,
+                          color: Colors.white,
                         ),
                       )
                   ),
