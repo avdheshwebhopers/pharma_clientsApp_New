@@ -395,12 +395,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: Text("Dashboard"),
               ),
               SalomonBottomBarItem(
-                icon: Icon(CupertinoIcons.cube_box_fill),
-                title: Text("Products"),
+                icon: Icon(CupertinoIcons.divide_square_fill),
+                title: Text("calculator"),
               ),
               SalomonBottomBarItem(
-                icon: Icon(CupertinoIcons.photo_fill),
-                title: Text("Visual-Aids"),
+                icon: Icon(CupertinoIcons.sparkles),
+                title: Text("Promtionals"),
               ),
 
               SalomonBottomBarItem(
@@ -460,9 +460,9 @@ class _HomeScreenState extends State<HomeScreen> {
       case 0:
         return DashboardScreen(isOwner: widget.isOwner, token: widget.token);
       case 1:
-        return ProductScreen(isOwner: widget.isOwner, token: widget.token);
+        return const Calculator();
       case 2:
-        return VisualAidsScreen(token: widget.token);
+        return const PromotionalScreen();
       case 3:
         return widget.token != null && widget.token.toString().isNotEmpty ? ProfileScreen(value: about, isOwner: true): LoginScreen()  ;
       default:
@@ -499,7 +499,6 @@ class _HomeScreenState extends State<HomeScreen> {
   //   }
   // }
 }
-
 
 _onShare(BuildContext context,text,subject) {
     final box = context.findRenderObject() as RenderBox?;
@@ -895,10 +894,10 @@ _onShare(BuildContext context,text,subject) {
                           child: GridView.count(
                             physics: const NeverScrollableScrollPhysics(),
                             primary: false,
-                            padding: EdgeInsets.all(20),
+                            padding: EdgeInsets.all(15),
                             shrinkWrap: true,
                             crossAxisSpacing: 1.2.w,
-                            mainAxisSpacing: 5.w,
+                            mainAxisSpacing: 4.w,
                             crossAxisCount: orientation == Orientation.portrait ? 4 : 8,
                             children: [
                               badge.Badge(
@@ -959,6 +958,41 @@ _onShare(BuildContext context,text,subject) {
                                         )),
                                   ),
                                 ),
+                              ),
+                              PngIconsWithFun(
+                                title: ConstantStrings.productScreen,
+                                image: 'assets/images/png/products.png',
+                                onPress: () async {
+
+                                  // if (widget.token != null) {
+                                  //   await Navigator.push(
+                                  //       context,
+                                  //       MaterialPageRoute(
+                                  //           builder: (context) =>
+                                  //           const CustomersScreen()));
+                                  // } else {
+                                  //   await Navigator.push(
+                                  //       context,
+                                  //       MaterialPageRoute(
+                                  //           builder: (context) =>
+                                  //           const LoginScreen()));
+                                  await Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                  ProductScreen(isOwner: widget.isOwner, token: widget.token)));
+                                },
+                              ),
+                              PngIconsWithFun(
+                                title: ConstantStrings.visualAidsScreen,
+                                image: 'assets/images/png/visuals.png',
+                                onPress: () async {
+                                    await Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                VisualAidsScreen(token: widget.token)));
+                                },
                               ),
                               PngIconsWithFun(
                                 title: ConstantStrings.myOrders,
@@ -1062,37 +1096,6 @@ _onShare(BuildContext context,text,subject) {
                                     ],
                                   )
                               ),
-                              InkWell(
-                                  onTap: () async {
-                                    if (widget.token != null) {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => const Calculator()));
-                                    } else {
-                                      await Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => const LoginScreen()));
-                                    }
-                                  },
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        height: 0.5.h,
-                                      ),
-                                      Image.asset(
-                                        'assets/images/png/calculation.png',
-                                        height: 10.w,
-                                      ),
-                                      SizedBox(
-                                        height: 1.h,
-                                      ),
-                                      TextWithStyle.pngIconTitle(context, 'PTS/PTR')
-                                    ],
-                                  )),
                               // GifIconsWithFun(
                               //   title: ConstantStrings.faqs,
                               //   image: 'assets/images/png/faq.gif',
@@ -1183,21 +1186,6 @@ _onShare(BuildContext context,text,subject) {
                                           MaterialPageRoute(
                                               builder: (context) =>
                                               const CustomersOrderScreen()));
-                                    } else {
-                                      await Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                              const LoginScreen()));
-                                    }
-                                  },
-                                ),
-                                PngIconsWithFun(
-                                  title: ConstantStrings.promotionalheading,
-                                  image: 'assets/images/png/promtional-items.png',
-                                  onPress: () async {
-                                    if (widget.token != null) {
-                                      Utils.comingSoonDialogue(() {}, context);
                                     } else {
                                       await Navigator.push(
                                           context,

@@ -182,7 +182,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         margin:
                             EdgeInsets.only(left: 2.h, bottom: 2.h, top: 1.h),
                         alignment: Alignment.centerLeft,
-                        child: TextWithStyle.appBarTitle(
+                        child: TextWithStyle.containerTitle(
                             context, ConstantStrings.distributorDetails),
                       ),
                       Container(
@@ -290,228 +290,210 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               hintText: 'Enter your Address',
                               labelText: 'Address',
                               icon: CupertinoIcons.location_solid,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your Address';
-                                }
-                                return null;
-                              },
                             ),
-                            ChangeNotifierProvider<StatesViewModel>(
-                                create: (BuildContext context) => stateModel,
-                                child: Consumer<StatesViewModel>(
-                                  builder: (BuildContext context, value,
-                                      Widget? child) {
-                                    return DropdownButtonFormField(
-                                      value: state,
-                                      elevation: 8,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(2.h)),
-                                      menuMaxHeight: 40.h,
-                                      style: TextStyle(
-                                        fontSize: 18.sp,
-                                        color: Colors.black,
-                                      ),
-                                      decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(20)),
-                                            borderSide: BorderSide(
-                                                color: AppColors.primaryColor)),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(20)),
-                                            borderSide: BorderSide(
-                                                color: AppColors.primaryColor)),
-                                        errorBorder: OutlineInputBorder(
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(20)),
-                                            borderSide: BorderSide(
-                                                color: Colors.red.shade700)),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(20)),
-                                            borderSide: BorderSide(
-                                                color: Colors.red.shade700)),
-                                        border: InputBorder.none,
-                                        prefixIcon: Padding(
-                                          padding: EdgeInsets.all(2.w),
-                                          child: Icon(
-                                            Icons.add_home_work_sharp,
-                                            size: 3.h,
-                                          ),
-                                        ),
-                                        contentPadding:
-                                            const EdgeInsets.fromLTRB(
-                                                0, 20, 20, 20),
-                                        hintText: 'Enter your State',
-                                        labelText: 'State',
-                                        labelStyle: TextStyle(
-                                          fontSize: 18.sp,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                      items: value.state
-                                          .map<DropdownMenuItem>((value) {
-                                        return DropdownMenuItem(
-                                          value: value,
-                                          child: SizedBox(
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width /
-                                                  1.8,
-                                              child: Text(
-                                                value.name!,
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 2,
-                                              )),
-                                        );
-                                      }).toList(),
-                                      onChanged: (value) {
-                                        state = value;
-                                        citiesModel.cities(
-                                            state.id, context);
-                                      },
-                                      validator: (value) {
-                                        if (state == null) {
-                                          return 'Please enter your State';
-                                        }
-                                        return null;
-                                      },
-                                    );
-                                  },
-                                )
-                            ),
-                            SizedBox(
-                              height: 2.h,
-                            ),
-                            ChangeNotifierProvider<CitiesViewModel>(
-                                create: (BuildContext context) => citiesModel,
-                                child: Consumer<CitiesViewModel>(
-                                  builder: (BuildContext context, value,
-                                      Widget? child) {
-                                    return DropdownButtonFormField(
-                                      value: value.city.isEmpty
-                                          ? 'NA'
-                                          : value.city[_selectedCityIndex],
-                                      elevation: 8,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(2.h)),
-                                      menuMaxHeight: 40.h,
-                                      style: TextStyle(
-                                        fontSize: 18.sp,
-                                        color: Colors.black,
-                                      ),
-                                      decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(20)),
-                                            borderSide: BorderSide(
-                                                color: AppColors.primaryColor)),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(20)),
-                                            borderSide: BorderSide(
-                                                color: AppColors.primaryColor)),
-                                        errorBorder: OutlineInputBorder(
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(20)),
-                                            borderSide: BorderSide(
-                                                color: Colors.red.shade700)),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(20)),
-                                            borderSide: BorderSide(
-                                                color: Colors.red.shade700)),
-                                        border: InputBorder.none,
-                                        prefixIcon: Padding(
-                                          padding: EdgeInsets.all(2.w),
-                                          child: Icon(
-                                            CupertinoIcons.house_alt_fill,
-                                            size: 3.h,
-                                          ),
-                                        ),
-                                        contentPadding:
-                                            const EdgeInsets.fromLTRB(
-                                                0, 20, 20, 20),
-                                        hintText: 'Enter your Cities',
-                                        labelText: 'Cities',
-                                        labelStyle: TextStyle(
-                                          fontSize: 18.sp,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                      items: value.city
-                                          .map<DropdownMenuItem>((val) {
-                                        return DropdownMenuItem(
-                                          value: val,
-                                          child: SizedBox(
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width /
-                                                  1.8,
-                                              child: Text(
-                                                val,
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 2,
-                                              )),
-                                        );
-                                      }).toList(),
-                                      onChanged: (val) {
-                                        city = val;
-                                      },
-                                      validator: (val) {
-                                        if (city == null) {
-                                          return 'Please enter your City';
-                                        }
-                                        return null;
-                                      },
-                                    );
-                                  },
-                                )),
-                            SizedBox(
-                              height: 2.h,
-                            ),
-                            PasswordInputField(
-                              title: dob,
-                              node: dobFocusNode,
-                              obSecure: false,
-                              hintText: 'Enter your Date of Birth',
-                              labelText: 'D.O.B',
-                              icon: CupertinoIcons.calendar_today,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your Date of Birth';
-                                }
-                                return null;
-                              },
-                              suffixIcon: InkWell(
-                                  onTap: () async {
-                                    _selectDate(context, dob);
-                                  },
-                                  child: const Icon(Icons.date_range)),
-                            ),
-                            TextInputField(
-                              title: operationArea,
-                              node: operationAreaFocusNode,
-                              hintText: 'Enter your Operation Area',
-                              labelText: 'Operation Area',
-                              icon: CupertinoIcons.briefcase_fill,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your Operation Area';
-                                }
-                                return null;
-                              },
-                            ),
+                            // ChangeNotifierProvider<StatesViewModel>(
+                            //     create: (BuildContext context) => stateModel,
+                            //     child: Consumer<StatesViewModel>(
+                            //       builder: (BuildContext context, value,
+                            //           Widget? child) {
+                            //         return DropdownButtonFormField(
+                            //           value: state,
+                            //           elevation: 8,
+                            //           borderRadius: BorderRadius.all(
+                            //               Radius.circular(2.h)),
+                            //           menuMaxHeight: 40.h,
+                            //           style: TextStyle(
+                            //             fontSize: 18.sp,
+                            //             color: Colors.black,
+                            //           ),
+                            //           decoration: InputDecoration(
+                            //             enabledBorder: OutlineInputBorder(
+                            //                 borderRadius:
+                            //                     const BorderRadius.all(
+                            //                         Radius.circular(20)),
+                            //                 borderSide: BorderSide(
+                            //                     color: AppColors.primaryColor)),
+                            //             focusedBorder: OutlineInputBorder(
+                            //                 borderRadius:
+                            //                     const BorderRadius.all(
+                            //                         Radius.circular(20)),
+                            //                 borderSide: BorderSide(
+                            //                     color: AppColors.primaryColor)),
+                            //             errorBorder: OutlineInputBorder(
+                            //                 borderRadius:
+                            //                     const BorderRadius.all(
+                            //                         Radius.circular(20)),
+                            //                 borderSide: BorderSide(
+                            //                     color: Colors.red.shade700)),
+                            //             focusedErrorBorder: OutlineInputBorder(
+                            //                 borderRadius:
+                            //                     const BorderRadius.all(
+                            //                         Radius.circular(20)),
+                            //                 borderSide: BorderSide(
+                            //                     color: Colors.red.shade700)),
+                            //             border: InputBorder.none,
+                            //             prefixIcon: Padding(
+                            //               padding: EdgeInsets.all(2.w),
+                            //               child: Icon(
+                            //                 Icons.add_home_work_sharp,
+                            //                 size: 3.h,
+                            //               ),
+                            //             ),
+                            //             contentPadding:
+                            //                 const EdgeInsets.fromLTRB(
+                            //                     0, 20, 20, 20),
+                            //             hintText: 'Enter your State',
+                            //             labelText: 'State',
+                            //             labelStyle: TextStyle(
+                            //               fontSize: 18.sp,
+                            //               color: Colors.black,
+                            //             ),
+                            //           ),
+                            //           items: value.state
+                            //               .map<DropdownMenuItem>((value) {
+                            //             return DropdownMenuItem(
+                            //               value: value,
+                            //               child: SizedBox(
+                            //                   width: MediaQuery.of(context)
+                            //                           .size
+                            //                           .width /
+                            //                       1.8,
+                            //                   child: Text(
+                            //                     value.name!,
+                            //                     overflow: TextOverflow.ellipsis,
+                            //                     maxLines: 2,
+                            //                   )),
+                            //             );
+                            //           }).toList(),
+                            //           onChanged: (value) {
+                            //             state = value;
+                            //             citiesModel.cities(
+                            //                 state.id, context);
+                            //           },
+                            //           validator: (value) {
+                            //             if (state == null) {
+                            //               return 'Please enter your State';
+                            //             }
+                            //             return null;
+                            //           },
+                            //         );
+                            //       },
+                            //     )
+                            // ),
+                            // SizedBox(
+                            //   height: 2.h,
+                            // ),
+                            // ChangeNotifierProvider<CitiesViewModel>(
+                            //     create: (BuildContext context) => citiesModel,
+                            //     child: Consumer<CitiesViewModel>(
+                            //       builder: (BuildContext context, value,
+                            //           Widget? child) {
+                            //         return DropdownButtonFormField(
+                            //           value: value.city.isEmpty
+                            //               ? 'NA'
+                            //               : value.city[_selectedCityIndex],
+                            //           elevation: 8,
+                            //           borderRadius: BorderRadius.all(
+                            //               Radius.circular(2.h)),
+                            //           menuMaxHeight: 40.h,
+                            //           style: TextStyle(
+                            //             fontSize: 18.sp,
+                            //             color: Colors.black,
+                            //           ),
+                            //           decoration: InputDecoration(
+                            //             enabledBorder: OutlineInputBorder(
+                            //                 borderRadius:
+                            //                     const BorderRadius.all(
+                            //                         Radius.circular(20)),
+                            //                 borderSide: BorderSide(
+                            //                     color: AppColors.primaryColor)),
+                            //             focusedBorder: OutlineInputBorder(
+                            //                 borderRadius:
+                            //                     const BorderRadius.all(
+                            //                         Radius.circular(20)),
+                            //                 borderSide: BorderSide(
+                            //                     color: AppColors.primaryColor)),
+                            //             errorBorder: OutlineInputBorder(
+                            //                 borderRadius:
+                            //                     const BorderRadius.all(
+                            //                         Radius.circular(20)),
+                            //                 borderSide: BorderSide(
+                            //                     color: Colors.red.shade700)),
+                            //             focusedErrorBorder: OutlineInputBorder(
+                            //                 borderRadius:
+                            //                     const BorderRadius.all(
+                            //                         Radius.circular(20)),
+                            //                 borderSide: BorderSide(
+                            //                     color: Colors.red.shade700)),
+                            //             border: InputBorder.none,
+                            //             prefixIcon: Padding(
+                            //               padding: EdgeInsets.all(2.w),
+                            //               child: Icon(
+                            //                 CupertinoIcons.house_alt_fill,
+                            //                 size: 3.h,
+                            //               ),
+                            //             ),
+                            //             contentPadding:
+                            //                 const EdgeInsets.fromLTRB(
+                            //                     0, 20, 20, 20),
+                            //             hintText: 'Enter your Cities',
+                            //             labelText: 'Cities',
+                            //             labelStyle: TextStyle(
+                            //               fontSize: 18.sp,
+                            //               color: Colors.black,
+                            //             ),
+                            //           ),
+                            //           items: value.city
+                            //               .map<DropdownMenuItem>((val) {
+                            //             return DropdownMenuItem(
+                            //               value: val,
+                            //               child: SizedBox(
+                            //                   width: MediaQuery.of(context)
+                            //                           .size
+                            //                           .width /
+                            //                       1.8,
+                            //                   child: Text(
+                            //                     val,
+                            //                     overflow: TextOverflow.ellipsis,
+                            //                     maxLines: 2,
+                            //                   )),
+                            //             );
+                            //           }).toList(),
+                            //           onChanged: (val) {
+                            //             city = val;
+                            //           },
+                            //           validator: (val) {
+                            //             if (city == null) {
+                            //               return 'Please enter your City';
+                            //             }
+                            //             return null;
+                            //           },
+                            //         );
+                            //       },
+                            //     )),
+                            // SizedBox(
+                            //   height: 2.h,
+                            // ),
+                            // PasswordInputField(
+                            //   title: dob,
+                            //   node: dobFocusNode,
+                            //   obSecure: false,
+                            //   hintText: 'Enter your Date of Birth',
+                            //   labelText: 'D.O.B',
+                            //   icon: CupertinoIcons.calendar_today,
+                            //   suffixIcon: InkWell(
+                            //       onTap: () async {
+                            //         _selectDate(context, dob);
+                            //       },
+                            //       child: const Icon(Icons.date_range)),
+                            // ),
+                            // // TextInputField(
+                            // //   title: operationArea,
+                            // //   node: operationAreaFocusNode,
+                            // //   hintText: 'Enter your Operation Area',
+                            // //   labelText: 'Operation Area',
+                            // //   icon: CupertinoIcons.briefcase_fill,
+                            // // ),
                             ValueListenableBuilder(
                                 valueListenable: _obsecurePassword,
                                 builder: (context, value, child) {
@@ -580,7 +562,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         margin:
                             EdgeInsets.only(left: 2.h, bottom: 2.h, top: 1.h),
                         alignment: Alignment.centerLeft,
-                        child: TextWithStyle.appBarTitle(
+                        child: TextWithStyle.containerTitle(
                             context, ConstantStrings.firmDetails),
                       ),
                       Container(
@@ -616,423 +598,387 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 return null;
                               },
                             ),
-                            TextInputField(
-                              title: gstNumber,
-                              node: gstNumberFocus,
-                              hintText: 'Enter your Gst Number',
-                              labelText: 'Gst Number',
-                              icon: CupertinoIcons.doc_text_fill,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your Gst Number';
-                                }
-                                return null;
-                              },
-                            ),
-                            TextInputField(
-                              title: drugLicense,
-                              node: drugLicenseFocus,
-                              hintText: 'Enter your DrugLicense',
-                              labelText: 'DrugLicense',
-                              icon: CupertinoIcons.doc_plaintext,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your DrugLicense';
-                                }
-                                return null;
-                              },
-                            ),
-                            TextInputField(
-                              title: aadhaarNumber,
-                              node: aadhaarNumberFocus,
-                              hintText: 'Enter your Aadhaar Number',
-                              labelText: 'Aadhaar Number',
-                              icon: CupertinoIcons.creditcard_fill,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Aadhaar Number';
-                                }
-                                return null;
-                              },
-                            ),
-                            TextInputField(
-                              title: firmEmail,
-                              node: firmEmailFocus,
-                              hintText: 'Enter your Firm Email',
-                              labelText: 'Firm Email',
-                              icon: CupertinoIcons.mail,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your Firm Email';
-                                } else if (validateEmail(value) != null) {
-                                  return 'Please enter valid Email';
-                                }
-                                return null;
-                              },
-                            ),
-                            TextFormField(
-                              style: TextStyle(fontSize: 18.sp),
-                              controller: firmPhone,
-                              focusNode: firmPhoneFocus,
-                              keyboardType: TextInputType.number,
-                              inputFormatters: <TextInputFormatter>[
-                                FilteringTextInputFormatter.digitsOnly,
-                                LengthLimitingTextInputFormatter(10),
-                              ],
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your Firm Phone';
-                                } else if (value.length != 10) {
-                                  return 'Please Enter 10 digits';
-                                }
-                                return null;
-                              },
-                              decoration: InputDecoration(
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(20)),
-                                    borderSide: BorderSide(
-                                        color: AppColors.primaryColor)),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(20)),
-                                    borderSide: BorderSide(
-                                        color: AppColors.primaryColor)),
-                                errorBorder: OutlineInputBorder(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(20)),
-                                    borderSide:
-                                        BorderSide(color: Colors.red.shade700)),
-                                focusedErrorBorder: OutlineInputBorder(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(20)),
-                                    borderSide:
-                                        BorderSide(color: Colors.red.shade700)),
-                                contentPadding: const EdgeInsets.all(20),
-                                border: InputBorder.none,
-                                prefixIcon: const Icon(
-                                    CupertinoIcons.device_phone_portrait),
-                                hintText: 'Enter your Firm number',
-                                labelText: 'Firm Phone',
-                                //prefixIcon: Icon(Icons.alternate_email)
-                              ),
-                            ),
-                            SizedBox(
-                              height: 2.h,
-                            ),
-                            TextInputField(
-                              title: firmAddress,
-                              node: firmAddressFocus,
-                              hintText: 'Enter your Firm Address',
-                              labelText: 'Firm Address',
-                              icon: CupertinoIcons.location_solid,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Please enter your Firm Address';
-                                }
-                                return null;
-                              },
-                            ),
-                            ChangeNotifierProvider<StatesViewModel>(
-                                create: (BuildContext context) => stateModel,
-                                child: Consumer<StatesViewModel>(
-                                  builder: (BuildContext context, value,
-                                      Widget? child) {
-                                    return DropdownButtonFormField(
-                                      value: firmState,
-                                      elevation: 8,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(2.h)),
-                                      menuMaxHeight: 40.h,
-                                      style: TextStyle(
-                                        fontSize: 18.sp,
-                                        color: Colors.black,
-                                      ),
-                                      decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                            borderRadius:
-                                            const BorderRadius.all(
-                                                Radius.circular(20)),
-                                            borderSide: BorderSide(
-                                                color: AppColors.primaryColor)),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderRadius:
-                                            const BorderRadius.all(
-                                                Radius.circular(20)),
-                                            borderSide: BorderSide(
-                                                color: AppColors.primaryColor)),
-                                        errorBorder: OutlineInputBorder(
-                                            borderRadius:
-                                            const BorderRadius.all(
-                                                Radius.circular(20)),
-                                            borderSide: BorderSide(
-                                                color: Colors.red.shade700)),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                            borderRadius:
-                                            const BorderRadius.all(
-                                                Radius.circular(20)),
-                                            borderSide: BorderSide(
-                                                color: Colors.red.shade700)),
-                                        border: InputBorder.none,
-                                        prefixIcon: Padding(
-                                          padding: EdgeInsets.all(2.w),
-                                          child: Icon(
-                                            Icons.add_home_work_sharp,
-                                            size: 3.h,
-                                          ),
-                                        ),
-                                        contentPadding:
-                                        const EdgeInsets.fromLTRB(
-                                            0, 20, 20, 20),
-                                        hintText: 'Enter your State',
-                                        labelText: 'State',
-                                        labelStyle: TextStyle(
-                                          fontSize: 18.sp,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                      items: value.state
-                                          .map<DropdownMenuItem>((value) {
-                                        return DropdownMenuItem(
-                                          value: value,
-                                          child: SizedBox(
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                                  1.8,
-                                              child: Text(
-                                                value.name!,
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 2,
-                                              )),
-                                        );
-                                      }).toList(),
-                                      onChanged: (value) {
-                                        firmState = value;
-                                        firmCities.cities(firmState.id, context);
-                                      },
-                                      validator: (value) {
-                                        if (firmState == null) {
-                                          return 'Please enter your State';
-                                        }
-                                        return null;
-                                      },
-                                    );
-                                  },
-                                )),
-                            SizedBox(
-                              height: 2.h,
-                            ),
-                            ChangeNotifierProvider<FirmCitiesViewModel>(
-                                create: (BuildContext context) => firmCities,
-                                child: Consumer<FirmCitiesViewModel>(
-                                  builder: (BuildContext context, value,
-                                      Widget? child) {
-                                    return DropdownButtonFormField(
-                                      value: value.city.isEmpty
-                                          ? 'NA'
-                                          : value.city[_selectedCityIndex],
-                                      elevation: 8,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(2.h)),
-                                      menuMaxHeight: 40.h,
-                                      style: TextStyle(
-                                        fontSize: 18.sp,
-                                        color: Colors.black,
-                                      ),
-                                      decoration: InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                            borderRadius:
-                                            const BorderRadius.all(
-                                                Radius.circular(20)),
-                                            borderSide: BorderSide(
-                                                color: AppColors.primaryColor)),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderRadius:
-                                            const BorderRadius.all(
-                                                Radius.circular(20)),
-                                            borderSide: BorderSide(
-                                                color: AppColors.primaryColor)),
-                                        errorBorder: OutlineInputBorder(
-                                            borderRadius:
-                                            const BorderRadius.all(
-                                                Radius.circular(20)),
-                                            borderSide: BorderSide(
-                                                color: Colors.red.shade700)),
-                                        focusedErrorBorder: OutlineInputBorder(
-                                            borderRadius:
-                                            const BorderRadius.all(
-                                                Radius.circular(20)),
-                                            borderSide: BorderSide(
-                                                color: Colors.red.shade700)),
-                                        border: InputBorder.none,
-                                        prefixIcon: Padding(
-                                          padding: EdgeInsets.all(2.w),
-                                          child: Icon(
-                                            CupertinoIcons.house_alt_fill,
-                                            size: 3.h,
-                                          ),
-                                        ),
-                                        contentPadding:
-                                        const EdgeInsets.fromLTRB(
-                                            0, 20, 20, 20),
-                                        hintText: 'Enter your Cities',
-                                        labelText: 'Cities',
-                                        labelStyle: TextStyle(
-                                          fontSize: 18.sp,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                      items: value.city
-                                          .map<DropdownMenuItem>((val) {
-                                        return DropdownMenuItem(
-                                          value: val,
-                                          child: SizedBox(
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                                  1.8,
-                                              child: Text(
-                                                val,
-                                                overflow: TextOverflow.ellipsis,
-                                                maxLines: 2,
-                                              )),
-                                        );
-                                      }).toList(),
-                                      onChanged: (val) {
-                                        firmCity = val;
-                                      },
-                                      validator: (val) {
-                                        if (firmCity == null) {
-                                          return 'Please enter your City';
-                                        }
-                                        return null;
-                                      },
-                                    );
-                                  },
-                                )),
-                            InkWell(
-                              onTap: () {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return AlertDialog(
-                                      title: const Text('Select Divisions'),
-                                      content: SingleChildScrollView(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: divisions.map((division) {
-                                           // provider._selectedDivisions.clear();
-                                            return Consumer<DivisionProvider>(
-                                              builder: (BuildContext context,
-                                                  value, Widget? child) {
-                                                return CheckboxListTile(
-                                                  title: Text(division.name),
-                                                  value: value.isSelected(division),
-                                                  onChanged: (value) {
-                                                    if (value!) {
-                                                      provider.addDivision(division);
-                                                    } else {
-                                                      provider.removeDivision(division);
-                                                    }
-                                                  },
-                                                );
-                                              },
-                                            );
-                                          }).toList(),
-                                        ),
-                                      ),
-                                      actions: [
-                                        Consumer<DivisionProvider>(
-                                          builder: (BuildContext context, value,
-                                              Widget? child) {
-                                            return ElevatedButton(
-                                              child: const Text('OK'),
-                                              onPressed: () {
-                                                Navigator.of(context).pop();
-                                              },
-                                            );
-                                          },
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
-                              },
-                              child: Container(
-                                padding: EdgeInsets.all(1.h),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    TextWithStyle.containerTitle(
-                                        context, "Select Divisions"),
-                                    Icon(CupertinoIcons.chevron_down_circle,
-                                        size: 2.9.h,
-                                        color: AppColors.primaryColor),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Divider(
-                              thickness: 0.3.h,
-                              height: 2.h,
-                            ),
-                            Consumer<DivisionProvider>(
-                              builder:
-                                  (BuildContext context, value, Widget? child) {
-                                return Wrap(
-                                    spacing: 5,
-                                    children: value.selectedDivisions
-                                        .map((e) => Chip(label: Text(e.name)))
-                                        .toList()
-                                    // divisions.map((e) => Chip(label: Text(e.name))).toList(),
-                                    );
-                              },
-                            ),
-                            SizedBox(
-                              height: 2.h,
-                            ),
-                            TextInputField(
-                              title: bankName,
-                              node: bankNameFocus,
-                              hintText: 'Enter your Bank Name',
-                              labelText: 'Bank Name (Optional)',
-                              icon: CupertinoIcons.money_dollar_circle_fill,
-                              validator: (value) {
-                                return null;
-                              },
-                            ),
-                            TextInputField(
-                              title: ifscCode,
-                              node: ifscCodeFocus,
-                              hintText: 'Enter your Ifsc Code',
-                              labelText: 'Ifsc Code (Optional)',
-                              icon: CupertinoIcons.doc_text,
-                              validator: (value) {
-
-                              },
-                            ),
-                            TextInputField(
-                              title: accountNumber,
-                              node: accountNumberFocus,
-                              hintText: 'Enter your Account Number',
-                              labelText: 'Account Number (Optional)',
-                              icon: CupertinoIcons.doc_text_fill,
-                              validator: (value) {
-                                return null;
-                              },
-                            ),
-                            TextInputField(
-                              title: payeeName,
-                              node: payeeNameFocus,
-                              hintText: 'Enter your Payee Name',
-                              labelText: 'Payee Name (Optional)',
-                              icon: CupertinoIcons.person_fill,
-                              validator: (value) {
-                                return null;
-                              },
-                            ),
+                            // TextInputField(
+                            //   title: gstNumber,
+                            //   node: gstNumberFocus,
+                            //   hintText: 'Enter your Gst Number',
+                            //   labelText: 'Gst Number',
+                            //   icon: CupertinoIcons.doc_text_fill,
+                            // ),
+                            // TextInputField(
+                            //   title: drugLicense,
+                            //   node: drugLicenseFocus,
+                            //   hintText: 'Enter your DrugLicense',
+                            //   labelText: 'DrugLicense',
+                            //   icon: CupertinoIcons.doc_plaintext,
+                            //
+                            // ),
+                            // TextInputField(
+                            //   title: aadhaarNumber,
+                            //   node: aadhaarNumberFocus,
+                            //   hintText: 'Enter your Aadhaar Number',
+                            //   labelText: 'Aadhaar Number',
+                            //   icon: CupertinoIcons.creditcard_fill,
+                            //
+                            // ),
+                            // TextInputField(
+                            //   title: firmEmail,
+                            //   node: firmEmailFocus,
+                            //   hintText: 'Enter your Firm Email',
+                            //   labelText: 'Firm Email',
+                            //   icon: CupertinoIcons.mail,
+                            // ),
+                            // TextFormField(
+                            //   style: TextStyle(fontSize: 18.sp),
+                            //   controller: firmPhone,
+                            //   focusNode: firmPhoneFocus,
+                            //   keyboardType: TextInputType.number,
+                            //   inputFormatters: <TextInputFormatter>[
+                            //     FilteringTextInputFormatter.digitsOnly,
+                            //     LengthLimitingTextInputFormatter(10),
+                            //   ],
+                            //
+                            //   decoration: InputDecoration(
+                            //     enabledBorder: OutlineInputBorder(
+                            //         borderRadius: const BorderRadius.all(
+                            //             Radius.circular(20)),
+                            //         borderSide: BorderSide(
+                            //             color: AppColors.primaryColor)),
+                            //     focusedBorder: OutlineInputBorder(
+                            //         borderRadius: const BorderRadius.all(
+                            //             Radius.circular(20)),
+                            //         borderSide: BorderSide(
+                            //             color: AppColors.primaryColor)),
+                            //     errorBorder: OutlineInputBorder(
+                            //         borderRadius: const BorderRadius.all(
+                            //             Radius.circular(20)),
+                            //         borderSide:
+                            //             BorderSide(color: Colors.red.shade700)),
+                            //     focusedErrorBorder: OutlineInputBorder(
+                            //         borderRadius: const BorderRadius.all(
+                            //             Radius.circular(20)),
+                            //         borderSide:
+                            //             BorderSide(color: Colors.red.shade700)),
+                            //     contentPadding: const EdgeInsets.all(20),
+                            //     border: InputBorder.none,
+                            //     prefixIcon: const Icon(
+                            //         CupertinoIcons.device_phone_portrait),
+                            //     hintText: 'Enter your Firm number',
+                            //     labelText: 'Firm Phone',
+                            //     //prefixIcon: Icon(Icons.alternate_email)
+                            //   ),
+                            // ),
+                            // SizedBox(
+                            //   height: 2.h,
+                            // ),
+                            // TextInputField(
+                            //   title: firmAddress,
+                            //   node: firmAddressFocus,
+                            //   hintText: 'Enter your Firm Address',
+                            //   labelText: 'Firm Address',
+                            //   icon: CupertinoIcons.location_solid,
+                            //
+                            // ),
+                            // ChangeNotifierProvider<StatesViewModel>(
+                            //     create: (BuildContext context) => stateModel,
+                            //     child: Consumer<StatesViewModel>(
+                            //       builder: (BuildContext context, value,
+                            //           Widget? child) {
+                            //         return DropdownButtonFormField(
+                            //           value: firmState,
+                            //           elevation: 8,
+                            //           borderRadius: BorderRadius.all(
+                            //               Radius.circular(2.h)),
+                            //           menuMaxHeight: 40.h,
+                            //           style: TextStyle(
+                            //             fontSize: 18.sp,
+                            //             color: Colors.black,
+                            //           ),
+                            //           decoration: InputDecoration(
+                            //             enabledBorder: OutlineInputBorder(
+                            //                 borderRadius:
+                            //                 const BorderRadius.all(
+                            //                     Radius.circular(20)),
+                            //                 borderSide: BorderSide(
+                            //                     color: AppColors.primaryColor)),
+                            //             focusedBorder: OutlineInputBorder(
+                            //                 borderRadius:
+                            //                 const BorderRadius.all(
+                            //                     Radius.circular(20)),
+                            //                 borderSide: BorderSide(
+                            //                     color: AppColors.primaryColor)),
+                            //             errorBorder: OutlineInputBorder(
+                            //                 borderRadius:
+                            //                 const BorderRadius.all(
+                            //                     Radius.circular(20)),
+                            //                 borderSide: BorderSide(
+                            //                     color: Colors.red.shade700)),
+                            //             focusedErrorBorder: OutlineInputBorder(
+                            //                 borderRadius:
+                            //                 const BorderRadius.all(
+                            //                     Radius.circular(20)),
+                            //                 borderSide: BorderSide(
+                            //                     color: Colors.red.shade700)),
+                            //             border: InputBorder.none,
+                            //             prefixIcon: Padding(
+                            //               padding: EdgeInsets.all(2.w),
+                            //               child: Icon(
+                            //                 Icons.add_home_work_sharp,
+                            //                 size: 3.h,
+                            //               ),
+                            //             ),
+                            //             contentPadding:
+                            //             const EdgeInsets.fromLTRB(
+                            //                 0, 20, 20, 20),
+                            //             hintText: 'Enter your State',
+                            //             labelText: 'State',
+                            //             labelStyle: TextStyle(
+                            //               fontSize: 18.sp,
+                            //               color: Colors.black,
+                            //             ),
+                            //           ),
+                            //           items: value.state
+                            //               .map<DropdownMenuItem>((value) {
+                            //             return DropdownMenuItem(
+                            //               value: value,
+                            //               child: SizedBox(
+                            //                   width: MediaQuery.of(context)
+                            //                       .size
+                            //                       .width /
+                            //                       1.8,
+                            //                   child: Text(
+                            //                     value.name!,
+                            //                     overflow: TextOverflow.ellipsis,
+                            //                     maxLines: 2,
+                            //                   )),
+                            //             );
+                            //           }).toList(),
+                            //           onChanged: (value) {
+                            //             firmState = value;
+                            //             firmCities.cities(firmState.id, context);
+                            //           },
+                            //           validator: (value) {
+                            //             if (firmState == null) {
+                            //               return 'Please enter your State';
+                            //             }
+                            //             return null;
+                            //           },
+                            //         );
+                            //       },
+                            //     )),
+                            // SizedBox(
+                            //   height: 2.h,
+                            // ),
+                            // ChangeNotifierProvider<FirmCitiesViewModel>(
+                            //     create: (BuildContext context) => firmCities,
+                            //     child: Consumer<FirmCitiesViewModel>(
+                            //       builder: (BuildContext context, value,
+                            //           Widget? child) {
+                            //         return DropdownButtonFormField(
+                            //           value: value.city.isEmpty
+                            //               ? 'NA'
+                            //               : value.city[_selectedCityIndex],
+                            //           elevation: 8,
+                            //           borderRadius: BorderRadius.all(
+                            //               Radius.circular(2.h)),
+                            //           menuMaxHeight: 40.h,
+                            //           style: TextStyle(
+                            //             fontSize: 18.sp,
+                            //             color: Colors.black,
+                            //           ),
+                            //           decoration: InputDecoration(
+                            //             enabledBorder: OutlineInputBorder(
+                            //                 borderRadius:
+                            //                 const BorderRadius.all(
+                            //                     Radius.circular(20)),
+                            //                 borderSide: BorderSide(
+                            //                     color: AppColors.primaryColor)),
+                            //             focusedBorder: OutlineInputBorder(
+                            //                 borderRadius:
+                            //                 const BorderRadius.all(
+                            //                     Radius.circular(20)),
+                            //                 borderSide: BorderSide(
+                            //                     color: AppColors.primaryColor)),
+                            //             errorBorder: OutlineInputBorder(
+                            //                 borderRadius:
+                            //                 const BorderRadius.all(
+                            //                     Radius.circular(20)),
+                            //                 borderSide: BorderSide(
+                            //                     color: Colors.red.shade700)),
+                            //             focusedErrorBorder: OutlineInputBorder(
+                            //                 borderRadius:
+                            //                 const BorderRadius.all(
+                            //                     Radius.circular(20)),
+                            //                 borderSide: BorderSide(
+                            //                     color: Colors.red.shade700)),
+                            //             border: InputBorder.none,
+                            //             prefixIcon: Padding(
+                            //               padding: EdgeInsets.all(2.w),
+                            //               child: Icon(
+                            //                 CupertinoIcons.house_alt_fill,
+                            //                 size: 3.h,
+                            //               ),
+                            //             ),
+                            //             contentPadding:
+                            //             const EdgeInsets.fromLTRB(
+                            //                 0, 20, 20, 20),
+                            //             hintText: 'Enter your Cities',
+                            //             labelText: 'Cities',
+                            //             labelStyle: TextStyle(
+                            //               fontSize: 18.sp,
+                            //               color: Colors.black,
+                            //             ),
+                            //           ),
+                            //           items: value.city
+                            //               .map<DropdownMenuItem>((val) {
+                            //             return DropdownMenuItem(
+                            //               value: val,
+                            //               child: SizedBox(
+                            //                   width: MediaQuery.of(context)
+                            //                       .size
+                            //                       .width /
+                            //                       1.8,
+                            //                   child: Text(
+                            //                     val,
+                            //                     overflow: TextOverflow.ellipsis,
+                            //                     maxLines: 2,
+                            //                   )),
+                            //             );
+                            //           }).toList(),
+                            //           onChanged: (val) {
+                            //             firmCity = val;
+                            //           },
+                            //           validator: (val) {
+                            //             if (firmCity == null) {
+                            //               return 'Please enter your City';
+                            //             }
+                            //             return null;
+                            //           },
+                            //         );
+                            //       },
+                            //     )),
+                            // InkWell(
+                            //   onTap: () {
+                            //     showDialog(
+                            //       context: context,
+                            //       builder: (context) {
+                            //         return AlertDialog(
+                            //           title: const Text('Select Divisions'),
+                            //           content: SingleChildScrollView(
+                            //             child: Column(
+                            //               mainAxisSize: MainAxisSize.min,
+                            //               children: divisions.map((division) {
+                            //                // provider._selectedDivisions.clear();
+                            //                 return Consumer<DivisionProvider>(
+                            //                   builder: (BuildContext context,
+                            //                       value, Widget? child) {
+                            //                     return CheckboxListTile(
+                            //                       title: Text(division.name),
+                            //                       value: value.isSelected(division),
+                            //                       onChanged: (value) {
+                            //                         if (value!) {
+                            //                           provider.addDivision(division);
+                            //                         } else {
+                            //                           provider.removeDivision(division);
+                            //                         }
+                            //                       },
+                            //                     );
+                            //                   },
+                            //                 );
+                            //               }).toList(),
+                            //             ),
+                            //           ),
+                            //           actions: [
+                            //             Consumer<DivisionProvider>(
+                            //               builder: (BuildContext context, value,
+                            //                   Widget? child) {
+                            //                 return ElevatedButton(
+                            //                   child: const Text('OK'),
+                            //                   onPressed: () {
+                            //                     Navigator.of(context).pop();
+                            //                   },
+                            //                 );
+                            //               },
+                            //             ),
+                            //           ],
+                            //         );
+                            //       },
+                            //     );
+                            //   },
+                            //   child: Container(
+                            //     padding: EdgeInsets.all(1.h),
+                            //     child: Row(
+                            //       mainAxisAlignment:
+                            //           MainAxisAlignment.spaceBetween,
+                            //       children: [
+                            //         TextWithStyle.containerTitle(
+                            //             context, "Select Divisions"),
+                            //         Icon(CupertinoIcons.chevron_down_circle,
+                            //             size: 2.9.h,
+                            //             color: AppColors.primaryColor),
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+                            // Divider(
+                            //   thickness: 0.3.h,
+                            //   height: 2.h,
+                            // ),
+                            // Consumer<DivisionProvider>(
+                            //   builder:
+                            //       (BuildContext context, value, Widget? child) {
+                            //     return Wrap(
+                            //         spacing: 5,
+                            //         children: value.selectedDivisions
+                            //             .map((e) => Chip(label: Text(e.name)))
+                            //             .toList()
+                            //         // divisions.map((e) => Chip(label: Text(e.name))).toList(),
+                            //         );
+                            //   },
+                            // ),
+                            // SizedBox(
+                            //   height: 2.h,
+                            // ),
+                            // TextInputField(
+                            //   title: bankName,
+                            //   node: bankNameFocus,
+                            //   hintText: 'Enter your Bank Name',
+                            //   labelText: 'Bank Name (Optional)',
+                            //   icon: CupertinoIcons.money_dollar_circle_fill,
+                            //   validator: (value) {
+                            //     return null;
+                            //   },
+                            // ),
+                            // TextInputField(
+                            //   title: ifscCode,
+                            //   node: ifscCodeFocus,
+                            //   hintText: 'Enter your Ifsc Code',
+                            //   labelText: 'Ifsc Code (Optional)',
+                            //   icon: CupertinoIcons.doc_text,
+                            //   validator: (value) {
+                            //
+                            //   },
+                            // ),
+                            // TextInputField(
+                            //   title: accountNumber,
+                            //   node: accountNumberFocus,
+                            //   hintText: 'Enter your Account Number',
+                            //   labelText: 'Account Number (Optional)',
+                            //   icon: CupertinoIcons.doc_text_fill,
+                            //   validator: (value) {
+                            //     return null;
+                            //   },
+                            // ),
+                            // TextInputField(
+                            //   title: payeeName,
+                            //   node: payeeNameFocus,
+                            //   hintText: 'Enter your Payee Name',
+                            //   labelText: 'Payee Name (Optional)',
+                            //   icon: CupertinoIcons.person_fill,
+                            //   validator: (value) {
+                            //     return null;
+                            //   },
+                            // ),
                           ],
                         ),
                       ),
@@ -1050,27 +996,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 entity.email = email.text;
                                 entity.phone = phone.text;
                                 entity.address = address.text;
-                                entity.city = city.toString();
-                                entity.state = state.name.toString();
-                                entity.opArea = operationArea.text;
-                                entity.dob = dob.text;
-                                entity.password = password.text;
                                 entity.firmName = firmName.text;
-                                entity.gstNumber = gstNumber.text;
-                                entity.drugLicense = drugLicense.text;
-                                entity.aadhaarCard = aadhaarNumber.text;
-                                entity.firmPhone = firmPhone.text;
-                                entity.firmEmail = firmEmail.text;
-                                entity.firmState = firmState.name.toString();
-                                entity.firmDistrict = firmCity.toString();
-                                entity.firmAddress = firmAddress.text;
-                                entity.bankName = bankName.text;
-                                entity.bankAccNo = accountNumber.text;
-                                entity.bankIfsc = ifscCode.text;
-                                entity.bankPayeeName = payeeName.text;
-                                entity.divisions = value.selectedDivisions
-                                    .map((e) => e.id)
-                                    .toList();
+                                entity.password = password.text;
+                                // entity.city = city.toString();
+                                // entity.state = state.name.toString();
+                                // entity.opArea = operationArea.text;
+                                // entity.dob = dob.text;
+                                //
+
+                                // entity.gstNumber = gstNumber.text;
+                                // entity.drugLicense = drugLicense.text;
+                                // entity.aadhaarCard = aadhaarNumber.text;
+                                // entity.firmPhone = firmPhone.text;
+                                // entity.firmEmail = firmEmail.text;
+                                // entity.firmState = firmState.name.toString();
+                                // entity.firmDistrict = firmCity.toString();
+                                // entity.firmAddress = firmAddress.text;
+                                // entity.bankName = bankName.text;
+                                // entity.bankAccNo = accountNumber.text;
+                                // entity.bankIfsc = ifscCode.text;
+                                // entity.bankPayeeName = payeeName.text;
+                                // entity.divisions = value.selectedDivisions
+                                //     .map((e) => e.id)
+                                //     .toList();
                                 register.register(
                                     entity,
                                     context,
@@ -1078,25 +1026,27 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     email,
                                     phone,
                                     address,
-                                    state.name.toString(),
-                                    city.toString(),
-                                    dob,
-                                    operationArea,
-                                    password,
-                                    confirmPassword,
                                     firmName,
-                                    gstNumber,
-                                    drugLicense,
-                                    aadhaarNumber,
-                                    firmPhone,
-                                    firmEmail,
-                                    firmAddress,
-                                    firmState.toString(),
-                                    firmCity.toString(),
-                                    bankName,
-                                    ifscCode,
-                                    accountNumber,
-                                    payeeName
+                                    password,
+                                    confirmPassword
+                                    // state.name.toString(),
+                                    // city.toString(),
+                                    // dob,
+                                    // operationArea,
+                                    //
+                                    //
+                                    // gstNumber,
+                                    // drugLicense,
+                                    // aadhaarNumber,
+                                    // firmPhone,
+                                    // firmEmail,
+                                    // firmAddress,
+                                    // firmState.toString(),
+                                    // firmCity.toString(),
+                                    // bankName,
+                                    // ifscCode,
+                                    // accountNumber,
+                                    // payeeName
                                 );
                               }, loading: value2.loading,);
                         },

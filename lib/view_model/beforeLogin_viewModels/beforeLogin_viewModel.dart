@@ -117,25 +117,21 @@ class RegisterViewModel with ChangeNotifier{
       TextEditingController email,
       TextEditingController phone,
       TextEditingController address,
-      String state,
-      String city,
-      TextEditingController dob,
-      TextEditingController operationArea,
+      TextEditingController firmName,
       TextEditingController password,
       TextEditingController confirmPassword,
-      TextEditingController firmName,
-      TextEditingController gstNumber,
-      TextEditingController drugLicense,
-      TextEditingController aadharNumber,
-      TextEditingController firmPhone,
-      TextEditingController firmEmail,
-      TextEditingController firmAddress,
-      String firmState,
-      String firmCity,
-      TextEditingController bankName,
-      TextEditingController ifscCode,
-      TextEditingController accountNumber,
-      TextEditingController payeeName,
+      // TextEditingController gstNumber,
+      // TextEditingController drugLicense,
+      // TextEditingController aadharNumber,
+      // TextEditingController firmPhone,
+      // TextEditingController firmEmail,
+      // TextEditingController firmAddress,
+      // String firmState,
+      // String firmCity,
+      // TextEditingController bankName,
+      // TextEditingController ifscCode,
+      // TextEditingController accountNumber,
+      // TextEditingController payeeName,
 
       ) async {
 
@@ -151,25 +147,27 @@ class RegisterViewModel with ChangeNotifier{
         email.clear();
         phone.clear();
         address.clear();
-        state = 'NA';
-        city ='NA';
-        dob.clear();
-        operationArea.clear();
+        firmName.clear();
         password.clear();
         confirmPassword.clear();
-        firmName.clear();
-        gstNumber.clear();
-        drugLicense.clear();
-        aadharNumber.clear();
-        firmPhone.clear();
-        firmAddress.clear();
-        firmState = 'NA';
-        firmCity ='NA';
-        firmEmail.clear();
-        bankName.clear();
-        ifscCode.clear();
-        accountNumber.clear();
-        payeeName.clear();
+        // state = 'NA';
+        // city ='NA';
+        // dob.clear();
+        // operationArea.clear();
+        //
+        //
+        // gstNumber.clear();
+        // drugLicense.clear();
+        // aadharNumber.clear();
+        // firmPhone.clear();
+        // firmAddress.clear();
+        // firmState = 'NA';
+        // firmCity ='NA';
+        // firmEmail.clear();
+        // bankName.clear();
+        // ifscCode.clear();
+        // accountNumber.clear();
+        // payeeName.clear();
 
         Utils.successAlertDialogue("Contact tour administrator to activate", (){
           Navigator.push(context,

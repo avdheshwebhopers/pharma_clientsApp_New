@@ -179,7 +179,8 @@ class LoggingInterceptor implements InterceptorContract {
   Future<BaseResponse> interceptResponse({required BaseResponse response}) async {
     if (kDebugMode) {
       print("------- Response -------");
-      print(response.toString());
+      print(response.statusCode.toString());
+
     }
     return response;
   }
