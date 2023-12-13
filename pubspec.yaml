@@ -79,6 +79,7 @@ flutter:
 
   assets:
     - assets/images/png/splash.png
+    - assets/images/png/splash-logo.png
     - assets/images/png/webhopers_logo.png
     - assets/images/png/webhopers_logo2.png
     - assets/images/png/no_image.png
