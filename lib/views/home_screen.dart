@@ -94,8 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
         if (kDebugMode) {
           print('User granted permission');
         }
-      } else if (settings.authorizationStatus ==
-          AuthorizationStatus.provisional) {
+      } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
         if (kDebugMode) {
           print('User granted provisional permission');
         }
@@ -151,60 +150,55 @@ class _HomeScreenState extends State<HomeScreen> {
         type = 2;
       }
 
-      await FirebaseMessaging.instance
-          .setForegroundNotificationPresentationOptions(
+      await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
         alert: true,
         badge: true,
         sound: true,
       );
     }();
 
-    Future<void> _messageHandler(RemoteMessage message) async {
-      print('background message>>>>>>>>> ${message.data}');
+    messaging.getInitialMessage().then((RemoteMessage? message) async {
+      if (message != null) {
+        print('Initial message: ${message.data}');
+        const AndroidNotificationChannel channel = AndroidNotificationChannel(
+          'high_importance_channel', // id
+          'High Importance Notifications', // title
+          description: 'This channel is used for important notifications.', // description
+          importance: Importance.max,
+        );
 
-      const AndroidNotificationChannel channel = AndroidNotificationChannel(
-        'high_importance_channel', // id
-        'High Importance Notifications', // title
-        description: 'This channel is used for important notifications.', // description
-        importance: Importance.max,
-      );
+        final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
-      final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+        await flutterLocalNotificationsPlugin
+            .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>()
+            ?.createNotificationChannel(channel);
 
-      await flutterLocalNotificationsPlugin
-          .resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>()
-          ?.createNotificationChannel(channel);
+        var notification = message.data;
 
-      var notification = message.data;
-      print(notification);
-
-      if (notification != null) {
-        flutterLocalNotificationsPlugin.show(
-            notification.hashCode,
-            notification['title'],
-            notification['message'],
-            NotificationDetails(
-              android: AndroidNotificationDetails(
-                channel.id, channel.name, channelDescription: channel.description,
-                icon: '@mipmap/ic_launcher',
-                playSound: true,
-                enableVibration: true,
-                largeIcon: DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
-                // other properties...
-              ),
-              iOS: const DarwinNotificationDetails(
-                presentBadge: true,
-                presentSound: true,
-              ),
-            ));
-
-        //getNotificationData(message);
+        if (notification != null) {
+          flutterLocalNotificationsPlugin.show(
+              notification.hashCode,
+              notification['title'],
+              notification['message'],
+              NotificationDetails(
+                android: AndroidNotificationDetails(
+                  channel.id, channel.name, channelDescription: channel.description,
+                  icon: '@mipmap/ic_launcher',
+                  playSound: true,
+                  enableVibration: true,
+                  largeIcon: DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
+                  // other properties...
+                ),
+                iOS: const DarwinNotificationDetails(
+                  presentBadge: true,
+                  presentSound: true,
+                ),
+              ));
       }
-    }
+    }});
 
-    FirebaseMessaging.onBackgroundMessage(_messageHandler);
+    //FirebaseMessaging.onBackgroundMessage(_messageHandler);
 
     FirebaseMessaging.onMessage.listen((RemoteMessage event) async {
       const AndroidNotificationChannel channel = AndroidNotificationChannel(
@@ -221,16 +215,14 @@ class _HomeScreenState extends State<HomeScreen> {
           .resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()
           ?.createNotificationChannel(channel);
 
-      var notification = event.notification;
-      print(notification!.title);
-      var initializationSettingsAndroid =
-      const AndroidInitializationSettings('images/ic_home_active.png');
+      var notification = event.data;
+      var initializationSettingsAndroid = const AndroidInitializationSettings('images/ic_home_active.png');
 
       if (notification != null) {
         flutterLocalNotificationsPlugin.show(
             notification.hashCode,
-            notification.title,
-            notification.body,
+            notification['title'].toString(),
+            notification['message'].toString(),
             NotificationDetails(
               android: AndroidNotificationDetails(
                 channel.id, channel.name, channelDescription: channel.description,
@@ -248,19 +240,19 @@ class _HomeScreenState extends State<HomeScreen> {
       }
 
       print("message received");
-      print("message received>>>>>" + event.data.toString());
+      print("message received>>>>>" + event.data['title'].toString());
       String date = DateFormat("dd-MM-yyyy h:mm a").format(DateTime.parse(
           event.sentTime != null
               ? event.sentTime.toString()
               : DateTime.now().toString()));
 
-          var notificationData = NotificationData(
-              title: notification.title ?? 'Na',
-              message: notification.body ?? 'Na',
-              dateTime: date
-          );
+      var notificationData = NotificationData(
+          title:  event.data['title'].toString(),
+          message: event.data['message'].toString(),
+          dateTime: date
+      );
 
-          await Provider.of<NotificationList>(context,listen: false).addNotification(notificationData);
+      await Provider.of<NotificationList>(context,listen: false).addNotification(notificationData);
     });
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
@@ -669,7 +661,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: GridView.count(
                         physics: const NeverScrollableScrollPhysics(),
                         primary: false,
-                        padding: EdgeInsets.all(20),
+                        padding: EdgeInsets.all(10),
                         shrinkWrap: true,
                         crossAxisSpacing: 1.2.w,
                         mainAxisSpacing: 5.w,
@@ -1119,7 +1111,7 @@ class _HomeScreenState extends State<HomeScreen> {
           builder: (context, scrollState, _) {
             return scrollState.isScrolling
                 ? SizedBox(
-              height: 7.h,
+                  height: 7.h,
                   child: FloatingActionButton.extended(
                       elevation: 10,
                       onPressed: () {
@@ -1149,6 +1141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Icon(
                         CupertinoIcons.phone_circle_fill,
                         size: 5.h,
+                        color: Colors.white,
                       ),
                     ),
                   );

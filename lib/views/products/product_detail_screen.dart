@@ -47,7 +47,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   @override
   Widget build(BuildContext context) {
 
-    final selectPacking = Provider.of<SelectPacking>(context, listen: false);
+    final selectPacking = Provider.of<SelectPacking>(context,listen: false);
     final cartProvider = Provider.of<Cart>(context, listen: false);
 
     widget.value1[0].images?.forEach((element) {
@@ -139,9 +139,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         mainAxisSize: MainAxisSize.min,
-                                        children: widget
-                                            .value1[0].packingVarient!
-                                            .map((order) {
+                                        children: widget.value1[0].packingVarient!.map((order) {
                                           return CheckboxListTile(
                                             contentPadding:
                                                 const EdgeInsets.all(0),
@@ -150,8 +148,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                               borderRadius:
                                                   BorderRadius.circular(2.h),
                                             ),
-                                            checkboxShape:
-                                                RoundedRectangleBorder(
+                                            checkboxShape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(2.h),
                                             ),
@@ -175,8 +172,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                             ),
                                             value: value.isSelected(order),
                                             onChanged: (value) {
-                                              selectPacking
-                                                  .toggleSelection(order);
+                                               selectPacking.toggleSelection(order);
                                             },
                                           );
                                         }).toList());
@@ -272,16 +268,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       CartEntity(
                                         id: widget.value1[0].id!,
                                         name: widget.value1[0].name!,
-                                        price: widget.value1[0].price!,
-                                        packing: widget.value1[0].packing!,
-                                        packingType:
-                                            widget.value1[0].packingType!,
+                                        price: widget.value1[0].packingVarient![0].price!,
+                                        packing: widget.value1[0].packingVarient![0].packing!,
+                                        packingType: widget.value1[0].packingVarient![0].packingType!.value!,
                                       ),
                                     );
                                   },
                                 ),
-                                TextWithStyle.containerTitle(
-                                    context, count.toString()),
+                                TextWithStyle.containerTitle(context, count.toString()),
                                 IconButton(
                                   icon: const Icon(
                                       CupertinoIcons.add_circled_solid),
@@ -292,10 +286,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       CartEntity(
                                         id: widget.value1[0].id!,
                                         name: widget.value1[0].name!,
-                                        price: widget.value1[0].price!,
-                                        packing: widget.value1[0].packing!,
-                                        packingType:
-                                            widget.value1[0].packingType!,
+                                        price: widget.value1[0].packingVarient![0].price!,
+                                        packing: widget.value1[0].packingVarient![0].packing!,
+                                        packingType: widget.value1[0].packingVarient![0].packingType!.value!,
                                       ),
                                     );
                                   },
@@ -316,11 +309,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                         CartEntity(
                                           id: widget.value1[0].id!,
                                           name: widget.value1[0].name!,
-                                          price:
-                                              value.selectedProducts[0].price ??
+                                          price: value.selectedProducts[0].price ??
                                                   widget.value1[0].price!,
-                                          packing: value.selectedProducts[0]
-                                                  .packing ??
+                                          packing: value.selectedProducts[0].packing ??
                                               widget.value1[0].packing!,
                                           packingType: value.selectedProducts[0]
                                                   .packingType!.label ??
@@ -331,6 +322,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                     }
                                   },
                                   style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColors.primaryColor,
                                       elevation: 2,
                                       minimumSize: Size(15.h, 10.h),
                                       shape: RoundedRectangleBorder(
@@ -348,13 +340,13 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                         name: widget.value1[0].name!,
                                         price: widget.value1[0].price!,
                                         packing: widget.value1[0].packing!,
-                                        packingType:
-                                            widget.value1[0].packingType!,
+                                        packingType: widget.value1[0].packingType!,
                                       ),
                                     );
                                     // selectPacking.selectedProducts.clear();
                                   },
                                   style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColors.primaryColor,
                                       elevation: 2,
                                       minimumSize: Size(15.h, 10.h),
                                       shape: RoundedRectangleBorder(

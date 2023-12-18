@@ -86,7 +86,7 @@ class _CustomersOrderScreenState extends State<CustomersOrderScreen> {
                       if(element.product != null){
                         orders.add(OrderWithQuanity(quanity: element.quantity!,
                           name: element.product!.name!,packing: element.packingType));
-                          calPrice(element.product!.price, element.quantity);
+                          calPrice(element.product!.price ?? 0, element.quantity);
                         price.add(Price);
                       }
                     }

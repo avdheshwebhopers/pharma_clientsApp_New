@@ -31,7 +31,7 @@ class SvgIconsWithFun extends StatelessWidget {
             colorFilter: ColorFilter.mode(AppColors.primaryColor, BlendMode.srcIn),
             ),
           SizedBox(height: 0.5.h,),
-          title != null ? TextWithStyle.svgIconTitle(context, title) : Container()
+          title != null ? TextWithStyle.svgIconTitle(context, title, Colors.black) : Container()
         ],
       ),
     );

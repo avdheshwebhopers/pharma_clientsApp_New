@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:pharma_clients_app/resources/app_colors.dart';
 import 'package:pharma_clients_app/views/products/product_list_widget.dart';
 import 'package:pharma_clients_app/utils/scroll_state/scroll_state.dart';
@@ -25,21 +26,63 @@ import 'view_model/ThemeChange.dart';
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message)async {
   await Firebase.initializeApp();
+
+  print("Handling a background message: ${message.messageId}");
+
+  print('background message>>>>>>>>> ${message.data}');
+
+  const AndroidNotificationChannel channel = AndroidNotificationChannel(
+    'high_importance_channel', // id
+    'High Importance Notifications', // title
+    description: 'This channel is used for important notifications.', // description
+    importance: Importance.max,
+  );
+
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+  await flutterLocalNotificationsPlugin
+      .resolvePlatformSpecificImplementation<
+      AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
+
+  var notification = message.data;
+
+  if (notification != null) {
+    flutterLocalNotificationsPlugin.show(
+        notification.hashCode,
+        notification['title'],
+        notification['message'],
+        NotificationDetails(
+          android: AndroidNotificationDetails(
+            channel.id, channel.name, channelDescription: channel.description,
+            icon: '@mipmap/ic_launcher',
+            playSound: true,
+            enableVibration: true,
+            largeIcon: DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
+            // other properties...
+          ),
+          iOS: const DarwinNotificationDetails(
+            presentBadge: true,
+            presentSound: true,
+          ),
+        ));
+
+    //getNotificationData(message);
+  }
 }
 
 Future<void> main() async {
+
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
       statusBarColor: AppColors.backgroundColor,
     ),
   );
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-   // options: DefaultFirebaseOptions.currentPlatform,
-  );
-  await Cart().loadCart();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await Cart().loadCart();
+
   runApp(const MyApp());
 }
 

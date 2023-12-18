@@ -435,6 +435,9 @@ class _AddVisitScreenState extends State<AddVisitScreen> {
                                             child: TextWithStyle
                                                 .contactUsTitle(
                                                 context, 'Ok'),
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: AppColors.primaryColor
+                                            ),
                                             onPressed: () {
                                               Navigator.of(context).pop();
                                             },

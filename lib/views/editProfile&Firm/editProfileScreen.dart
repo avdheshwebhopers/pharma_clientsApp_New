@@ -114,6 +114,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     message: value.profile.message.toString(),
                   );
                 case Status.completed:
+                  print(value.profile.data!.data?.state);
                   name.text = value.profile.data!.data?.name ?? 'NA';
                   email.text = value.profile.data!.data?.email ?? 'NA';
                   adharNumber.text = value.profile.data!.data?.aadharNo ?? 'NA';
@@ -289,7 +290,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                               ),
                                                 overflow: TextOverflow.ellipsis,
                                                 maxLines: 2,
-                                              )),
+                                              )
+                                          ),
                                           value: state,
                                           elevation: 8,
                                           borderRadius: BorderRadius.all(
@@ -342,8 +344,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                               color: Colors.black,
                                             ),
                                           ),
-                                          items: value.state
-                                              .map<DropdownMenuItem>((value) {
+                                          items: value.state.map<DropdownMenuItem>((value) {
                                             return DropdownMenuItem(
                                               value: value,
                                               child: SizedBox(
@@ -360,11 +361,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                           }).toList(),
                                           onChanged: (value) {
                                             state = value;
-                                            citiesModel.cities(
-                                                state.id, context);
+                                            citiesModel.cities(state.id, context);
                                           },
-                                          validator: (value) {
-                                            if (state == null) {
+                                          validator: (val) {
+                                            if (val == null && val == newState) {
                                               return 'Please enter your State';
                                             }
                                             return null;
@@ -469,7 +469,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                             city = val;
                                           },
                                           validator: (val) {
-                                            if (city == null) {
+                                            if (val == null) {
                                               return 'Please enter your City';
                                             }
                                             return null;
@@ -534,8 +534,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               entity.phone = phone.text;
                               entity.aaddhar = adharNumber.text;
                               entity.address = address.text;
-                              entity.state = state.name.toString();
-                              entity.city = city.toString();
+                              entity.state = state.name.toString() != null && state.name.toString().isNotEmpty ? state.name.toString() : newState ;
+                              entity.city = city.toString() == null && city.toString().isEmpty? newCity : city.toString();
                               entity.op_area = opArea.text;
                               entity.dob = dob.text;
 

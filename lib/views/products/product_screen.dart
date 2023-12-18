@@ -82,7 +82,7 @@ class _ProductScreenState extends State<ProductScreen> {
         elevation: 0,
         actions: [
           Padding(
-              padding: EdgeInsets.only(top: 0.h,bottom: 4.h),
+              padding: EdgeInsets.only(top: 1.h, bottom: 2.h),
               child: addtofav.loading
                   ? const CircularProgressIndicator()
                   : IconButton(
@@ -205,6 +205,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                               shape: RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.circular(20)),
                                               actionsPadding: EdgeInsets.only(right: 2.h,bottom: 2.h),
+                                              backgroundColor: Colors.white,
                                               content: SingleChildScrollView(
                                                 child: Column(
                                                   mainAxisSize: MainAxisSize.min,
@@ -236,7 +237,10 @@ class _ProductScreenState extends State<ProductScreen> {
                                                   builder: (BuildContext context, value,
                                                       Widget? child) {
                                                     return ElevatedButton(
-                                                      child: const Text('OK'),
+                                                      child: const Text('OK',style: TextStyle(color: Colors.white),),
+                                                      style: ElevatedButton.styleFrom(
+                                                        backgroundColor: AppColors.primaryColor
+                                                      ),
                                                       onPressed: () {
                                                         List<String>? name = [];
                                                         for(var element in value.selectedDivisions){

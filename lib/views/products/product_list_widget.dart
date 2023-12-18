@@ -160,9 +160,9 @@ class ProductList extends StatelessWidget {
                                                       Expanded(
                                                         child: TextWithStyle.productPrice(
                                                             context,
-                                                            product[index].price
-                                                                ?.toString() ??
-                                                                '0'),
+                                                            product[index].price == null
+                                                                ? '${product[index].packingVarient?[0].price ?? 0 }'
+                                                                : product[index].price.toString()),
                                                       ),
                                                       Consumer<Cart>(
                                                         builder: (BuildContext context, cart, Widget? child) {
@@ -183,9 +183,9 @@ class ProductList extends StatelessWidget {
                                                                       CartEntity(
                                                                         id: product[index].id!,
                                                                         name: product[index].name!,
-                                                                        price: product[index].price!,
-                                                                        packing: product[index].packing!,
-                                                                        packingType: product[index].packingType!,
+                                                                        price: product[index].packingVarient![0].price!,
+                                                                        packing: product[index].packingVarient![0].packing!,
+                                                                        packingType: product[index].packingVarient![0].packingType!.value!,
                                                                       ),
                                                                     );
                                                                   },
@@ -222,9 +222,9 @@ class ProductList extends StatelessWidget {
                                                                           CartEntity(
                                                                             id: product[index].id!,
                                                                             name: product[index].name!,
-                                                                            price: product[index].price!,
-                                                                            packing: product[index].packing!,
-                                                                            packingType: product[index].packingType!,
+                                                                            price: product[index].packingVarient![0].price!,
+                                                                            packing: product[index].packingVarient![0].packing!,
+                                                                            packingType: product[index].packingVarient![0].packingType!.value!,
                                                                           ),
                                                                           int.tryParse(value) ?? 0,
                                                                         );
@@ -239,9 +239,9 @@ class ProductList extends StatelessWidget {
                                                                       CartEntity(
                                                                         id: product[index].id!,
                                                                         name: product[index].name!,
-                                                                        price: product[index].price!,
-                                                                        packing: product[index].packing!,
-                                                                        packingType: product[index].packingType!,
+                                                                        price: product[index].packingVarient![0].price!,
+                                                                        packing: product[index].packingVarient![0].packing!,
+                                                                        packingType: product[index].packingVarient![0].packingType!.value!,
                                                                       ),
                                                                     );
                                                                   },
@@ -353,31 +353,28 @@ class ProductList extends StatelessWidget {
                                                                         CartEntity(
                                                                           id: product[index].id!,
                                                                           name: product[index].name!,
-                                                                          price: product[index].price!,
-                                                                          packing: product[index].packing!,
-                                                                          packingType: product[index].packingType!,
+                                                                          price: product[index].packingVarient![0].price!,
+                                                                          packing: product[index].packingVarient![0].packing!,
+                                                                          packingType: product[index].packingVarient![0].packingType!.value!,
                                                                         ),
                                                                       );
                                                                     }
                                                                   },
                                                                   style: ElevatedButton
                                                                       .styleFrom(
+                                                                    backgroundColor: AppColors.primaryColor,
                                                                       elevation: 1,
-                                                                      minimumSize: Size(MediaQuery.of(context).size.width / 4,
+                                                                      minimumSize: Size(MediaQuery.of(context).size.width / 6,
                                                                           MediaQuery.of(context).size.height / 22),
                                                                       shape: const RoundedRectangleBorder(
-                                                                          borderRadius: BorderRadius
-                                                                              .all(
-                                                                              Radius
-                                                                                  .circular(
-                                                                                  10))
+                                                                          borderRadius: BorderRadius.all(Radius.circular(10))
                                                                       )
                                                                   ),
                                                                   child: TextWithStyle
                                                                       .svgIconTitle(
                                                                       context,
                                                                       ConstantStrings
-                                                                          .addToCart)),
+                                                                          .addToCart,Colors.white)),
                                                             );
                                                           }
                                                         },

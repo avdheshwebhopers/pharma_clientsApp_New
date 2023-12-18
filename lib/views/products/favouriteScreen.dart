@@ -45,8 +45,16 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
     super.dispose();
   }
 
+  Future<void> Product()async {
+    model1.favProducts.clear();
+    model1.fetchProductsApi();
+  }
+
+
   @override
   Widget build(BuildContext context) {
+
+    print('run');
 
     final provider =  Provider.of<AddtoFavViewModel>(context,listen: false);
 
@@ -62,16 +70,17 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
                 child: provider.loading
                     ? const CircularProgressIndicator()
                     : IconButton(
-                  onPressed: () {
+                    onPressed: () async {
                     if(model1.selectedProducts.isEmpty){
                       Utils.flushBarErrorMessage("Please Select Products", context);
-                    }else{
+                      }else{
                       AddToFavEntity entity = AddToFavEntity();
                       entity.id = model1.selectedProducts.map((e) => e.id!).toList();
                       provider.removeFav(entity, context, product);
                       model1.clearSelection();
+                      model1.favProducts.clear();
                       model1.fetchProductsApi();
-                    }
+                      }
                   },
                   icon: const Icon(CupertinoIcons.heart_slash_fill,),
                   color: AppColors.primaryColor,

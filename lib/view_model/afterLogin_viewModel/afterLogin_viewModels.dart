@@ -1113,7 +1113,6 @@ class AddtoFavViewModel with ChangeNotifier {
 
   Future<void> removeFav(data, BuildContext context, List remove) async {
     setLoading(true);
-
     _myRepo.removeFav(data).then((value) {
       setLoading(false);
       if (value.success == true) {

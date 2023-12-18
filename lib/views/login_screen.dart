@@ -131,6 +131,10 @@ class _LoginScreenState extends State<LoginScreen> {
             automaticallyImplyLeading: true,
             elevation: 0,
             backgroundColor: AppColors.primaryColor,
+            iconTheme: IconThemeData(color: Colors.white), //
+            actions: [
+
+            ],
           ),
           body: Container(
               color: AppColors.primaryColor,

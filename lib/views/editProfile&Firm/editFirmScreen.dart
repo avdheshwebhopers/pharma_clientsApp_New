@@ -648,8 +648,8 @@ class _EditFirmScreenState extends State<EditFirmScreen> {
                                     entity.phone = firmPhone.text;
                                     entity.email = firmEmail.text;
                                     entity.address = firmAddress.text;
-                                    entity.state = state.name.toString();
-                                    entity.district = city.toString();
+                                    entity.state = state.name.toString() == null && state.name.toString().isEmpty ? newState : state.name.toString();
+                                    entity.district = city.toString() == null && city.toString().isEmpty ? newCity : city.toString();
                                     entity.bank_name = bankName.text;
                                     entity.bank_acc_no = bankAccNumber.text;
                                     entity.bank_payee_name = payeeName.text;

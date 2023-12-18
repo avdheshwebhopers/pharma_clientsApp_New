@@ -87,6 +87,7 @@ class _MrProfileScreenState extends State<MrProfileScreen> {
 
     final update = Provider.of<UpdateMrViewModel>(context,listen: false);
     final status = Provider.of<MrsViewModel>(context,listen: false);
+
     status.setColor(widget.profile[0].active!);
 
     final emailField = TextFormField(

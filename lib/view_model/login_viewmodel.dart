@@ -44,9 +44,6 @@ class LoginViewModel with ChangeNotifier{
                 builder: (context)=> HomeScreen(token: value.data!.user?.name!,
                 isOwner: value.data!.user?.isOwner,)));
       }else{
-        if (kDebugMode) {
-          print('run');
-        }
         Utils.errorAlertDialogue(value.message.toString(), context);
       }
     }).onError((error, stackTrace){

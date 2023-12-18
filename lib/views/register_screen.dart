@@ -28,8 +28,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
 
   final ValueNotifier<bool> _obsecurePassword = ValueNotifier<bool>(true);
-  final ValueNotifier<bool> _obsecureConfirmPassword =
-      ValueNotifier<bool>(true);
+  final ValueNotifier<bool> _obsecureConfirmPassword = ValueNotifier<bool>(true);
 
   TextEditingController name = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -140,6 +139,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     final provider = Provider.of<DivisionProvider>(context, listen: false);
     final register = Provider.of<RegisterViewModel>(context, listen: false);
     provider._selectedDivisions.clear();
@@ -1111,6 +1111,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         }),
       ),
     );
+
   }
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {

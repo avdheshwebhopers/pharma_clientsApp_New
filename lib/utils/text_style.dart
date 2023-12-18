@@ -38,12 +38,13 @@ class TextWithStyle{
     );
   }
 
-  static svgIconTitle(context, String message){
+  static svgIconTitle(context, String message,color){
     return Text(
         message,
       style: TextStyle(
         letterSpacing: 0.4,
         fontSize: 15.sp,
+        color: color,
         fontWeight: FontWeight.w600,
       ),
     );
