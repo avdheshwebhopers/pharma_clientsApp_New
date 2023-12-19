@@ -36,7 +36,7 @@ class NetworkApiServices extends BaseApiServices {
       throw FetchDataException('No Internet connection');
     }
     if (kDebugMode) {
-      //log(responseJson.toString());
+      log(responseJson.toString());
     }
     return responseJson;
   }
@@ -50,7 +50,7 @@ class NetworkApiServices extends BaseApiServices {
     try {
       // final client =
       //     InterceptedClient.build(interceptors: [LoggerInterceptor()]);
-
+      print('url hit: $url');
       final response = await client.get(Uri.parse(url), headers: {
         'Content-Type': 'application/json',
         "Authorization": "Bearer ${token ?? ''}"});
@@ -61,7 +61,7 @@ class NetworkApiServices extends BaseApiServices {
       throw FetchDataException('No Internet Connection');
     }
     if (kDebugMode) {
-      //log(responseJson.toString());
+      log(responseJson.toString());
     }
     return responseJson;
   }
@@ -74,7 +74,7 @@ class NetworkApiServices extends BaseApiServices {
 
       final sp = await SharedPreferences.getInstance();
       String? token = sp.getString('token');
-
+      print('url hit: ${url}\nToken : $token');
       final response = await client.post(
         Uri.parse(url),
         headers: {
@@ -89,7 +89,7 @@ class NetworkApiServices extends BaseApiServices {
       throw FetchDataException('No Internet connection');
     }
     if (kDebugMode) {
-      //log(responseJson.toString());
+      log(responseJson.toString());
     }
     return responseJson;
   }
@@ -103,7 +103,7 @@ class NetworkApiServices extends BaseApiServices {
     try {
       final client =
           InterceptedClient.build(interceptors: [LoggerInterceptor()]);
-
+      print('url hit: $url');
       final response = await client.post(
         Uri.parse(url),
         headers: {
@@ -118,7 +118,7 @@ class NetworkApiServices extends BaseApiServices {
       throw FetchDataException('No Internet connection');
     }
     if (kDebugMode) {
-      //log(responseJson);
+      log(responseJson);
     }
     return responseJson;
   }

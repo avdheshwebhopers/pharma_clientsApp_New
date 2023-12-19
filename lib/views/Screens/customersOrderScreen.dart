@@ -51,6 +51,7 @@ class _CustomersOrderScreenState extends State<CustomersOrderScreen> {
 
     calPrice( price, qauntity) {
       Price = price * qauntity;
+
     }
 
     return Scaffold(
@@ -84,15 +85,15 @@ class _CustomersOrderScreenState extends State<CustomersOrderScreen> {
                     orders.clear();
                     for(var element in value.customersOrderList.data!.data![index].orderlist!){
                       if(element.product != null){
-                        orders.add(OrderWithQuanity(quanity: element.quantity!,
-                          name: element.product!.name!,packing: element.packingType));
-                          calPrice(element.product!.price ?? 0, element.quantity);
+                        orders.add(
+                            OrderWithQuanity(
+                                quanity: element.quantity!,
+                                name: element.product!.name!,
+                                packing: element.packingType)
+                        );
+                        calPrice(element.price ?? 0, element.quantity);
                         price.add(Price);
                       }
-                    }
-
-                    for(var element in price){
-                      Price += element;
                     }
 
                     String pro = orders.join('\n\n');

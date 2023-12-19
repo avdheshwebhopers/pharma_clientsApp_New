@@ -80,6 +80,7 @@ class Data {
 class Orderlist {
   Product? product;
   int? quantity;
+  int? price;
   String? packingType;
 
   Orderlist({this.product, this.quantity, this.packingType});
@@ -88,6 +89,7 @@ class Orderlist {
     product =
     json['product'] != null ? Product.fromJson(json['product']) : null;
     quantity = json['quantity'];
+    price = json['price'];
     packingType = json['packing_type'];
   }
 
@@ -97,6 +99,7 @@ class Orderlist {
       data['product'] = product!.toJson();
     }
     data['quantity'] = quantity;
+    data['price'] = price;
     data['packing_type'] = packingType;
     return data;
   }

@@ -52,6 +52,7 @@ class _AddPresentationScreenState extends State<AddPresentationScreen> {
                 margin: const EdgeInsets.only(right: 20,top: 5,bottom: 5),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primaryColor,
                 shape: RoundedRectangleBorder(
                     borderRadius:
                     BorderRadius.all(Radius.circular(15)))

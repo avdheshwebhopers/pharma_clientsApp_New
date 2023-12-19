@@ -41,7 +41,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
   @override
   Widget build(BuildContext context) {
 
-    calPrice( price, qauntity) {
+    calPrice(price, qauntity) {
       Price = price * qauntity;
     }
 
@@ -79,13 +79,9 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                      if(element.product != null){
                        orders.add(OrderWithQuanity(quanity: element.quantity!,
                            name: element.product!.name!,packing: element.packingType));
-                       calPrice(element.product!.price ?? 0, element.quantity);
-                       price.add(Price);
+                       calPrice(element.price ?? 0, element.quantity);
+;                       price.add(Price);
                      }
-                    }
-
-                    for(var element in price){
-                      Price += element;
                     }
 
                     String pro = orders.join('\n\n');
