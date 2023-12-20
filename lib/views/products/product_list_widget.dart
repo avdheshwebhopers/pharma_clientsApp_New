@@ -183,7 +183,7 @@ class ProductList extends StatelessWidget {
                                                                       CartEntity(
                                                                         id: product[index].id!,
                                                                         name: product[index].name!,
-                                                                        price: product[index].packingVarient![0].price!,
+                                                                        price: product[index].packingVarient![0].price!.toDouble(),
                                                                         packing: product[index].packingVarient![0].packing!,
                                                                         packingType: product[index].packingVarient![0].packingType!.value!,
                                                                       ),
@@ -222,7 +222,7 @@ class ProductList extends StatelessWidget {
                                                                           CartEntity(
                                                                             id: product[index].id!,
                                                                             name: product[index].name!,
-                                                                            price: product[index].packingVarient![0].price!,
+                                                                            price: product[index].packingVarient![0].price!.toDouble(),
                                                                             packing: product[index].packingVarient![0].packing!,
                                                                             packingType: product[index].packingVarient![0].packingType!.value!,
                                                                           ),
@@ -239,7 +239,7 @@ class ProductList extends StatelessWidget {
                                                                       CartEntity(
                                                                         id: product[index].id!,
                                                                         name: product[index].name!,
-                                                                        price: product[index].packingVarient![0].price!,
+                                                                        price: product[index].packingVarient![0].price!.toDouble(),
                                                                         packing: product[index].packingVarient![0].packing!,
                                                                         packingType: product[index].packingVarient![0].packingType!.value!,
                                                                       ),
@@ -330,7 +330,7 @@ class ProductList extends StatelessWidget {
                                                                                               CartEntity(
                                                                                                 id: product[index].id!,
                                                                                                 name: product[index].name!,
-                                                                                                price: value._selectedProducts[0].price ?? 0,
+                                                                                                price: value._selectedProducts[0].price!.toDouble() ?? 0,
                                                                                                 packing: value._selectedProducts[0].packing ?? '',
                                                                                                 packingType: value._selectedProducts[0].packingType!.label ??'',
                                                                                               ),
@@ -353,7 +353,7 @@ class ProductList extends StatelessWidget {
                                                                         CartEntity(
                                                                           id: product[index].id!,
                                                                           name: product[index].name!,
-                                                                          price: product[index].packingVarient![0].price!,
+                                                                          price: product[index].packingVarient![0].price!.toDouble(),
                                                                           packing: product[index].packingVarient![0].packing!,
                                                                           packingType: product[index].packingVarient![0].packingType!.value!,
                                                                         ),

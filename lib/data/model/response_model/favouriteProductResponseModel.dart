@@ -1,3 +1,4 @@
+
 class FavouriteProductResponseModel {
   bool? success;
   String? message;
@@ -30,11 +31,11 @@ class FavouriteProductResponseModel {
 class Data {
   String? id;
   String? name;
-  Null? price;
+  int? price;
   String? description;
   String? details;
   List<Images>? images;
-  Null? technicalDetail;
+  String? technicalDetail;
   int? minOrderQty;
   String? divisionId;
   String? divisionName;
@@ -46,8 +47,8 @@ class Data {
   bool? newLaunched;
   List<PackingVarient>? packingVarient;
   int? packingQty;
-  Null? packing;
-  Null? packingType;
+  String? packing;
+  String? packingType;
   bool? upcoming;
   String? sku;
   String? hsnCode;

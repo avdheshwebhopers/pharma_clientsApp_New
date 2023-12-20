@@ -45,7 +45,6 @@ class GuestProductViewModel with ChangeNotifier{
       }
       _filteredProducts = product;
       notifyListeners();
-
       setProductList(ApiResponse.completed(value));
 
     }).onError((error, stackTrace){

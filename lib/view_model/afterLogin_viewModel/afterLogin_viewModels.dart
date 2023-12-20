@@ -52,6 +52,7 @@ class ProductViewModel with ChangeNotifier {
 
   Future<void> fetchProductsApi() async {
     setLoading(true);
+
     _myRepo.fetchProducts().then((value) {
       for (var element in value.data!) {
         if (element.active == true) {

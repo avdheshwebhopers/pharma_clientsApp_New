@@ -118,7 +118,7 @@ class NetworkApiServices extends BaseApiServices {
       throw FetchDataException('No Internet connection');
     }
     if (kDebugMode) {
-      log(responseJson);
+      log(responseJson.toString());
     }
     return responseJson;
   }

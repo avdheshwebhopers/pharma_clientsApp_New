@@ -75,34 +75,6 @@ class _LoginScreenState extends State<LoginScreen> {
           print('FCM TOKEN>>>>>>: ${value!}');
         }
 
-        // FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-        //   FirebaseMessaging.onMessage.listen((message) {
-        //
-        //     RemoteNotification? notification = message.notification ;
-        //     AndroidNotification? android = message.notification!.android ;
-        //
-        //     if (kDebugMode) {
-        //       print("notifications title:${notification!.title}");
-        //       print("notifications body:${notification.body}");
-        //       print('count:${android!.count}');
-        //       print('data:${message.data.toString()}');
-        //     }
-        //
-        //     if(Platform.isAndroid){
-        //       // initLocalNotifications(context, message);
-        //       // showNotification(message);
-        //     }
-        //
-        //   });
-        //   RemoteNotification? notification = message.notification;
-        //   AndroidNotificationChannel channel = const AndroidNotificationChannel(
-        //       'title',
-        //       'Notifications',
-        //       description: '',
-        //       importance: Importance.max,
-        //   );
-        // });
-
       });
     }();
 

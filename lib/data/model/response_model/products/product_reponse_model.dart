@@ -30,7 +30,7 @@ class ProductResponseModel {
 class Products {
   String? id;
   String? name;
-  double? price;
+  int? price;
   String? description;
   String? details;
   List<Images>? images;
@@ -81,13 +81,12 @@ class Products {
         this.hsnCode,
         this.createdOn,
         this.modifiedOn,
-        this.favourite
-      });
+        this.favourite});
 
   Products.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
-    price = json['price'] != null ? json['price'].toDouble() : null;
+    price = json['price'];
     description = json['description'];
     details = json['details'];
     if (json['images'] != null) {
@@ -127,7 +126,7 @@ class Products {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['name'] = name;
-    data['price'] = price != null ? price!.toDouble() : null;
+    data['price'] = price;
     data['description'] = description;
     data['details'] = details;
     if (images != null) {
@@ -144,8 +143,7 @@ class Products {
     data['active'] = active;
     data['new_launched'] = newLaunched;
     if (packingVarient != null) {
-      data['packingVarient'] =
-          packingVarient!.map((v) => v.toJson()).toList();
+      data['packingVarient'] = packingVarient!.map((v) => v.toJson()).toList();
     }
     data['packing_qty'] = packingQty;
     data['packing'] = packing;
@@ -158,7 +156,6 @@ class Products {
     data['favourite'] = favourite;
     return data;
   }
-
 }
 
 class Images {
@@ -184,7 +181,7 @@ class PackingVarient {
   PackingType? packingType;
   String? packing;
   int? packingQty;
-  double? price;
+  int? price;
 
   PackingVarient({this.packingType, this.packing, this.packingQty, this.price});
 
@@ -194,36 +191,36 @@ class PackingVarient {
         : null;
     packing = json['packing'];
     packingQty = json['packing_qty'];
-    price = json['price'].toDouble();
+    price = json['price'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     if (packingType != null) {
-      data['packing_type'] = packingType!.toJson();
+      data['packing_type'] = packingType?.toJson();
     }
     data['packing'] = packing;
     data['packing_qty'] = packingQty;
-    data['price'] = price?.toDouble();
+    data['price'] = price;
     return data;
   }
 }
 
 class PackingType {
-  String? value;
   String? label;
+  String? value;
 
-  PackingType({this.value, this.label});
+  PackingType({this.label, this.value});
 
   PackingType.fromJson(Map<String, dynamic> json) {
-    value = json['value'];
     label = json['label'];
+    value = json['value'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['value'] = value;
     data['label'] = label;
+    data['value'] = value;
     return data;
   }
 }

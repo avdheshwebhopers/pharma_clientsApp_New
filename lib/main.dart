@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:intl/intl.dart';
 import 'package:pharma_clients_app/resources/app_colors.dart';
 import 'package:pharma_clients_app/views/products/product_list_widget.dart';
 import 'package:pharma_clients_app/utils/scroll_state/scroll_state.dart';
@@ -21,6 +22,7 @@ import 'package:pharma_clients_app/views/SplashScreen/splash_screen.dart';
 import 'package:pharma_clients_app/views/register_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+import 'data/model/requested_data_model/notificationData.dart';
 import 'view_model/ThemeChange.dart';
 
 @pragma('vm:entry-point')
@@ -50,8 +52,8 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message)async {
   if (notification != null) {
     flutterLocalNotificationsPlugin.show(
         notification.hashCode,
-        notification['title'],
-        notification['message'],
+        notification['title'].toString(),
+        notification['message'].toString(),
         NotificationDetails(
           android: AndroidNotificationDetails(
             channel.id, channel.name, channelDescription: channel.description,
@@ -62,13 +64,26 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message)async {
             // other properties...
           ),
           iOS: const DarwinNotificationDetails(
+            presentAlert: true,
             presentBadge: true,
             presentSound: true,
           ),
         ));
 
+
     //getNotificationData(message);
   }
+
+  String date = DateFormat("dd-MM-yyyy h:mm a").format(DateTime.parse(
+      message.sentTime != null
+          ? message.sentTime.toString()
+          : DateTime.now().toString()));
+
+  var notificationData = NotificationData(
+      title:  message.data['title'].toString(),
+      message: message.data['message'].toString(),
+      dateTime: date
+  );
 }
 
 Future<void> main() async {
