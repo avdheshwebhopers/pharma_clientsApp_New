@@ -38,7 +38,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message)async {
     'High Importance Notifications', // title
     description: 'This channel is used for important notifications.', // description
     importance: Importance.max,
-  );
+    );
 
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
