@@ -331,6 +331,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                     }
                                   },
                                   style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColors.primaryColor,
                                       elevation: 2,
                                       minimumSize: Size(15.h, 10.h),
                                       shape: RoundedRectangleBorder(
@@ -354,6 +355,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                     // selectPacking.selectedProducts.clear();
                                   },
                                   style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColors.primaryColor,
                                       elevation: 2,
                                       minimumSize: Size(15.h, 10.h),
                                       shape: RoundedRectangleBorder(

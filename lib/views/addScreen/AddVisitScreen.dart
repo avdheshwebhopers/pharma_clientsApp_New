@@ -432,9 +432,12 @@ class _AddVisitScreenState extends State<AddVisitScreen> {
                                                 },
                                               )),
                                           ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: AppColors.primaryColor
+                                            ),
                                             child: TextWithStyle
-                                                .containerTitle(
-                                                context, 'Ok'),
+                                                .productButtonTitle(
+                                                context, '  OK  '),
                                             onPressed: () {
                                               Navigator.of(context).pop();
                                             },

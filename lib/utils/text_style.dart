@@ -48,6 +48,17 @@ class TextWithStyle{
       ),
     );
   }
+  static productButtonTitle(context, String message){
+    return Text(
+      message,
+      style: TextStyle(
+        letterSpacing: 0.4,
+        fontSize: 15.sp,
+        color: Colors.white,
+        fontWeight: FontWeight.w600,
+      ),
+    );
+  }
 
   static pngIconTitle(context, String message){
     return Text(

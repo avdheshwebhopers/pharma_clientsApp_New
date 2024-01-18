@@ -361,6 +361,7 @@ class ProductList extends StatelessWidget {
                                                                   },
                                                                   style: ElevatedButton
                                                                       .styleFrom(
+                                                                    backgroundColor: AppColors.primaryColor,
                                                                       elevation: 1,
                                                                       minimumSize: Size(MediaQuery.of(context).size.width / 4,
                                                                           MediaQuery.of(context).size.height / 22),
@@ -373,7 +374,7 @@ class ProductList extends StatelessWidget {
                                                                       )
                                                                   ),
                                                                   child: TextWithStyle
-                                                                      .svgIconTitle(
+                                                                      .productButtonTitle(
                                                                       context,
                                                                       ConstantStrings
                                                                           .addToCart)),
