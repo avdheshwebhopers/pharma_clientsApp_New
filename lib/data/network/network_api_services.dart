@@ -35,6 +35,9 @@ class NetworkApiServices extends BaseApiServices {
     } on SocketException {
       throw FetchDataException('No Internet connection');
     }
+    if (kDebugMode) {
+      log(responseJson.toString());
+    }
     return responseJson;
   }
 
@@ -45,9 +48,9 @@ class NetworkApiServices extends BaseApiServices {
 
     dynamic responseJson;
     try {
-      final client =
-          InterceptedClient.build(interceptors: [LoggerInterceptor()]);
-
+      // final client =
+      //     InterceptedClient.build(interceptors: [LoggerInterceptor()]);
+      print('url hit: $url');
       final response = await client.get(Uri.parse(url), headers: {
         'Content-Type': 'application/json',
         "Authorization": "Bearer ${token ?? ''}"});
@@ -57,6 +60,9 @@ class NetworkApiServices extends BaseApiServices {
     } on SocketException {
       throw FetchDataException('No Internet Connection');
     }
+    if (kDebugMode) {
+      log(responseJson.toString());
+    }
     return responseJson;
   }
 
@@ -64,11 +70,11 @@ class NetworkApiServices extends BaseApiServices {
   Future postApiResponse(String url, data) async {
     dynamic responseJson;
     try {
-      final client = InterceptedClient.build(interceptors: [LoggerInterceptor()]);
+      // final client = InterceptedClient.build(interceptors: [LoggerInterceptor()]);
 
       final sp = await SharedPreferences.getInstance();
       String? token = sp.getString('token');
-
+      print('url hit: ${url}\nToken : $token');
       final response = await client.post(
         Uri.parse(url),
         headers: {
@@ -82,6 +88,9 @@ class NetworkApiServices extends BaseApiServices {
     } on SocketException {
       throw FetchDataException('No Internet connection');
     }
+    if (kDebugMode) {
+      log(responseJson.toString());
+    }
     return responseJson;
   }
 
@@ -93,8 +102,8 @@ class NetworkApiServices extends BaseApiServices {
     dynamic responseJson;
     try {
       final client =
-          InterceptedClient.build(interceptors: [LoggerInterceptor()]);
-
+      InterceptedClient.build(interceptors: [LoggerInterceptor()]);
+      print('url hit: $url');
       final response = await client.post(
         Uri.parse(url),
         headers: {
@@ -108,6 +117,9 @@ class NetworkApiServices extends BaseApiServices {
     } on SocketException {
       throw FetchDataException('No Internet connection');
     }
+    if (kDebugMode) {
+      log(responseJson.toString());
+    }
     return responseJson;
   }
 
@@ -120,7 +132,7 @@ class NetworkApiServices extends BaseApiServices {
     dynamic responseJson;
     try {
       final client =
-          InterceptedClient.build(interceptors: [LoggerInterceptor()]);
+      InterceptedClient.build(interceptors: [LoggerInterceptor()]);
 
       final response = await client.put(
         Uri.parse(url),
@@ -130,6 +142,9 @@ class NetworkApiServices extends BaseApiServices {
       responseJson = _returnResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet connection');
+    }
+    if (kDebugMode) {
+      log(responseJson);
     }
     return responseJson;
   }
@@ -173,22 +188,26 @@ class NetworkApiServices extends BaseApiServices {
 
 class LoggerInterceptor implements InterceptorContract {
   @override
-  Future<RequestData> interceptRequest({required RequestData data}) async {
+  Future<BaseRequest> interceptRequest({required BaseRequest request}) async {
     if (kDebugMode) {
       print("----- Request -----");
-      log('Url hit: ${data.url}');
-      log('Required: ${data.body}');
+      log('Url hit: ${request.url}');
+      //  log('Required: ${data.body}');
     }
-    return data;
+    return request;
   }
 
   @override
-  Future<ResponseData> interceptResponse({required ResponseData data}) async {
+  Future<BaseResponse> interceptResponse({required BaseResponse response}) async {
     if (kDebugMode) {
       print("------- Response -------");
-      print(data.body.toString());
-    }
+      print(response.statusCode.toString());
 
-    return data;
+    }
+    return response;
   }
+
+  Future<bool> shouldInterceptRequest() async => true;
+
+  Future<bool> shouldInterceptResponse() async => true;
 }

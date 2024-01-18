@@ -669,7 +669,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: GridView.count(
                         physics: const NeverScrollableScrollPhysics(),
                         primary: false,
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(10),
                         shrinkWrap: true,
                         crossAxisSpacing: 1.2.w,
                         mainAxisSpacing: 5.w,
@@ -992,7 +992,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           GridView.count(
                             physics: const NeverScrollableScrollPhysics(),
                             primary: false,
-                            padding: const EdgeInsets.all(20),
+                            padding: const EdgeInsets.all(10),
                             shrinkWrap: true,
                             crossAxisSpacing: 1.2.w,
                             mainAxisSpacing: 5.w,
@@ -1136,6 +1136,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       backgroundColor: AppColors.primaryColor,
                       child: Icon(
                         CupertinoIcons.phone_circle_fill,
+                        color: Colors.white,
                         size: 5.h,
                       ),
                     ),

@@ -276,10 +276,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       CartEntity(
                                         id: widget.value1[0].id!,
                                         name: widget.value1[0].name!,
-                                        price: widget.value1[0].price!,
-                                        packing: widget.value1[0].packing!,
-                                        packingType:
-                                            widget.value1[0].packingType!,
+                                        price: widget.value1[0].packingVarient![0].price!.toDouble(),
+                                        packing: widget.value1[0].packingVarient![0].packing!,
+                                        packingType: widget.value1[0].packingVarient![0].packingType!.value!,
                                       ),
                                     );
                                   },
@@ -296,10 +295,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       CartEntity(
                                         id: widget.value1[0].id!,
                                         name: widget.value1[0].name!,
-                                        price: widget.value1[0].price!,
-                                        packing: widget.value1[0].packing!,
-                                        packingType:
-                                            widget.value1[0].packingType!,
+                                        price: widget.value1[0].packingVarient![0].price!.toDouble(),
+                                        packing: widget.value1[0].packingVarient![0].packing!,
+                                        packingType: widget.value1[0].packingVarient![0].packingType!.value!,
                                       ),
                                     );
                                   },
@@ -320,14 +318,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                         CartEntity(
                                           id: widget.value1[0].id!,
                                           name: widget.value1[0].name!,
-                                          price:
-                                              value.selectedProducts[0].price ??
-                                                  widget.value1[0].price!,
-                                          packing: value.selectedProducts[0]
-                                                  .packing ??
+                                          price: value.selectedProducts[0].price!.toDouble() ??
+                                              widget.value1[0].price!.toDouble(),
+                                          packing: value.selectedProducts[0].packing ??
                                               widget.value1[0].packing!,
                                           packingType: value.selectedProducts[0]
-                                                  .packingType!.label ??
+                                              .packingType!.label ??
                                               widget.value1[0].packingType!,
                                         ),
                                       );
@@ -350,10 +346,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                       CartEntity(
                                         id: widget.value1[0].id!,
                                         name: widget.value1[0].name!,
-                                        price: widget.value1[0].price!,
+                                        price: widget.value1[0].price!.toDouble(),
                                         packing: widget.value1[0].packing!,
-                                        packingType:
-                                            widget.value1[0].packingType!,
+                                        packingType: widget.value1[0].packingType!,
                                       ),
                                     );
                                     // selectPacking.selectedProducts.clear();

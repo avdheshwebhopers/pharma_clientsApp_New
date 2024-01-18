@@ -52,11 +52,11 @@ class _AddPresentationScreenState extends State<AddPresentationScreen> {
                 margin: const EdgeInsets.only(right: 20,top: 5,bottom: 5),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
+                    backgroundColor: AppColors.primaryColor,
+                  shape: RoundedRectangleBorder(
                     borderRadius:
-                    BorderRadius.all(Radius.circular(15)))
-                  ),
-                    onPressed: () async {
+                    BorderRadius.all(Radius.circular(15)))),
+                  onPressed: () async {
                       if(model.selectedVisualAids.isNotEmpty && title.text.isNotEmpty){
                         final presentation = PresentationData(
                             name: title.text,

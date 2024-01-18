@@ -160,9 +160,9 @@ class ProductList extends StatelessWidget {
                                                       Expanded(
                                                         child: TextWithStyle.productPrice(
                                                             context,
-                                                            product[index].price
-                                                                ?.toString() ??
-                                                                '0'),
+                                                            product[index].price == null
+                                                                ? '${product[index].packingVarient?[0].price ?? 0 }'
+                                                                : product[index].price.toString()),
                                                       ),
                                                       Consumer<Cart>(
                                                         builder: (BuildContext context, cart, Widget? child) {
@@ -183,9 +183,9 @@ class ProductList extends StatelessWidget {
                                                                       CartEntity(
                                                                         id: product[index].id!,
                                                                         name: product[index].name!,
-                                                                        price: product[index].price!,
-                                                                        packing: product[index].packing!,
-                                                                        packingType: product[index].packingType!,
+                                                                        price: product[index].packingVarient![0].price!.toDouble(),
+                                                                        packing: product[index].packingVarient![0].packing!,
+                                                                        packingType: product[index].packingVarient![0].packingType!.value!,
                                                                       ),
                                                                     );
                                                                   },
@@ -202,21 +202,32 @@ class ProductList extends StatelessWidget {
                                                                       //autofocus: true,
                                                                       textAlign: TextAlign.center,
                                                                       keyboardType: TextInputType.number,
-                                                                      onChanged: (value) {
-                                                                        cartProvider.updateItemQuantity(
-                                                                          CartEntity(
-                                                                            id: product[index].id!,
-                                                                            name: product[index].name!,
-                                                                            price: product[index].price!,
-                                                                            packing: product[index].packing!,
-                                                                            packingType: product[index].packingType!,
-                                                                          ),
-                                                                          int.tryParse(value) ?? 0,
-                                                                        );
+                                                                      // onChanged: (value) {
+                                                                      //   cartProvider.updateItemQuantity(
+                                                                      //     CartEntity(
+                                                                      //       id: product[index].id!,
+                                                                      //       name: product[index].name!,
+                                                                      //       price: product[index].price!,
+                                                                      //       packing: product[index].packing!,
+                                                                      //       packingType: product[index].packingType!,
+                                                                      //     ),
+                                                                      //     int.tryParse(value) ?? 0,
+                                                                      //   );
                                                                         // if (value.isNotEmpty && int.parse(value) > 0 && index < product.length - 1) {
                                                                         //   FocusScope.of(context).requestFocus(focusNodes[index]);
                                                                         // }
                                                                         //qty.selection = TextSelection.fromPosition(TextPosition(offset: qty.text.length));
+                                                                      onFieldSubmitted: (value){
+                                                                        cartProvider.updateItemQuantity(
+                                                                          CartEntity(
+                                                                            id: product[index].id!,
+                                                                            name: product[index].name!,
+                                                                            price: product[index].packingVarient![0].price!.toDouble(),
+                                                                            packing: product[index].packingVarient![0].packing!,
+                                                                            packingType: product[index].packingVarient![0].packingType!.value!,
+                                                                          ),
+                                                                          int.tryParse(value) ?? 0,
+                                                                        );
                                                                       },
                                                                     )),
                                                                 IconButton(
@@ -228,9 +239,9 @@ class ProductList extends StatelessWidget {
                                                                       CartEntity(
                                                                         id: product[index].id!,
                                                                         name: product[index].name!,
-                                                                        price: product[index].price!,
-                                                                        packing: product[index].packing!,
-                                                                        packingType: product[index].packingType!,
+                                                                        price: product[index].packingVarient![0].price!.toDouble(),
+                                                                        packing: product[index].packingVarient![0].packing!,
+                                                                        packingType: product[index].packingVarient![0].packingType!.value!,
                                                                       ),
                                                                     );
                                                                   },
@@ -319,7 +330,7 @@ class ProductList extends StatelessWidget {
                                                                                               CartEntity(
                                                                                                 id: product[index].id!,
                                                                                                 name: product[index].name!,
-                                                                                                price: value._selectedProducts[0].price ?? 0,
+                                                                                                price: value._selectedProducts[0].price!.toDouble() ?? 0,
                                                                                                 packing: value._selectedProducts[0].packing ?? '',
                                                                                                 packingType: value._selectedProducts[0].packingType!.label ??'',
                                                                                               ),);
@@ -341,9 +352,9 @@ class ProductList extends StatelessWidget {
                                                                         CartEntity(
                                                                           id: product[index].id!,
                                                                           name: product[index].name!,
-                                                                          price: product[index].price!,
-                                                                          packing: product[index].packing??'NA',
-                                                                          packingType: product[index].packingType??'NA',
+                                                                          price: product[index].packingVarient![0].price!.toDouble(),
+                                                                          packing: product[index].packingVarient![0].packing!,
+                                                                          packingType: product[index].packingVarient![0].packingType!.value!,
                                                                         ),
                                                                       );
                                                                     }
