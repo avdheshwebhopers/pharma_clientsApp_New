@@ -26,7 +26,7 @@ class _CalculatorState extends State<Calculator> {
       appBar: AppBar(
           elevation: 0,
           centerTitle: false,
-          title: TextWithStyle.appBarTitle(context, ConstantStrings.offersheading)
+          title: TextWithStyle.appBarTitle(context, ConstantStrings.calculatorheading)
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

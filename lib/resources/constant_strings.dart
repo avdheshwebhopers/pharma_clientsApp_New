@@ -50,6 +50,7 @@ class ConstantStrings{
   static const String dashboardScreen =  'Dashboard';
   static const String promotionalHeading =  'Promotional Data';
   static const String offersheading =  'Offers';
+  static const String calculatorheading =  'PTR/PTS Calculator';
   static const String mrsheading =  'Medical Representatives';
   static const String mrsprofileheading =  'MR Profile';
   static const String addMrheading =  'Add M.R';

@@ -45,12 +45,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    namespace 'com.pharmademo.app'
+    namespace 'com.webhopers.janaxa'
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId 'com.pharmademo.app'
+        applicationId 'com.webhopers.janaxa'
         minSdkVersion 23
-        targetSdkVersion 33
+        targetSdkVersion 34
         multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName

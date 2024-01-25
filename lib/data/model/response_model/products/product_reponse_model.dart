@@ -30,7 +30,7 @@ class ProductResponseModel {
 class Products {
   String? id;
   String? name;
-  int? price;
+  double? price;
   String? description;
   String? details;
   List<Images>? images;
@@ -81,7 +81,8 @@ class Products {
         this.hsnCode,
         this.createdOn,
         this.modifiedOn,
-        this.favourite});
+        this.favourite
+      });
 
   Products.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -143,7 +144,8 @@ class Products {
     data['active'] = active;
     data['new_launched'] = newLaunched;
     if (packingVarient != null) {
-      data['packingVarient'] = packingVarient!.map((v) => v.toJson()).toList();
+      data['packingVarient'] =
+          packingVarient!.map((v) => v.toJson()).toList();
     }
     data['packing_qty'] = packingQty;
     data['packing'] = packing;
@@ -156,6 +158,7 @@ class Products {
     data['favourite'] = favourite;
     return data;
   }
+
 }
 
 class Images {
@@ -181,7 +184,7 @@ class PackingVarient {
   PackingType? packingType;
   String? packing;
   int? packingQty;
-  int? price;
+  double? price;
 
   PackingVarient({this.packingType, this.packing, this.packingQty, this.price});
 
@@ -191,36 +194,36 @@ class PackingVarient {
         : null;
     packing = json['packing'];
     packingQty = json['packing_qty'];
-    price = json['price'];
+    price = json['price'].toDouble();
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     if (packingType != null) {
-      data['packing_type'] = packingType?.toJson();
+      data['packing_type'] = packingType!.toJson();
     }
     data['packing'] = packing;
     data['packing_qty'] = packingQty;
-    data['price'] = price;
+    data['price'] = price?.toDouble();
     return data;
   }
 }
 
 class PackingType {
-  String? label;
   String? value;
+  String? label;
 
-  PackingType({this.label, this.value});
+  PackingType({this.value, this.label});
 
   PackingType.fromJson(Map<String, dynamic> json) {
-    label = json['label'];
     value = json['value'];
+    label = json['label'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['label'] = label;
     data['value'] = value;
+    data['label'] = label;
     return data;
   }
 }
