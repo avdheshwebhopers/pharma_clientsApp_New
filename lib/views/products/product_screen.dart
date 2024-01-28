@@ -236,7 +236,10 @@ class _ProductScreenState extends State<ProductScreen> {
                                                   builder: (BuildContext context, value,
                                                       Widget? child) {
                                                     return ElevatedButton(
-                                                      child: const Text('OK'),
+                                                      style: ElevatedButton.styleFrom(
+                                                        backgroundColor: AppColors.primaryColor
+                                                      ),
+                                                      child: const Text('OK',style: TextStyle(color: Colors.white),),
                                                       onPressed: () {
                                                         List<String>? name = [];
                                                         for(var element in value.selectedDivisions){

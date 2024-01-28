@@ -1140,7 +1140,7 @@ class Cart extends ChangeNotifier {
 
   int get quantity => _items.length;
 
-  double get totalPrice => _items.fold(0, (sum, item) => sum + item.price * item.quantity);
+  double get totalPrice => _items.fold(0.0, (sum, item) => (sum + item.price * item.quantity).roundToDouble());
 
   int itemCount(String? id) {
     return _items.where((item) => item.id == id).length;

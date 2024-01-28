@@ -29,7 +29,7 @@ class slider extends StatelessWidget {
         carouselController: _controller,
         itemCount: images.length,
         options: CarouselOptions(
-            autoPlay: images.length != 1 ? true : false ,
+            autoPlay: false ,
             aspectRatio: aspectRatio,//2.1
             viewportFraction: viewPortFraction, //0.93
             onPageChanged: (index, _) {

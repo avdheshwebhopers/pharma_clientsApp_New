@@ -51,8 +51,7 @@ class ProductList extends StatelessWidget {
     }
 
     List<FocusNode> focusNodes = List.generate(
-      product.length,
-          (index) => FocusNode(),
+      product.length, (index) => FocusNode(),
     );
 
     return product.isNotEmpty
@@ -194,37 +193,18 @@ class ProductList extends StatelessWidget {
                                                                   width: 10.w,
                                                                   height: 4.h,
                                                                   child: TextFormField(
-                                                                      style: TextStyle(fontSize: 18.sp,),
-                                                                       //key: Key(count),
-                                                                      //initialValue: count,
-                                                                      controller: qty,
-                                                                      focusNode: focusNodes[index],
-                                                                      textAlign: TextAlign.center,
-                                                                      //keyboardType: TextInputType.number,
-                                                                      //onChanged: (value) {
-                                                                      //   cartProvider.updateItemQuantity(
-                                                                      //     CartEntity(
-                                                                      //       id: product[index].id!,
-                                                                      //       name: product[index].name!,
-                                                                      //       price: product[index].price!,
-                                                                      //       packing: product[index].packing!,
-                                                                      //       packingType: product[index].packingType!,
-                                                                      //     ),
-                                                                      //     int.tryParse(value) ?? 0,
-                                                                      //   );
-                                                                      //   // if (value.isNotEmpty && int.parse(value) > 0 && index < product.length - 1) {
-                                                                      //   //   FocusScope.of(context).requestFocus(focusNodes[index]);
-                                                                      //   // }
-                                                                      //   //qty.selection = TextSelection.fromPosition(TextPosition(offset: qty.text.length));
-                                                                      // },
-                                                                      onFieldSubmitted: (value){
-                                                                        cartProvider.updateItemQuantity(
-                                                                          CartEntity(
-                                                                            id: product[index].id!,
-                                                                            name: product[index].name!,
-                                                                            price: product[index].price!,
-                                                                            packing: product[index].packing!,
-                                                                            packingType: product[index].packingType!,
+                                                                    style: TextStyle(fontSize: 18.sp,),
+                                                                    controller: qty,
+                                                                    focusNode: focusNodes[index],
+                                                                    textAlign: TextAlign.center,
+                                                                    onFieldSubmitted: (value){
+                                                                      cartProvider.updateItemQuantity(
+                                                                        CartEntity(
+                                                                          id: product[index].id!,
+                                                                          name: product[index].name!,
+                                                                          price: product[index].price!,
+                                                                          packing: product[index].packing!,
+                                                                          packingType: product[index].packingType!,
                                                                           ),
                                                                           int.tryParse(value) ?? 0,
                                                                         );
@@ -362,6 +342,7 @@ class ProductList extends StatelessWidget {
                                                                   },
                                                                   style: ElevatedButton
                                                                       .styleFrom(
+                                                                    backgroundColor: AppColors.primaryColor,
                                                                       elevation: 1,
                                                                       minimumSize: Size(MediaQuery.of(context).size.width / 4,
                                                                           MediaQuery.of(context).size.height / 22),
@@ -374,10 +355,10 @@ class ProductList extends StatelessWidget {
                                                                       )
                                                                   ),
                                                                   child: TextWithStyle
-                                                                      .svgIconTitle(
+                                                                      .addToCartTitles(
                                                                       context,
                                                                       ConstantStrings
-                                                                          .addToCart)),
+                                                                          .addToCart,14.sp)),
                                                             );
                                                           }
                                                         },
@@ -397,8 +378,7 @@ class ProductList extends StatelessWidget {
                                       Navigator.push(context, MaterialPageRoute(builder: (context)=> ImagePage(imageUrl: img[index])));
                                     },
                                     child: Container(
-                                      margin: EdgeInsets.only(
-                                          left: 3.w, top: 1.5.h, bottom: 1.h),
+                                      margin: EdgeInsets.only(left: 3.w, top: 1.5.h, bottom: 1.h),
                                       height: 15.h,
                                       width: 15.h,
                                       decoration: BoxDecoration(
@@ -414,8 +394,7 @@ class ProductList extends StatelessWidget {
                                           ]
                                       ),
                                       child: ClipRRect(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(2.h)),
+                                          borderRadius: BorderRadius.all(Radius.circular(2.h)),
                                           child:
                                           (img[index] != false && img[index] != null)
                                               ? CachedNetworkImage(

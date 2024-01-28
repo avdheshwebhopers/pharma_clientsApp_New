@@ -64,7 +64,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
     Future<void> shareImageToWhatsApp(String imagePath) async {
       try {
-        await Share.shareFiles([imagePath], text: 'C  heck out this image!');
+        await Share.shareFiles([imagePath], text: 'Check out this image!');
       } catch (e) {
         print('Error sharing the image: $e');
       }
@@ -306,8 +306,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                     );
                                   },
                                 ),
-                                TextWithStyle.containerTitle(
-                                    context, count.toString()),
+                                TextWithStyle.containerTitle(context, count.toString()),
                                 IconButton(
                                   icon: const Icon(
                                       CupertinoIcons.add_circled_solid),
@@ -364,7 +363,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                             Radius.circular(5.h)),
                                       )),
                                   child: TextWithStyle.addToCartTitles(
-                                      context, ConstantStrings.addToCart))
+                                      context, ConstantStrings.addToCart,16.sp))
                               : ElevatedButton(
                                   onPressed: () {
                                     final cart = context.read<Cart>();
@@ -381,6 +380,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                     // selectPacking.selectedProducts.clear();
                                   },
                                   style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColors.primaryColor,
                                       elevation: 2,
                                       minimumSize: Size(15.h, 10.h),
                                       shape: RoundedRectangleBorder(
@@ -388,7 +388,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                             Radius.circular(5.h)),
                                       )),
                                   child: TextWithStyle.addToCartTitles(
-                                      context, ConstantStrings.addToCart))
+                                      context, ConstantStrings.addToCart,16.sp))
                     ],
                   );
 
@@ -519,26 +519,73 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               ),
             )
           ])),
-
-
     );
   }
-  void shareImageTitleAndContent() async {
 
-    final response = await http.get(Uri.parse('${widget.value1[0].images?[0].url}'));
-    if (response.statusCode == 200) {
-      // Save the image to temporary directory
-      final tempDir = await getTemporaryDirectory();
-      final filePath = '${tempDir.path}/image.jpg';
-      final imageFile = File(filePath);
-      await imageFile.writeAsBytes(response.bodyBytes);
+  // void shareImageTitleAndContent() async {
+  //
+  //   final response = await http.get(Uri.parse('${widget.value1[0].images?[0].url}'));
+  //
+  //   if (response.statusCode == 200) {
+  //     // Save the image to temporary directory
+  //     final tempDir = await getTemporaryDirectory();
+  //     final filePath = '${tempDir.path}/image.jpg';
+  //     final imageFile = File(filePath);
+  //     await imageFile.writeAsBytes(response.bodyBytes);
+  //
+  //     // Share the image using the share library
+  //     Share.shareFiles([filePath], subject: '${widget.value1[0].name}',text: '${'Description: '+ widget.value1[0].description! +
+  //                 '\n\nType: ' + widget.value1[0].typeName!}'+ '\n\nMRP:${widget.value1[0].price == null ? widget.value1[0].packingVarient![0].price.toString() : widget.value1[0].price.toString()}');
+  //   } else {
+  //     // Handle error
+  //     print('Failed to download image');
+  //   }
+  //
+  // }
 
-      // Share the image using the share library
-      Share.shareFiles([filePath], subject: '${widget.value1[0].name}',text: '${'Description: '+widget.value1[0].description! +
-                  'Type: ' + widget.value1[0].typeName!}');
-    } else {
-      // Handle error
-      print('Failed to download image');
+  Future<void> shareImageTitleAndContent() async {
+    try {
+      final imageUrl = widget.value1[0].images?[0].url;
+      if (imageUrl == null) {
+        print('Image URL is null');
+        _shareWithoutImage();
+        return;
+      }
+
+      final response = await http.get(Uri.parse(imageUrl));
+
+      if (response.statusCode == 200) {
+        final tempDir = await getTemporaryDirectory();
+        final filePath = '${tempDir.path}/image.jpg';
+        final imageFile = File(filePath);
+        await imageFile.writeAsBytes(response.bodyBytes);
+
+        final title = widget.value1[0].name ?? 'No Title';
+        final description = widget.value1[0].description ?? '';
+        final typeName = widget.value1[0].typeName ?? '';
+        final price = widget.value1[0].price ?? (widget.value1[0].packingVarient?[0].price ?? 0);
+
+        final text = 'Description: $description\n\nType: $typeName\n\nMRP: $price';
+
+        Share.shareFiles([filePath], subject: title, text: text);
+      } else {
+        print('Failed to download image. Status code: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error: $e');
+      _shareWithoutImage();
     }
+  }
 
-  }}
+  void _shareWithoutImage() {
+    final title = widget.value1[0].name ?? 'No Title';
+    final description = widget.value1[0].description ?? '';
+    final typeName = widget.value1[0].typeName ?? '';
+    final price = widget.value1[0].price ?? (widget.value1[0].packingVarient?[0].price ?? 0);
+
+    final text = 'No image found\n\nDescription: $description\n\nType: $typeName\n\nMRP: $price';
+
+    Share.share(text, subject: title);
+  }
+
+}

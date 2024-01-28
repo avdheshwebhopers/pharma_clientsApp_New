@@ -669,7 +669,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: GridView.count(
                         physics: const NeverScrollableScrollPhysics(),
                         primary: false,
-                        padding: EdgeInsets.all(20),
+                        padding: EdgeInsets.all(10),
                         shrinkWrap: true,
                         crossAxisSpacing: 1.2.w,
                         mainAxisSpacing: 5.w,
@@ -680,7 +680,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           // )
                           badge.Badge(
                               badgeAnimation: const badge.BadgeAnimation.slide(),
-                              position: badge.BadgePosition.topEnd(end: 0.8.h),
+                              position: badge.BadgePosition.topEnd(end: 3.w),
                               badgeStyle: badge.BadgeStyle(
                                 badgeColor: AppColors.primaryColor,
                                 shape: badge.BadgeShape.square,
@@ -711,7 +711,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           badge.Badge(
                             badgeAnimation: const badge.BadgeAnimation.slide(),
-                            position: badge.BadgePosition.topEnd(end: 0.8.h),
+                            position: badge.BadgePosition.topEnd(end:3.w),
                             badgeStyle: badge.BadgeStyle(
                               badgeColor: AppColors.primaryColor,
                               shape: badge.BadgeShape.square,
@@ -1149,6 +1149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Icon(
                         CupertinoIcons.phone_circle_fill,
                         size: 5.h,
+                        color: Colors.white,
                       ),
                     ),
                   );

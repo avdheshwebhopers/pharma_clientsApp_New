@@ -112,11 +112,11 @@ class TextWithStyle{
     );
   }
 
-  static addToCartTitles(context, String message){
+  static addToCartTitles(context, String message,size){
     return Text(message,
       maxLines: 1,
       style: TextStyle(
-        fontSize: 16.sp,
+        fontSize: size,
         fontWeight: FontWeight.w600,
         letterSpacing: 1,
         color: Colors.white,
@@ -202,8 +202,5 @@ class TextWithStyle{
       ),
     );
   }
-
-
-
 
 }

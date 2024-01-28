@@ -432,6 +432,9 @@ class _AddVisitScreenState extends State<AddVisitScreen> {
                                                 },
                                               )),
                                           ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor: AppColors.primaryColor
+                                            ),
                                             child: TextWithStyle
                                                 .contactUsTitle(
                                                 context, 'Ok'),
@@ -518,11 +521,9 @@ class _AddVisitScreenState extends State<AddVisitScreen> {
                                   mainAxisAlignment:
                                   MainAxisAlignment.spaceBetween,
                                   children: [
-                                    TextWithStyle.containerTitle(
-                                        context, "Select Products"),
+                                    TextWithStyle.containerTitle(context, "Select Products"),
                                     Icon(
-                                        CupertinoIcons
-                                            .chevron_down_circle,
+                                        CupertinoIcons.chevron_down_circle,
                                         size: 2.9.h,
                                         color: AppColors.primaryColor),
                                   ],
