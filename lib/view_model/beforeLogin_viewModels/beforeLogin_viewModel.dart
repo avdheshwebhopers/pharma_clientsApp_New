@@ -62,7 +62,8 @@ class GuestProductViewModel with ChangeNotifier{
     _filteredProducts = product.where((element) {
       return element.name!.toLowerCase().contains(searchQuery)
           || element.typeName!.toLowerCase().contains(searchQuery)
-        || element.categoryName!.toLowerCase().contains(searchQuery);
+        || element.categoryName!.toLowerCase().contains(searchQuery)||
+          element.description!.toLowerCase().contains(searchQuery.toLowerCase());
     }).toList();
 
     notifyListeners();

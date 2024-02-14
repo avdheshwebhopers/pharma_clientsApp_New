@@ -48,6 +48,17 @@ class TextWithStyle{
       ),
     );
   }
+  static addCartTitle(context, String message){
+    return Text(
+      message,
+      style: TextStyle(
+        letterSpacing: 0.4,
+        fontSize: 15.sp,
+        fontWeight: FontWeight.w600,
+        color: Colors.white
+      ),
+    );
+  }
 
   static pngIconTitle(context, String message){
     return Text(
