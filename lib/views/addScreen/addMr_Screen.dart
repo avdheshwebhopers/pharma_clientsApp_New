@@ -288,12 +288,7 @@ class _AddMrScreenState extends State<AddMrScreen> {
                                 citiesModel.cities(
                                     state.id, context);
                               },
-                              validator: (value) {
-                                if (state == null) {
-                                  return 'Please enter your State';
-                                }
-                                return null;
-                              },
+
                             );
                           },
                         )
@@ -380,12 +375,6 @@ class _AddMrScreenState extends State<AddMrScreen> {
                               onChanged: (val) {
                                 city = val;
                               },
-                              validator: (val) {
-                                if (city == null) {
-                                  return 'Please enter your City';
-                                }
-                                return null;
-                              },
                             );
                           },
                         )),
@@ -395,12 +384,6 @@ class _AddMrScreenState extends State<AddMrScreen> {
                     PasswordInputField(
                       title: dob,
                       node: dobFocusNode,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter your Date of Birth';
-                        }
-                        return null;
-                      },
                       obSecure: false,
                       icon: Icons.person_pin_outlined,
                       hintText: 'Enter your Date of Birth ',
@@ -502,10 +485,10 @@ class _AddMrScreenState extends State<AddMrScreen> {
                       entity.email = email.text;
                       entity.phone = phone.text;
                       entity.address = address.text;
-                      entity.city = city.toString();
-                      entity.state = state.name.toString();
+                      entity.state = state == null ? 'NA' : state.name.toString();
+                      entity.city = city.toString().isEmpty ? 'NA' : city.toString();
                       entity.op_area = operationArea.text;
-                      entity.dob = dob.text;
+                      entity.dob = dob.text.toString().isEmpty ? '' : dob.text.toString();
                       entity.password = confirmPassword.text;
 
                       provider.addMr(

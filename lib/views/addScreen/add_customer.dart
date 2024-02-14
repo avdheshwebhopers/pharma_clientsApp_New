@@ -297,12 +297,6 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                                 citiesModel.cities(
                                     state.id, context);
                               },
-                              validator: (value) {
-                                if (state == null) {
-                                  return 'Please enter your State';
-                                }
-                                return null;
-                              },
                             );
                           },
                         )
@@ -389,12 +383,6 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                               onChanged: (val) {
                                 city = val;
                               },
-                              validator: (val) {
-                                if (city == null) {
-                                  return 'Please enter your City';
-                                }
-                                return null;
-                              },
                             );
                           },
                         )),
@@ -407,22 +395,10 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                       icon: Icons.home_work_outlined,
                       hintText:  'Enter your Hospital Name',
                       labelText: 'Hospital Name',
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter your Hospital';
-                        }
-                        return null;
-                      },
                     ),
                     PasswordInputField(
                       title: dob,
                       node: dobFocusNode,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter your Date of Birth';
-                        }
-                        return null;
-                      },
                       obSecure: false,
                       icon: Icons.person_pin_outlined,
                       hintText: 'Enter your Date of Birth ',
@@ -436,12 +412,6 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                     PasswordInputField(
                       title: weddingDate,
                       node: weddingDateFocusNode,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter your Date of Birth';
-                        }
-                        return null;
-                      },
                       obSecure: false,
                       icon: CupertinoIcons.heart_circle,
                       hintText: 'Enter your Wedding Anniversary',
@@ -476,11 +446,11 @@ class _AddCustomerScreenState extends State<AddCustomerScreen> {
                         entity.phone = phone.text.toString();
                         entity.address = address.text.toString();
                         entity.profession = profession.text.toString();
-                        entity.state = state.name.toString();
-                        entity.city = city.toString();
-                        entity.workingPlace = hospitalName.text.toString();
-                        entity.dob = dob.text.toString();
-                        entity.weddingAnniversary = weddingDate.text.toString();
+                        entity.state = state == null ? 'NA' : state.name.toString();
+                        entity.city = city.toString().isEmpty ? 'NA' : city.toString();
+                        entity.workingPlace = hospitalName.text.toString().isEmpty ? 'NA': hospitalName.text.toString();
+                        entity.dob = dob.text.toString().isEmpty ? '' : dob.text.toString();
+                        entity.weddingAnniversary = weddingDate.text.toString().isEmpty ? '' : weddingDate.text.toString();
                         addcustomer.addCustomers(
                             entity,
                             context,
