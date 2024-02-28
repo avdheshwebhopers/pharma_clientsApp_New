@@ -661,7 +661,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: GridView.count(
                         physics: const NeverScrollableScrollPhysics(),
                         primary: false,
-                        padding: EdgeInsets.all(10),
+                        padding: EdgeInsets.all(2 .w),
                         shrinkWrap: true,
                         crossAxisSpacing: 1.2.w,
                         mainAxisSpacing: 5.w,
