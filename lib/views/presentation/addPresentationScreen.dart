@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pharma_clients_app/data/model/response_model/visual_aids_response_model.dart';
 import 'package:pharma_clients_app/resources/constant_strings.dart';
 import 'package:pharma_clients_app/utils/TextInputFields/text_field.dart';
 import 'package:pharma_clients_app/utils/text_style.dart';
