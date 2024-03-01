@@ -129,7 +129,8 @@ class _SelfAnalysisScreenState extends State<SelfAnalysisScreen> {
                               InkWell(
                                 onTap: (){
                                   if(data.mrView!.length != 0 && data.mrView !=null){
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => VisitWiseRecordScreen(data: data.mrView![index].customers!)));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) =>
+                                        VisitWiseRecordScreen(data: data.mrView![index].customers!)));
                                   }else{
                                     Utils.flushBarErrorMessage("No Data Found", context);
                                   }

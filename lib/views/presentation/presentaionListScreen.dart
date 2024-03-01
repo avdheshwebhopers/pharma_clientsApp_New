@@ -105,36 +105,86 @@ class _PresentationListScreenState extends State<PresentationListScreen> {
 class PresentationScreen extends StatelessWidget {
   final PresentationData presentation;
 
-  const PresentationScreen({Key? key, required this.presentation}) : super(key: key);
+  const PresentationScreen({Key? key, required this.presentation})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List<String> images = List.from(presentation.images.map((image) => image.imageUrl)); // Extracting image URLs directly
+
+    // Add default images to the beginning and end of the list
+    images.insert(0, 'assets/images/png/presentation_front.png');
+    images.add('assets/images/png/presentation_back.png');
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
         title: TextWithStyle.appBarTitle(context, presentation.name),
         elevation: 0,
-        ),
-      body: PageView(
-        children: presentation.images.map((e) =>
-            CachedNetworkImage(
-              imageUrl: e.imageUrl,
-              placeholder: (context, url) => Container(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                color: AppColors.backgroundColor,
-                child: Center(
-                  child: Image.asset(
-                    'assets/images/png/loading-gif.gif',
-                    height: 6.h,
-                  ),
-                ),
+      ),
+      body: PageView.builder(
+        itemCount: images.length,
+        itemBuilder: (context, index) {
+          String imageUrl = images[index];
+          if (index == 0 || index == images.length - 1) { // First and last images
+            return SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: Image.asset(
+                imageUrl,
+                fit: BoxFit.contain,
               ),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
-            )
-          //Image.network(e.imageUrl)
-        ).toList(),
+            );
+          } else {
+            return imageUrl.startsWith('assets/') ? AssetImageWidget(imageUrl) : CachedNetworkImage(
+              imageUrl: imageUrl,
+              placeholder: (context, url) => PlaceholderImage(),
+              errorWidget: (context, url, error) {
+                print('Failed to load image: $imageUrl\n$error');
+                return const Icon(Icons.error);
+              },
+            );
+          }
+        },
       ),
     );
   }
 }
+
+class AssetImageWidget extends StatelessWidget {
+  final String imageUrl;
+
+  const AssetImageWidget(this.imageUrl);
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(
+      imageUrl,
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      fit: BoxFit.cover, // Adjust as needed
+      errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+        print('Failed to load asset image: $imageUrl\n$exception');
+        return const Icon(Icons.error);
+      },
+    );
+  }
+}
+
+class PlaceholderImage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      color: AppColors.backgroundColor,
+      child: Center(
+        child: Image.asset(
+          'assets/images/png/loading-gif.gif',
+          height: 6.h,
+        ),
+      ),
+    );
+  }
+}
+
