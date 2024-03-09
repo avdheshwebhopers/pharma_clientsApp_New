@@ -93,6 +93,7 @@ Future<void> main() async {
       statusBarColor: AppColors.backgroundColor,
     ),
   );
+
   WidgetsFlutterBinding.ensureInitialized();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await Firebase.initializeApp();
