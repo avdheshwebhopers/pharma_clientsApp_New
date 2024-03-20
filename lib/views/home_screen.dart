@@ -340,10 +340,11 @@ class _HomeScreenState extends State<HomeScreen> {
     Widget itemWidget(value, val) {
       return Scaffold(
         appBar: AppBar(
-          toolbarHeight: 8.h,
+          toolbarHeight: 6.h,
           centerTitle: false,
           automaticallyImplyLeading: false,
           elevation: 0,
+          backgroundColor: Theme.of(context).colorScheme.secondary,
           title: Column(
             children: [
               widget.token == null
@@ -454,7 +455,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         margin: EdgeInsets.only(
                             left: 3.w, right: 3.w, bottom: 3.w, top: 3.w),
                         decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Theme.of(context).colorScheme.secondary,
                             borderRadius: BorderRadius.all(Radius.circular(1.h)),
                             border: Border.all(
                                 color: AppColors.borderColor,
@@ -650,9 +651,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       padding: EdgeInsets.only(top: 2.w, bottom: 2.w),
                       margin: EdgeInsets.only(left: 3.w, right: 3.w, bottom: 3.w),
                       decoration: BoxDecoration(
-                          color: Theme.of(context).brightness == Brightness.light
-                              ? Colors.white
-                              : Colors.grey.withOpacity(0.3),
+                          color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(1.h)),
                           border: Border.all(
                               color: AppColors.borderColor,
@@ -661,7 +660,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: GridView.count(
                         physics: const NeverScrollableScrollPhysics(),
                         primary: false,
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         shrinkWrap: true,
                         crossAxisSpacing: 1.2.w,
                         mainAxisSpacing: 5.w,
@@ -978,9 +977,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       margin: EdgeInsets.only(
                           left: 3.w, right: 3.w, bottom: 3.w, top: 3.w),
                       decoration: BoxDecoration(
-                          color: Theme.of(context).brightness == Brightness.light
-                              ? Colors.white
-                              : Colors.grey.withOpacity(0.3),
+                          color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(1.h)),
                           border: Border.all(
                               color: AppColors.borderColor,
@@ -1146,6 +1143,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
           },
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+            fixedColor: Theme.of(context).colorScheme.secondary,
+
+          items: [
+            BottomNavigationBarItem(icon: const Icon(Icons.home),label: "Home"),
+            BottomNavigationBarItem(icon: const Icon(Icons.home),label: "Customers"),
+            BottomNavigationBarItem(icon: const Icon(Icons.home),label: "Cart"),
+            BottomNavigationBarItem(icon: const Icon(Icons.home),label:"Profile"),
+        ],
+
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       );

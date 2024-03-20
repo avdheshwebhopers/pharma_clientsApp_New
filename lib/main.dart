@@ -7,6 +7,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/intl.dart';
 import 'package:pharma_clients_app/resources/app_colors.dart';
+import 'package:pharma_clients_app/utils/theme/darkTheme.dart';
+import 'package:pharma_clients_app/utils/theme/light_theme.dart';
 import 'package:pharma_clients_app/views/products/product_list_widget.dart';
 import 'package:pharma_clients_app/utils/scroll_state/scroll_state.dart';
 import 'package:pharma_clients_app/utils/slider/slider_provider.dart';
@@ -180,18 +182,19 @@ class MyApp extends StatelessWidget {
             builder: (context, orientation, screenType) {
               return MaterialApp(
                 debugShowCheckedModeBanner: false,
-                themeMode: Provider.of<ThemeChange>(context).thememode,
-                theme: ThemeData(
-                    fontFamily: "SFPro-Rounded",
-                    brightness: Brightness.light,
-                    primarySwatch: mycolor,
-                    scaffoldBackgroundColor: AppColors.backgroundColor,
-                    appBarTheme: AppBarTheme(
-                        color: AppColors.backgroundColor.withOpacity(1),
-                        iconTheme: const IconThemeData(
-                            color: Colors.black
-                        ))
-                ),
+                theme: lightTheme,
+                darkTheme: darkTheme,
+                // theme: ThemeData(
+                //     fontFamily: "SFPro-Rounded",
+                //     brightness: Brightness.light,
+                //     primarySwatch: mycolor,
+                //     scaffoldBackgroundColor: AppColors.backgroundColor,
+                //     appBarTheme: AppBarTheme(
+                //         color: AppColors.backgroundColor.withOpacity(1),
+                //         iconTheme: const IconThemeData(
+                //             color: Colors.black
+                //         ))
+                // ),
                 home: const SplashScreen(),
               );
             },

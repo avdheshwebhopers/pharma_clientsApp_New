@@ -58,7 +58,7 @@ dependencies:
   badges: ^3.0.2
   path_provider: ^2.0.12
   share_plus: ^7.0.1
-  geolocator: ^10.1.0
+  geolocator: ^11.0.0
   geocoding: ^2.0.4
   cached_network_image: ^3.2.3
   connectivity_plus: ^5.0.2
@@ -143,13 +143,14 @@ flutter:
     - assets/images/svg/editProfile.svg
 
   fonts:
-    - family: SFPro-Rounded
+    - family: Inter
       fonts:
-        - asset: assets/fonts/SFPro-Rounded-Bold.ttf
-        - asset: assets/fonts/SFPro-Rounded-Heavy.ttf
-        - asset: assets/fonts/SFPro-Rounded-Light.ttf
-        - asset: assets/fonts/SFPro-Rounded-Medium.ttf
-        - asset: assets/fonts/SFPro-Rounded-Regular.ttf
-        - asset: assets/fonts/SFPro-Rounded-Semibold.ttf
-        - asset: assets/fonts/SFPro-Rounded-Ultralight.ttf
-        - asset: assets/fonts/SFPro-Rounded-Black.ttf
+        - asset: assets/fonts/Inter-Black.ttf
+        - asset: assets/fonts/Inter-Bold.ttf
+        - asset: assets/fonts/Inter-ExtraBold.ttf
+        - asset: assets/fonts/Inter-ExtraLight.ttf
+        - asset: assets/fonts/Inter-Light.ttf
+        - asset: assets/fonts/Inter-Medium.ttf
+        - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Inter-SemiBold.ttf
+        - asset: assets/fonts/Inter-Thin.ttf

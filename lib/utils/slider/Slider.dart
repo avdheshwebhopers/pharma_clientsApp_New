@@ -30,18 +30,23 @@ class slider extends StatelessWidget {
         itemCount: images.length,
         options: CarouselOptions(
             autoPlay: images.length != 1 ? true : false ,
-            aspectRatio: aspectRatio,//2.1
-            viewportFraction: viewPortFraction, //0.93
+            aspectRatio: 2.1,//2.1
+            viewportFraction: 0.9,
+            animateToClosest: false,
+            pageSnapping: true,//0//
+            enlargeCenterPage: true,// .93
+            enlargeFactor: 0.4,
             onPageChanged: (index, _) {
               countProvider.setIndex(index);
             }),
         itemBuilder: (context, index, realIdx) {
           return Container(
-            margin: EdgeInsets.only(left: 1.w, right: 1.w),
+            margin: EdgeInsets.only(left: 0.w, right: 0.w),
             child: images.isNotEmpty
                 ? Image.network(
                     '${images[index]}',
                     fit: BoxFit.fitWidth,
+
                   )
                 : Image.asset(
                     'assets/images/no_image_available.png',
